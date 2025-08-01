@@ -1,0 +1,55 @@
+{{ $API := "AIzaSyC9yuwztGur68BRIz3L23XDkeIenjUFVoU" }}
+{{ $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=name,rating,reviews,user_ratings_total&key=%s" "ChIJz918MgR9L4kREk7gmQCDuoA" $API }}
+{{ $remote := resources.GetRemote $url }}
+{{ $json := $remote.Content | transform.Unmarshal }}
+
+{{ $all := slice }}
+{{ range $json.result.reviews }}
+  {{ if and (ge .rating 1) (ne .text "") }}
+    {{ $all = $all | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $all) 0 }}
+<section class="[ grid layout--spacing ]">
+  <div class="[ grid center ]">
+    <h2>What Our Customers Say</h2>
+    <p class="[ intro ]">From Nassau to the Family Islands, customers trust Clear Choice for secure, stylish glass solutions. Don't just take our word for it — hear directly from the people we've helped protect their homes and businesses.</p>
+  </div>
+
+  {{ $shuffled := shuffle $all }}
+  {{ $limited := first 3 $shuffled }}
+  
+  <ul class="[ grid md:col--3 gap--2 ]">
+    {{ range $limited }}
+      <li class="[ bg--grey p--1 radius--5 ]">
+        <strong>{{ .author_name }}</strong>
+        <div class="stars">
+          {{ $fullStars := int .rating }}
+          {{ $emptyStars := sub 5 $fullStars }}
+          {{ range seq $fullStars }}★{{ end }}
+          {{ range seq $emptyStars }}☆{{ end }}
+        </div>
+
+        {{ if gt (len .text) 150 }}
+          {{ $clip := substr .text 0 150 }}
+          {{ $words := findRE ".*\\s" $clip }}
+          {{ $clean := "" }}
+          {{ if gt (len $words) 0 }}
+            {{ $clean = index $words 0 }}
+          {{ else }}
+            {{ $clean = $clip }}
+          {{ end }}
+          {{ $clean = replaceRE "[.!?]+$" "" $clean }}
+          <p>{{ $clean }}&hellip;</p>
+          <a href="https://search.google.com/local/reviews?placeid=ChIJz918MgR9L4kREk7gmQCDuoA" target="_blank">
+            Read full review
+          </a>
+        {{ else }}
+          <p>{{ .text }}</p>
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

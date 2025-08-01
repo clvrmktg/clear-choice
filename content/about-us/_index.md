@@ -4,16 +4,18 @@ draft = false
 title = 'About Clear Choice'
 description = 'Get to know Abaco Aggregate & Cement Ltd.—your trusted partner for high-quality aggregate, concrete-ready cement, road paving, and debris management in The Bahamas. Built for tough terrains, committed to resilient infrastructure.'
 
-# [ hero ]
-#  image = 'offloading-concrete.jpg'
-#  alt = ''
+
 
 subtitle = "Your Clear Choice for Protection and Style in The Bahamas"
-hero = "/images/about/hero.jpg"
+hero = 'tan-home-white-impact-windows.jpg'
 
 mission = """"""
 
 story = """"""
+
+# [ hero ]
+#  image = 'tan-home-white-impact-windows.jpg'
+#  alt = ''
 
 [storyshot]
   image = "clear-choice-warehouse-floor.jpg"

@@ -1,5 +1,6 @@
 {{- define "variables" -}}
 {{ $twic := site.Params.twic }}
+{{ $twic := site.Params.twic }}
 {{- .Store.Set "hasTwic" true -}}
 {{- end -}}
 {{- define "main" -}}
@@ -32,13 +33,13 @@
 
 <!-- Story -->
 <section class="[ full-width content-grid bg--grey py--5 ]">
-  <div class="[ grid md:col--2 col-gap--2 ]">
+  <div class="[ grid middle md:col--2 gap--2 ]">
     <!-- Image goes here -->
     {{ with .Params.storyshot }}
     {{ $img := $.Resources.GetMatch .image }}
     {{ if $img }}
       {{ $twic := site.Params.twic }}
-      <figure class="[ ratio--5:7 ]">
+      <figure class="[ ratio--5:7 radius--5 ]">
         <picture id="product-{{ (now.UnixNano | string | md5) }}" class="[ bg ]">
           <style>
             #product-{{ (now.UnixNano | string | md5) }} {
@@ -68,23 +69,8 @@
     </div>
   </div>
 </section>
+{{ partial "reviews.html" . }}
 
-
-<!-- Testimonials -->
-{{ with .Params.testimonials }}
-<section class="testimonials">
-  <div class="[ content-grid ]">
-    <h2>What Our Customers Say</h2>
-    <div class="grid md:col--2 gap--2">
-      {{ range . }}
-      <blockquote>
-        <p>“{{ .quote }}”</p>
-        <cite>— {{ .author }}</cite>
-      </blockquote>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
+{{ partial "cta.html" . }}
 
 {{- end -}}

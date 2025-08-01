@@ -18,14 +18,6 @@
       {{ partial "navbar.html" (dict "context" . "currentPage" $currentPage) }}
       <main class="[ main ][ full-width content-grid {{ if $.Store.Get "hasPadding" }}layout--padding{{end}} layout--spacing {{ if eq .Page.Kind "404" }}error{{ end }} ]" id="main">
         {{- block "main" . -}}{{- end -}}
-        <!-- Call to Action -->
-        <section class="[ cta ]">
-          <div class="[ content-grid text--center py--5 ]">
-            <h2>Ready to protect your home or business?</h2>
-            <p>Get a free, no‑obligation quote today.</p>
-            <a href="/contact" class="btn btn-primary">Request a Quote</a>
-          </div>
-        </section>
       </main>
       {{- partial "footer.html" (dict "context" . "currentPage" $currentPage) -}}
     </div>
