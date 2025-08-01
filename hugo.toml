@@ -1,4 +1,5 @@
-baseURL = 'https://clear-choiceglass.com/'
+# baseURL = 'https://clear-choiceglass.com/'
+baseURL = 'https://clearchoiceglass.netlify.app'
 canonifyURLs = true
 languageCode = 'en-us'
 title = 'Clear Choice Glass'
