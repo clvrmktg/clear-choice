@@ -26,6 +26,9 @@
   <meta name="googlebot" content="noindex">
   {{- end -}}
   <link rel="preconnect" href="https://{{- .Site.Params.twic -}}.twic.pics/?v1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
   {{- with resources.Get "styles/style.sass" -}}
     {{- $opts := dict
       "enableSourceMap" (not hugo.IsProduction)

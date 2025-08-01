@@ -21,53 +21,11 @@
       grid-area: button
 
 
-.feature
-  grid-template-columns: [image-start title-start] 1fr [title-end image-end]
-  grid-template-rows: [image-start ] 1fr [image-end title-start] max-content [title-end]
+// .feature
 
-  +device(desktop)
-    grid-template-columns: [image-start title-start] 1fr [title-end image-end]
-    grid-template-rows: [image-start title-start] 1fr [title-end image-end]
 
-  &__title
-    grid-area: title 
-    background-color: color('black')
-
-    +device(desktop)
-      display: grid
-      grid-template-columns: 2em [heading-start] 1fr [heading-end] 2em
-      grid-template-rows: 1fr [heading-start] max-content [heading-end] 1fr
-      z-index: 1
-      background-color: transparent
-      +transition((color, background-color, opacity))
-    
-    > h3
-      grid-area: heading
-      color: color('aac-gold')
-
-    +device(desktop)
-
-      > h3
-        color: transparent
-        text-align: center
-
-  &__img
-    grid-area: image
-
-  +hover
-
-    > .feature
-
-      &__title
-        
-        +device(desktop)
-          background-color: color('black-5')
-
-        > h3
-          color: color('aac-gold')
-
-    > .scale > picture > img
-      scale: 1.2
+//   > .scale > picture > img
+//     scale: 1.2
 
 // +device(desktop)
 //   .previews

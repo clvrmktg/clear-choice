@@ -32,13 +32,13 @@ title = 'Clear Choice Glass'
     identifier = "services"
     name = "Services"
     url = "/services/"
-    weight = 3
+    weight = 2
 
   [[menu.main]]
     identifier = "about"
     name = "About Us"
     url = "/about-us/"
-    weight = 2
+    weight = 3
 
   [[menu.main]]
     identifier = "gallery"

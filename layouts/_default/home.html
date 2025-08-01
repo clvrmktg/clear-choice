@@ -4,32 +4,62 @@
 {{- define "main" -}}
   {{- partial "partials/hero.html" . -}}
 
-  {{/* We need to set this up as a section to be handled in the homepage front matter */}}
-  <section class="[ grid layout--spacing ]">
+  <section class="[ content-grid layout--spacing ]">
 
-    <div class="[ grid center ]">
-      <!-- #1a6f82 -->
-      <h2 class="[ text--center ]">{{ .Params.why_clear_choice.title }}</h2>
-      <!-- #374151 -->
-      <h3 class="[ font--4 font--400 text--center ch--45 ]">{{ .Params.why_clear_choice.subtitle }}</h3>  
+    <div>
+      <h2>Explore Windows &amp; Doors</h2>
+      <p class="[ x--700 ]">
+        Clear Choice offers a full range of impact windows, doors, and custom glass solutions —  designed to protect, enhance, and add lasting value to your home or business.
+      </p>
     </div>
+    <ul class="[ services ][ grid md:col--3 gap--2 ]">
+      {{ $services := site.GetPage "section" "services" }}
+      {{ range $services.Pages }}
+        <li class="[ service ][ ratio--1:1 radius--5 ]">
+          <a class="[ p--1 ]"  href="{{ .RelPermalink }}" data-prefetch>
+            {{ with .Params.image }}
+              <img src="{{ . }}" alt="{{ $.Title }}">
+            {{ end }}
+
+            <h3 class="[ font--4 font--500 ]">
+              <span>{{ .Title }}</span>
+            </h3>
+            {{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}
+          </a>
+        </li>
+      {{ end }}
+      <li class="[ service ][ ratio--1:1 radius--5 ]">
+        <a class="[ p--1 ]" href="/services" data-prefetch>
+          <span class="[ font--4 font--500 ]">View All Services</span>
+          {{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="[ benefits ][ full-width content-grid layout--spacing layout--padding ]">
 
     <div class="[ grid middle md:col--2 gap--2 ]">
-      <ul>
-        {{ range .Params.why_clear_choice.items }}
-          <li class="[ flex col-gap--1 ]">
-            <!-- fill #374151 -->
-            <div class="icon">
-              {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
-            </div>
-            <!-- #374151 -->
-            <div>
-              <strong>{{ .heading }}</strong>
-              <p>{{ .text }}</p>
-            </div>
-          </li>
-        {{ end }}
-      </ul>
+      <div>
+        <h2 class="[ font--500 ]">{{ .Params.why_clear_choice.title }}</h2>
+        <p>{{ .Params.why_clear_choice.subtitle }}</p>  
+    
+        <ul class="[ grid gap--1 ]">
+          {{ range .Params.why_clear_choice.items }}
+            <li class="[ flex col-gap--1 ]">
+              <!-- fill #374151 -->
+              <div class="icon">
+                {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
+              </div>
+              <!-- #374151 -->
+              <div>
+                <strong>{{ .heading }}</strong>
+                <p class="[ pb--0 ]">{{ .text }}</p>
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
   
       {{ with .Params.why_clear_choice.image }}
       {{ partial "image.html" (dict 
@@ -41,41 +71,18 @@
       {{ end }}
     </div>
   </section>
-
-  <section>
-    <h2>Our Products & Services</h2>
-    <p>
-      Clear Choice offers a full range of impact windows, doors, and custom glass solutions —  designed to protect, enhance, and add lasting value to your home or business.
-  </p>
-  <ul class="[ grid md:col--3 gap--2 ]">
-    {{ $services := site.GetPage "section" "services" }}
-    {{ range $services.Pages }}
-      <li class="[ ratio--1:1 ]">
-        <a href="{{ .RelPermalink }}" class="service-card" data-prefetch>
-          {{ with .Params.image }}
-            <img src="{{ . }}" alt="{{ $.Title }}">
-          {{ end }}
-          <h3>{{ .Title }}</h3>
-        </a>
-      </li>
-    {{ end }}
-    <li class="[ ratio--1:1 ]">
-      <a href="/services" data-prefetch>View All Services</a>
-    </li>
-  </ul>
   
   
-  </section>
-  
-  
-  <section>
-    <h2>Local Manufacturing Advantage</h2>
-    <h3>Made in The Bahamas, Made for The Bahamas</h3>
-    <p>
-      Our PVC frames are crafted right here in The Bahamas, designed to handle our climate 
-      and meet national building codes. Local manufacturing means you get faster service, 
-      reliable repairs, and products built for island life.
-    </p>
+  <section class="[ content-grid layout--spacing ]">
+    <div>
+      <h2>Local Manufacturing Advantage</h2>
+      <h3>Made in The Bahamas, Made for The Bahamas</h3>
+      <p>
+        Our PVC frames are crafted right here in The Bahamas, designed to handle our climate 
+        and meet national building codes. Local manufacturing means you get faster service, 
+        reliable repairs, and products built for island life.
+      </p>
+    </div>
   
     <div class="[ grid md:col--2 gap--2 ]">
       <div>

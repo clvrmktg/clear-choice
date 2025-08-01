@@ -12,7 +12,7 @@ while enhancing your property's curb appeal."""
 [[features]]
 title = "Hurricane-Rated Protection"
 description = "Certified impact resistance ensures your home is safe in any storm."
-image = "/images/features/protection.jpg"
+image = "hurricane-impact-window-second-floor.jpg"
 
 [[features]]
 title = "Energy Efficiency"

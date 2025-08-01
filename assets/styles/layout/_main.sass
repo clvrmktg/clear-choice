@@ -31,7 +31,7 @@
     //The link's opacity is set to 1, making it fully visible.
 
 +radius(5)
-  
+
 .icon
   width: 4.5em
 
@@ -41,9 +41,44 @@
     stroke: color('cc-teal')
 
 .service
+  color: color('white')
+  background-color: color('cc-teal')
 
-  &__img
-    box-shadow: 0 em(1) em(3) rgba(0, 0, 0, 0.12), 0 em(4) em(6) rgba(0, 0, 0, 0.08)
+  > a
+    display: block
+    height: 100%
+    position: relative
+    color: color('white')
+
+    > h3, > span
+      color: currentcolor
+      position: absolute
+      bottom: 1em
+      left: 1em
+
+    > h3
+      width: calc(100% - 2em)
+      overflow: hidden
+      // outline: $bg
+
+      > span
+        display: block
+        transform: translateY(3lh)
+        +transition(transform)
+
+    > svg
+      position: absolute
+      top: 1em
+      right: 1em
+
+    +hover
+
+      > h3
+
+        > span
+          transform: translateX(0)
+  // &__img
+  //   box-shadow: 0 em(1) em(3) rgba(0, 0, 0, 0.12), 0 em(4) em(6) rgba(0, 0, 0, 0.08)
 
 .loop
   display: grid
@@ -76,7 +111,8 @@
   .intro
     font-size: 1.25rem
 
-
+.benefits
+  background-color: color('grey-light')
 
 +wide(750)
 +wide(800)

@@ -1,15 +1,6 @@
 {{ define "main" }}
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="[ content-grid ]">
-      <h1>{{ .Title }}</h1>
-      <p class="subtitle">{{ .Params.subtitle }}</p>
-    </div>
-    {{ with .Params.image }}
-      <img src="{{ . }}" alt="{{ $.Title }}" class="hero-image">
-    {{ end }}
-  </section>
-
+  {{ partial "hero.html" . }}
   <!-- Intro Text Block -->
   {{ with .Params.intro }}
   <section class="intro">
@@ -25,9 +16,12 @@
     <ul class="[ features ][ grid layout--spacing ]">
       {{ range $index, $feature := . }}
       <li class="[ feature ][ grid md:col--2 col-gap--4 row-gap--2 ]{{ if modBool $index 2 }}alt{{ end }}">
-        <div class="[ feature-image ][ ratio--1:1 ]">
-          <img src="{{ $feature.image }}" alt="{{ $feature.title }}">
-        </div>
+        {{ partial "image.html" (dict 
+          "Destination" $feature.image
+          "PlainText" $feature.title
+          "class" "ratio--1:1 radius--5"
+          "Page" .
+        ) }}
         <div class="feature-text">
           <h3>{{ $feature.title }}</h3>
           <p>{{ $feature.description }}</p>

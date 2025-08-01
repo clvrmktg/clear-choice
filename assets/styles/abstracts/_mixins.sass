@@ -493,3 +493,16 @@
   @else
     .radius--#{$value}  // Fixed incorrect selector
       border-radius: em($value)
+
+
+=width($value, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:x--#{$value}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        max-width: em($value)
+
+  @else
+    .x--#{$value}  // Fixed incorrect selector
+      max-width: em($value)
