@@ -1,4 +1,5 @@
 {{- define "variables" -}}
+{{ $twic := site.Params.twic }}
 {{- .Store.Set "hasTwic" true -}}
 {{- end -}}
 {{- define "main" -}}
@@ -8,11 +9,17 @@
 
 <!-- Core Values -->
 {{ with .Params.values }}
-<section class="[ values ][ content-grid ]">
+<section class="[ values ][ grid layout--spacing ]">
+  <div class="[ text--center ]">
+    <h2>Our Values</h2>
+    <p class="[ intro ]">At Clear Choice Glass, we're guided by a commitment to safety, beauty, and service. Every window and door we craft is built to protect against The Bahamas' harshest weather, enhance the look of your property, and provide the peace of mind that comes with local expertise and reliable support.</p>
+  </div>
   <ul class="[ grid md:col--3 gap--2 ]">
     {{ range . }}
-    <li class="[ value ][ grid row-gap--1 text--center ]">
-      <span class="material-icons">{{ .icon }}</span>
+    <li class="[ value ][ grid center row-gap--1 text--center ]">
+      <span class="[ icon ]">
+        {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
+      </span>
       <div>
         <h3>{{ .title }}</h3>
         <p>{{ .description }}</p>
@@ -24,9 +31,37 @@
 {{ end }}
 
 <!-- Story -->
-<section class="[ content-grid ]">
+<section class="[ full-width content-grid bg--grey py--5 ]">
   <div class="[ grid md:col--2 col-gap--2 ]">
     <!-- Image goes here -->
+    {{ with .Params.storyshot }}
+    {{ $img := $.Resources.GetMatch .image }}
+    {{ if $img }}
+      {{ $twic := site.Params.twic }}
+      <figure class="[ ratio--5:7 ]">
+        <picture id="product-{{ (now.UnixNano | string | md5) }}" class="[ bg ]">
+          <style>
+            #product-{{ (now.UnixNano | string | md5) }} {
+              background-image: url('https://{{ $twic }}.twic.pics/{{ $img.RelPermalink }}?twic=v1/output=preview');
+            }
+          </style>
+          <img data-twic-src="image:{{ $img.RelPermalink }}" 
+               data-twic-focus="auto" 
+               alt="{{ .alt }}" 
+               width="{{ $img.Width }}" 
+               height="{{ $img.Height }}" />
+          <noscript>
+            <img class="[ script ]"
+                 src="https://{{ $twic }}.twic.pics/{{ $img.RelPermalink }}?twic=v1/output=preview" 
+                 alt="{{ .alt }}" 
+                 width="{{ $img.Width }}" 
+                 height="{{ $img.Height }}" />
+          </noscript>
+        </picture>
+      </figure>
+    {{ end }}
+  {{ end }}
+  
     <div>
       <h2>Our Story</h2>
       {{ .Content }}

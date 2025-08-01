@@ -14,12 +14,12 @@ image = "hurricane-impact-windows-doors.jpg"
 [[why_clear_choice.items]]
 heading = "Weather Protection"
 text = "Our impact windows and doors are locally crafted, built to endure the harshest weather while meeting The Bahamas' strict building codes."
-icon = "cloud-rain-wind.svg"
+icon = "weather-mix.svg"
 
 [[why_clear_choice.items]]
 heading = "Noise Reduction"
 text = "Our impact windows reduce outside noise, helping you enjoy peace and quiet where it matters most — inside your home."
-icon = "volume-x.svg"
+icon = "volume-off.svg"
 
 [[why_clear_choice.items]]
 heading = "Enhanced Security"

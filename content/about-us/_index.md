@@ -15,18 +15,22 @@ mission = """"""
 
 story = """"""
 
+[storyshot]
+  image = "clear-choice-warehouse-floor.jpg"
+  alt = "Clear Choice warehouse floor"
+
 [[values]]
-icon = "shield"
+icon = "shield.svg"
 title = "Hurricane Protection"
 description = "Certified impact‑resistant windows and doors designed to withstand The Bahamas' toughest storms."
 
 [[values]]
-icon = "window"
+icon = "window-closed.svg"
 title = "Stylish Design"
-description = "Modern, custom‑fit solutions that enhance your home or business."
+description = "Custom‑fit, hurricane‑rated windows and doors crafted to elevate your home or business with lasting beauty and strength."
 
 [[values]]
-icon = "handshake"
+icon = "handshake.svg"
 title = "Local Service"
 description = "Trusted support and service, manufactured and serviced right here in The Bahamas."
 
