@@ -1,0 +1,145 @@
+@use 'sass:math'
+@use '../abstracts' as *
+
+
+html
+  box-sizing: border-box
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: rgba(black, 0)
+  scroll-behavior: smooth
+  scroll-padding-top: 5em
+  
+*, *::before, *::after
+  box-sizing: inherit
+
+html, body
+  overflow-x: hidden
+  width: 100%
+
+body
+  width: 100%
+  font: var(--step-0) / 1.5 var(--sans-serif)
+  font-weight: 400
+  line-height: 1.6
+  color: color('text-color')
+
+// .sans-serif
+//   font-family: var(--sans-serif)
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd
+  margin: 0
+
+ol, ul
+  margin: 0
+  padding: 0
+
+  &:not([class])
+    padding-bottom: 0.75em
+
+  &[class]
+    list-style: none
+
+ol:not([class])
+  margin-left: 1.5em
+
+ul:not([class])
+  margin-left: 1em
+
+nav > ul:not([class])
+  margin: 0
+  padding: 0
+  list-style: none
+
+a
+  text-decoration: none
+
+abbr
+  text-decoration: none
+
+address
+  font-style: normal
+
+blockquote, q
+  quotes: none
+
+blockquote
+
+  &::before, &::after
+    content: ''
+    content: none
+
+q
+  &::before, &::after
+    content: '"'
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+input, button, textarea, select
+  font: inherit
+  line-height: inherit
+  border-radius: 0
+
+input
+
+  &:not([type=checkbox]):not([type=radio])
+    // -webkit-appearance: none
+    appearance: none
+
+  &[type=submit]
+    font: inherit
+    cursor: pointer
+    
+
+button
+  background-color: transparent
+  border-width: 0
+  padding: 0
+  cursor: pointer
+
+sup
+  font-size: 0.3em
+
+@media (prefers-reduced-motion: reduce)
+  *
+    animation-duration: 0.01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: 0.01ms !important
+    scroll-behavior: auto !important
+    
+
+    &::before, &::after
+      animation-duration: 0.01ms !important
+      animation-iteration-count: 1 !important
+      transition-duration: 0.01ms !important
+      scroll-behavior: auto !important
+
+img, svg:not([width])
+  width: 100%
+  max-width: 100%
+  display: block
+
+
++ignore
+  figure
+
+    > picture
+      height: auto
+      border-radius: inherit
+
+      > img
+        height: inherit
+        object-fit: cover
+        border-radius: inherit
+        opacity: 0
+        +transition(opacity)
+
+        &.twic-done, &.twic-error
+          opacity: 1 
+
+      &:has(figcaption)
+      
+        > picture
+          margin-bottom: 0.5em

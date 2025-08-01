@@ -1,0 +1,50 @@
+        <!-- Images used to open the lightbox-->
+        <ul class="[ grid sm:col--2 md:col--4 gap--2 layout--padding--bottom ]">
+          {{- $twic := .Site.Params.twic -}}
+          {{ range $index, $image := .Resources.ByType "image" }}
+          {{ $counter := add $index 1 }}
+          <li class="[ thumb thumb--{{ $counter }} ]" thumbnail>
+            <figure class="[ thumbnail ][ ratio--1:1 scale ]">
+              <picture id="thumbnail-{{ $counter }}" class="[ bg ]">
+                <style>#thumbnail-{{ $counter | safeCSS }} {background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
+                <img data-twic-src="image:{{ .RelPermalink }}" data-twic-focus="auto" width="720" height="720" alt=""/></picture>
+              <noscript><img class="[ script ]" src="https://{{ $twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview" width="720" height="720" alt=""/></noscript>
+            </figure>
+          </li>
+          {{ end }}
+        </ul>
+        <div class="[ gallery ]" id="modal" aria-hidden="true" aria-label="Photo Gallery">
+          <div class="[ wrapper ][ relative ]">
+            <div class="[ close ][ flex end ]">
+              <button class="[ icon ][ flex center middle ]" id="close">
+                <span class="[ icon--close ]">
+                  {{- readFile "static/icons/close.svg" | safeHTML }}
+                </span>
+                <span class="hidden">Close</span>
+              </button>
+            </div>
+            <button class="[ icon arrow arrow--left ][ flex center middle ]" id="prev">
+              <span class="[ icon--arrow icon--arrow--left ]">
+                {{- readFile "static/icons/arrow-left.svg" | safeHTML }}
+              </span>
+              <span class="[ hidden ]">Previous</span>
+            </button>
+            <button class="[ icon arrow arrow--right ][ flex center middle ]" id="next">
+              <span class="[ icon--arrow icon--arrow--right ]">
+                {{- readFile "static/icons/arrow-right.svg" | safeHTML }}
+              </span>
+              <span class="[ hidden ]">Next</span>
+            </button>
+            <div class="[ carousel ][ flex center middle relative py--5 ]">
+              {{ range $index, $image := .Resources.ByType "image" }}
+              {{ $counter := add $index 1 }}
+              <figure class="[ image image--{{ $counter }} ][ {{ if gt .Width .Height }}ratio--16:9{{else}}ratio--4:5{{end}} mx--auto ]">
+                <picture id="image-{{ $counter }}" class="[ bg ]">
+                  <style>#image-{{ $counter | safeCSS }} {background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
+                  <img data-twic-src="image:{{ .RelPermalink }}" data-twic-focus="auto" width="{{ .Width }}" height="{{ .Height }}" alt=""/></picture>
+                <noscript><img class="[ script ]" src="https://{{ $twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview" width="{{ .Width }}" height="{{ .Height }}" alt=""/></noscript>
+              </figure>
+              {{ end }}
+            </div>
+          </div>
+        </div>

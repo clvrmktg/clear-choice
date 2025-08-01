@@ -1,0 +1,16 @@
+@use '../abstracts' as *
+
+input, textarea
+  border: em(2) solid color('black')
+  border-radius: 0
+
+textarea
+  min-height: 10rem
+
+.required, .error-message
+  color: color('red')
+
+.form__field:has(.error-message)
+  
+  input, textarea
+    border-color: color('red')

@@ -1,0 +1,80 @@
+@use '../abstracts' as *
+@use 'sass:meta'
+
+$border: 0.15em
+$border-radius: em(5)
+
+%btn
+  display: block
+  font-weight: 500
+  text-align: center
+  @if meta.variable-exists(border-radius)
+    border-radius: $border-radius
+  border: $border solid
+  // margin-top: 0.5em
+  // margin-bottom: 0.5em
+  white-space: nowrap
+  cursor: pointer
+  +transition((color, fill, background-color, border, border-color))
+
+  +breakpoint(desktop)
+    display: inline-flex
+
+.btn, button.btn
+  @extend %btn
+
+  &--sm
+    // padding: 0.25em 0.5em
+    padding: (0.25em - $border) (0.5em - $border)
+
+  &--lg
+    // padding: 0.5em 1em
+    padding: (0.5em - $border) (1.5em - $border)
+
+
+.cc, button.cc
+
+  &--cta
+    font-weight: 700
+    color: color('white')
+    background-color: color('cta-orange')
+    border-color: color('cta-orange')
+
+  &--black
+    color: color('aac-gold')
+    background-color: color('black')
+    border-color: color('black')
+
+    +hover
+      color: color('black')
+      background-color: transparent
+
+    &--ghost
+      color: color('black')
+      border: $border solid color('black')
+      +transition((color, background-color))
+
+      +hover
+        color: color('aac-gold')
+        background-color: color('black')
+
+  &--gold
+    color: color('black')
+    background-color: color('aac-gold')
+    border-color: color('aac-gold')
+
+    +hover
+      color: color('aac-gold')
+      background-color: transparent
+
+    &--ghost
+      color: color('aac-gold')
+      border-color: color('aac-gold')
+      +transition((color, background-color))
+
+      +hover
+        color: color('black')
+        background-color: color('aac-gold')
+ 
+    
+  

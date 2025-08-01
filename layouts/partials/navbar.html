@@ -1,0 +1,25 @@
+<header class="[ navbar ][ full-width content-grid ]" id="navbar">
+  <div class="[ wrapper ][ flex between middle py--1 ]">
+    <div class="[ backdrop ]"></div>
+    <a class="[ logo ][ flex middle ]" href="/" aria-label="Homepage">
+      {{- readFile "static/icons/logo.svg" | safeHTML }}
+    </a>
+    <label class="[ navicon ]" id="navicon" for="click" aria-label="Menu">
+      <input class="[ hidden ]" id="click" type="checkbox">
+      <b class="[ bar ]"></b>
+    </label>
+    <nav class="[ navigation ]">
+      <ul class="[ menu menu--main ][ col-gap--2 ]">
+        {{- $context := .context -}}
+        {{- $currentPage := .currentPage -}}
+        {{with $context}}
+          {{ range .Site.Menus.main }}
+          <li class="[ menu__item ][ grid font--500 ]">
+            <a class="[ menu__link link--navbar ]{{ if eq $.currentPage.RelPermalink .URL }}[ current {{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
+          </li>
+          {{ end }}
+        {{end}}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,166 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- end -}}
+{{- define "main" -}}
+  {{- partial "partials/hero.html" . -}}
+
+  {{/* We need to set this up as a section to be handled in the homepage front matter */}}
+  <section class="[ grid layout--spacing ]">
+
+    <div class="[ grid center ]">
+      <!-- #1a6f82 -->
+      <h2 class="[ text--center ]">{{ .Params.why_clear_choice.title }}</h2>
+      <!-- #374151 -->
+      <h3 class="[ font--4 font--400 text--center ch--45 ]">{{ .Params.why_clear_choice.subtitle }}</h3>  
+    </div>
+
+    <div class="[ grid md:col--2 gap--2 ]">
+      <ul>
+        {{ range .Params.why_clear_choice.items }}
+          <li class="[ flex col-gap--1 ]">
+            <!-- fill #374151 -->
+            <div class="icon">
+              {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
+            </div>
+            <!-- #374151 -->
+            <div>
+              <strong>{{ .heading }}</strong>
+              <p>{{ .text }}</p>
+            </div>
+          </li>
+        {{ end }}
+      </ul>
+  
+      {{ with .Params.why_clear_choice.image }}
+        <img src="{{ . }}" alt="Why Choose Us">
+      {{ end }}
+    </div>
+  </section>
+
+  <section>
+    <h2>Our Products & Services</h2>
+    <p>
+      Clear Choice offers a full range of impact windows, doors, and custom glass solutions —  designed to protect, enhance, and add lasting value to your home or business.
+  </p>
+  <ul class="[ grid md:col--3 gap--2 ]">
+    {{ $services := site.GetPage "section" "services" }}
+    {{ range $services.Pages }}
+      <li class="[ ratio--1:1 ]">
+        <a href="{{ .RelPermalink }}" class="service-card" data-prefetch>
+          {{ with .Params.image }}
+            <img src="{{ . }}" alt="{{ $.Title }}">
+          {{ end }}
+          <h3>{{ .Title }}</h3>
+        </a>
+      </li>
+    {{ end }}
+    <li class="[ ratio--1:1 ]">
+      <a href="/services" data-prefetch>View All Services</a>
+    </li>
+  </ul>
+  
+  
+  </section>
+  
+  
+  <section>
+    <h2>Local Manufacturing Advantage</h2>
+    <h3>Made in The Bahamas, Made for The Bahamas</h3>
+    <p>
+      Our PVC frames are crafted right here in The Bahamas, designed to handle our climate 
+      and meet national building codes. Local manufacturing means you get faster service, 
+      reliable repairs, and products built for island life.
+    </p>
+  
+    <div class="[ grid md:col--2 gap--2 ]">
+      <div>
+        <h4>Clear Choice (Local)</h4>
+        <ul>
+          <li>Meets Bahamian building codes</li>
+          <li>Faster service and repairs</li>
+          <li>Custom fit for local homes and businesses</li>
+          <li>Competitive, reliable pricing</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Imported Alternatives</h4>
+        <ul>
+          <li>Higher costs due to shipping</li>
+          <li>Delays in parts and servicing</li>
+          <li>Not always built for our climate</li>
+          <li>Limited local support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section class="[ grid layout--spacing ]">
+    <div class="[ grid center text--center ]">
+
+      <h2>Clients trust us.</h2>
+      <h3 class="[ font--2 ]">Hear from people like you.</h3>
+    
+    </div>
+
+    <ul class="[ testimonials ][ grid md:col--3 gap--2 ]">
+      <li class="[ testimonial ][ px--1 py--2 ]">
+        <div class="stars">★★★★★</div>
+        <p>"Clear Choice installed our impact windows quickly and professionally. I feel much safer now."</p>
+        <strong>- Maria P.</strong>
+      </li>
+      <li class="[ testimonial ][ px--1 py--2 ]">
+        <div class="stars">★★★★☆</div>
+        <p>"Great service and good value. The only delay was waiting on a custom size, but it was worth it."</p>
+        <strong>- J. Smith</strong>
+      </li>
+      <li class="[ testimonial ][ px--1 py--2 ]">
+        <div class="stars">★★★★★</div>
+        <p>"Excellent quality and attention to detail. I recommend them to all my friends and family."</p>
+        <strong>- A. Johnson</strong>
+      </li>
+    </ul>
+  </section>
+  
+
+  <section>
+    <h2>Photo Gallery</h2>
+    <p>
+      Explore our recent installations across The Bahamas — from hurricane-rated windows and doors 
+      to custom shower enclosures and storefronts. See the difference Clear Choice craftsmanship makes.
+    </p>
+  
+    <div class="[ grid md:col--3 gap--2 ]">
+      <a href="/gallery/homes" class="gallery-card">
+        <img src="/images/gallery/homes-thumb.jpg" alt="Home Installations">
+        <h3>Homes</h3>
+      </a>
+      <a href="/gallery/storefronts" class="gallery-card">
+        <img src="/images/gallery/storefronts-thumb.jpg" alt="Storefront Installations">
+        <h3>Storefronts</h3>
+      </a>
+      <a href="/gallery/showers" class="gallery-card">
+        <img src="/images/gallery/showers-thumb.jpg" alt="Shower Enclosures">
+        <h3>Showers</h3>
+      </a>
+    </div>
+  
+    <a href="/gallery" class="btn">View Full Gallery</a>
+  </section>
+  
+
+  <section class="[ grid md:col--2 gap--2 ]">
+
+      <!-- image goes here -->
+      <div>
+        <h2>About Clear Choice</h2>
+        <p>
+          Clear Choice Glass is a Bahamian-owned manufacturer and installer of premium hurricane-rated windows, doors, and custom glass solutions. With over 50 years of combined experience, our Nassau-based team delivers reliable, high-quality installations and local servicing you can trust. We take pride in providing lasting protection, modern style, and dedicated support for both residential and commercial clients.
+        </p>
+        <a href="/about-us" class="[ btn btn--lg ]" data-prefetch>Learn More
+          <span class="[ hidden ]"> About Us</span>
+        </a>
+      </div>
+  </section>
+  
+
+{{- end -}}

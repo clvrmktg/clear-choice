@@ -1,0 +1,43 @@
+<figure class="[ pb--1 ]">
+  {{ $uniqueID := (now.UnixNano | string | md5) }}
+
+  <!-- Try to get the image from /assets/uploads/ -->
+  {{ $image := resources.Get (printf "uploads/%s" .Destination | safeURL) }}
+
+  <!-- Set default width & height to prevent errors -->
+  {{ $width := 0 }}
+  {{ $height := 0 }}
+
+  {{ if $image }}
+    {{ $width = $image.Width }}
+    {{ $height = $image.Height }}
+  {{ end }}
+
+  <picture id="picture-{{$uniqueID}}" class="[ bg ]">
+    {{ if $image }}
+      <style>#picture-{{$uniqueID}} {background-image: url('https://{{ .Page.Site.Params.twic }}.twic.pics{{ $image.RelPermalink }}?twic=v1/output=preview');}</style>
+      <img
+           width="{{ $width }}" 
+           height="{{ $height }}" 
+           data-twic-src="image:{{ $image.RelPermalink }}" 
+           data-twic-focus="auto" 
+           alt="{{ .PlainText | default "Image" }}"/>
+      <noscript>
+        <img class="[ script ]" 
+             src="https://{{ .Page.Site.Params.twic }}.twic.pics{{ $image.RelPermalink }}?twic=v1/output=preview" 
+             width="{{ $width }}" 
+             height="{{ $height }}" 
+             alt="{{ .PlainText | default "Image" }}"/>
+      </noscript>
+    {{ else }}
+      <!-- Fallback for missing images -->
+      <img
+           src="https://{{ .Page.Site.Params.twic }}.twic.pics/{{ .Destination | safeURL }}?twic=v1/focus=auto/" 
+           alt="{{ .PlainText | default "Image" }}"/>
+    {{ end }}
+  </picture>
+
+  {{- with .Title }}
+    <figcaption class="[ pt--0.5 ]">{{ . }}</figcaption>
+  {{ end -}}
+</figure>

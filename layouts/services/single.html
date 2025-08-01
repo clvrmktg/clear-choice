@@ -1,0 +1,41 @@
+{{ define "main" }}
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="[ content-grid ]">
+      <h1>{{ .Title }}</h1>
+      <p class="subtitle">{{ .Params.subtitle }}</p>
+    </div>
+    {{ with .Params.image }}
+      <img src="{{ . }}" alt="{{ $.Title }}" class="hero-image">
+    {{ end }}
+  </section>
+
+  <!-- Intro Text Block -->
+  {{ with .Params.intro }}
+  <section class="intro">
+    <div class="[ content-grid ]">
+      <p>{{ . }}</p>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Features Section -->
+  {{ with .Params.features }}
+  <section class="[ content-grid ]">
+    <ul class="[ features ][ grid layout--spacing ]">
+      {{ range $index, $feature := . }}
+      <li class="[ feature ][ grid md:col--2 col-gap--4 row-gap--2 ]{{ if modBool $index 2 }}alt{{ end }}">
+        <div class="[ feature-image ][ ratio--1:1 ]">
+          <img src="{{ $feature.image }}" alt="{{ $feature.title }}">
+        </div>
+        <div class="feature-text">
+          <h3>{{ $feature.title }}</h3>
+          <p>{{ $feature.description }}</p>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+{{ end }}

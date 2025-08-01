@@ -1,0 +1,7 @@
+{{- $local := .Get "local" -}}
+{{- $domain := .Get "domain" -}}
+{{- $text := .Get "text" | default ("%1@%2") -}}
+<template obscure data-p1="{{ $local }}" data-p2="{{ $domain }}">
+  <a href="mailto:%1@%2">{{ $text }}</a>
+</template>
+{{- .Page.Store.Set "hasObscure" true -}}

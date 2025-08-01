@@ -1,0 +1,70 @@
+{{ define "main" }}
+<article class="[ post-single ]">
+  <div class="[ post-single__header ]">
+    <h1>{{ .Title }}</h1>
+    <p class="[ summary ][ font--3 ]">{{ .Summary }}</p>
+    <!-- <figure class="[ pb--2 ]">
+      <picture class="[ bg ]">
+        <style>picture { background-image: url('https://clvrmktg.twic.pics/home/smiling-woman-drinking-coffee.jpg?twic=v1/output=preview'); }</style>
+        <img data-twic-src="image:home/smiling-woman-drinking-coffee.jpg" data-twic-focus="auto" alt="" width="683" height="385"/>
+        <noscript>
+        <img class="[ script ]" src="https://clvrmktg.twic.pics/home/smiling-woman-drinking-coffee.jpg?twic=v1/output=preview"/></noscript>
+      </picture>
+      <figcaption class="[ pt--0.5 ]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae voluptas quisquam sapiente, culpa voluptatem iure similique vel. Tenetur, qui! Accusantium assumenda fuga magni. Eaque, voluptates!</figcaption>
+    </figure> -->
+    <div class="[ meta ][ sans-serif font--small ]">
+      <b class="[ line ]"></b>
+      <p class="[ grid ]">
+        <span>By <a href="#" rel="author">Neil Hartnell</a> | Tribune Business Editor</span>
+        <time datetime="2008-02-14 20:00">November 15, 2024</time>
+      </p>
+    </div>
+  </div>
+  <div class="[ content ][ font--4 ]">
+    {{ .Content }}
+  </div>
+  <!-- 
+    <footer>
+      <section class="[ footnotes ][ pb--5 ]"><b class="line"></b>
+        <h2 class="[ visually-hidden ]" id="footnote-label">Footnotes</h2>
+        <ol>
+          <li id="fn-1">This is the content of the first footnote.<a class="[ reflink ]" href="#fnref-1" aria-label="Back to content">↩</a></li>
+          <li id="fn-2">This is the content of the second footnote.<a class="[ reflink ]" href="#fnref-2" aria-label="Back to content">↩</a></li>
+        </ol>
+      </section>
+      <section class="[ bio ]">
+        <div>
+          <figure class="[ profile__avatar ]">
+            <picture class="[ bg ]">
+              <style>
+                picture {
+                  background-image: url('https://clvrmktg.twic.pics/home/smiling-woman-drinking-coffee.jpg?twic=v1/output=preview');
+                }
+                
+              </style><img data-twic-src="image:home/smiling-woman-drinking-coffee.jpg" data-twic-focus="auto" alt="Joseph Pinder"/>
+              <noscript><img class="[ script ]" src="https://clvrmktg.twic.pics/home/smiling-woman-drinking-coffee.jpg?twic=v1/output=preview"/></noscript>
+            </picture>
+          </figure>
+        </div>
+        <div>
+          <h2 class="[ flex middle ]">About The Author</h2>
+          <p>Joseph Pinder is a web designer based in Nassau, Bahamas passionate about creating websites that look great and perform even better.</p>
+        </div>
+      </section>
+      <section>
+        <h2 class="[ tag-header ]">Related Posts</h2>
+        <ul class="[ posts ]">
+          <li class="[ post ]"><a class="[ post__link ]" href="/blog/post" data-prefetch>
+              <h3 class="[ font--2 ]">Cost, Price, Value And The Difference</h3>
+              <time datetime="">January 8, 2025 </time>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed sapiente libero ad, nobis consequatur eveniet aut, sint, accusamus rem iure ut harum hic ipsa magnam [...]</p></a></li>
+          <li class="[ post ]"><a class="[ post__link ]" href="/blog/post-copy" data-prefetch>
+              <h3 class="[ font--2 ]">FB Pixel is slowing your website down</h3>
+              <time datetime="">January 8, 2025 </time>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed sapiente libero ad, nobis consequatur eveniet aut, sint, accusamus rem iure ut harum hic ipsa magnam [...]</p></a></li>
+        </ul>
+      </section>
+    </footer>
+  -->
+</article>
+{{ end }}

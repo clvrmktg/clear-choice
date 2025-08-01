@@ -1,0 +1,23 @@
+{{- define "variables" -}}
+{{ .Store.Set "hasPadding" true }}
+{{ .Store.Set "description" "Explore project tags used by Abaco Aggregate & Cement Ltd. to find relevant construction work across The Bahamas—from road paving and airport upgrades to commercial developments and more."}}
+{{- end -}}
+{{ define "main" }}
+  <header class="[ grid gap--1 ]">
+    <div>
+      <h1>{{ .Title }}</h1>
+      {{ partial "breadcrumbs.html" (dict "page" . "ancestors" .Ancestors) }}
+      <p class="[ font--4 ch--45 ]">
+        Discover the full scope of Abaco Aggregate's work across The Bahamas. From road paving and infrastructure upgrades to government works and debris management, our projects reflect quality, reliability, and a commitment to building stronger communities.
+      </p>
+    </div>
+  </header>
+
+  <ul>
+    {{ range .Pages }}
+    <li>
+      <h3 class="[ font--5 ]"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    </li>
+    {{ end }}
+  </ul>
+{{ end }}

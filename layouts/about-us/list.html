@@ -1,0 +1,55 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- end -}}
+{{- define "main" -}}
+<!-- Hero Section -->
+{{- partial "partials/hero.html" . -}}
+
+
+<!-- Core Values -->
+{{ with .Params.values }}
+<section class="[ values ][ content-grid ]">
+  <ul class="[ grid md:col--3 gap--2 ]">
+    {{ range . }}
+    <li class="[ value ][ grid row-gap--1 text--center ]">
+      <span class="material-icons">{{ .icon }}</span>
+      <div>
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+<!-- Story -->
+<section class="[ content-grid ]">
+  <div class="[ grid md:col--2 col-gap--2 ]">
+    <!-- Image goes here -->
+    <div>
+      <h2>Our Story</h2>
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+
+<!-- Testimonials -->
+{{ with .Params.testimonials }}
+<section class="testimonials">
+  <div class="[ content-grid ]">
+    <h2>What Our Customers Say</h2>
+    <div class="grid md:col--2 gap--2">
+      {{ range . }}
+      <blockquote>
+        <p>“{{ .quote }}”</p>
+        <cite>— {{ .author }}</cite>
+      </blockquote>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{- end -}}

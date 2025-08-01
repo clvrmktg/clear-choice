@@ -1,0 +1,12 @@
+@use 'functions' as *
+@use 'mixins' as *
+
+=unstyled-link
+  font-weight: 500
+  color: color('black')
+  padding-bottom: em(2)
+  border-bottom: em(2) solid var(--aac-gold)
+  +transition(background-color)
+
+  +hover
+    background-color: color('aac-gold-5')

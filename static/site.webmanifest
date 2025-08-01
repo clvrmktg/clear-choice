@@ -1,0 +1,11 @@
+{
+  "name": "Abaco Aggregate & Cement, Ltd.",
+  "short_name": "AAC",
+  "icons": [{
+      "src": "/google-touch-icon.png",
+      "sizes": "512x512"
+  }],
+  "background_color": "#ffffff",
+  "theme_color": "#191919",
+  "display": "fullscreen"
+}

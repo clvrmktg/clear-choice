@@ -1,0 +1,44 @@
+<footer class="[ footer ][ full-width content-grid py--5 ]">
+  <div class="[ wrapper wrapper--footer ][ grid gap--4 pb--2 ]">
+
+    <div>
+      <p class="[ ch--35 ]">
+        <small>Clear Choice Glass is your trusted partner for hurricane-rated windows, doors, and custom glass solutions across The Bahamas. With locally manufactured PVC frames and expert service, we provide secure, stylish, and lasting protection for homes, rentals, and businesses.</small>
+      </p>
+      <div class="[ logo-slogan ][ grid col-gap--2 row-gap--1 ]">
+        <a class="[ logo ][ flex middle mb--1 ]" href="/" aria-label="Homepage">
+          {{- readFile "static/icons/logo.svg" | safeHTML }}
+        </a>
+        <div class="[ slogan ]">
+          <p class="[ pb--0 ]">Lasting Protection. <br>Lasting style.</p>
+        </div>
+      </div>
+
+    </div>
+    <nav class="[ navigation--footer ][ flex middle ]">
+      <ul class="[ menu--footer ][ grid md:col--2 col-gap--4 row-gap--1 ]">
+        {{- $context := .context -}}
+        {{- $currentPage := .currentPage -}}
+        {{with $context}}
+          {{ range .Site.Menus.main }}
+        <li class="[ menu--footer__item ][ font--500 ]">
+          <a class="[ menu--footer__link link--footer ]{{ if eq $.currentPage.RelPermalink .URL }}[ current ]{{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
+        </li>
+        {{ end }}
+        {{end}}
+      </ul>
+    </nav>
+  </div>
+  <div class="[ copy ][ between middle gap--2 ]">
+    <nav class="[ md:o--2 ]">
+      <ul>
+        <li>
+          <small><a class="[ policy ]" href="/privacy-policy">Privacy Policy</a></small>
+        </li>
+      </ul>
+    </nav>
+    <small class="[ md:o--1 ]">
+      <span>© 2024 {{ $.Site.Title }}</span> <span>All rights reserved.</span>
+    </small>
+  </div>
+</footer>

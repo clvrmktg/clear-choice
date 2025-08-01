@@ -1,0 +1,20 @@
+{{ $partialPath := .path }}
+{{ $newPath := .targetPath }}
+{{ $defer := .attributes.defer }}
+{{ $module := .attributes.module }}
+{{ with resources.Get $partialPath }}
+{{ $opts := dict
+  "minify" hugo.IsProduction
+  "sourceMap" (cond hugo.IsProduction "" "external")
+  "targetPath" $newPath
+}}
+{{ with . | js.Build $opts }}
+  {{ if hugo.IsProduction }}
+    {{ with . | fingerprint }}
+      <script {{if $module }}type="module"{{end}} src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" {{if $defer }}defer{{end}}></script>
+    {{ end }}
+  {{ else }}
+    <script {{if $module }}type="module"{{end}} src="{{ .RelPermalink }}" {{if $defer }}defer{{end}}></script>
+  {{ end }}
+{{ end }}
+{{ end }}

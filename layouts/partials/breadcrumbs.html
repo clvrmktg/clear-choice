@@ -1,0 +1,15 @@
+{{- $page := .page -}}
+{{- $ancestors := .ancestors -}}
+
+<nav class="[ breadcrumbs ]" aria-label="Breadcrumb">
+  <ol class="[ flex ][ col-gap--1 py--0.5 ]">
+    {{- range $ancestors -}}
+      <li class="[ breadcrumb ]">
+        <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>{{ .LinkTitle }}</a>
+      </li>
+    {{- end -}}
+    <li class="[ breadcrumb ][ font--700 ]">
+      <a class="[ breadcrumb__link--last ]" href="{{ $page.RelPermalink }}" aria-current="page" data-prefetch>{{ $page.LinkTitle }}</a>
+    </li>
+  </ol>
+</nav>

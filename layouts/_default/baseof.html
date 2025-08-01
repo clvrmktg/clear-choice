@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html id="page" lang="{{ .Site.LanguageCode }}" prefix="og: https://ogp.me/ns#">
+{{- if .Site.Params.maintenance -}}
+  {{ partial "maintenance.html" . }}
+{{- else -}}
+  {{- block "variables" . -}}{{- end -}}
+  {{ partial "head.html" . }}
+  <body>
+    {{ if eq hugo.Environment "production" }}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDLDLD8L"
+      height="0" width="0" class="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    {{ end }}  
+    <a class="screen-reader-text" href="#main">Skip to main content</a>
+    <div id="container" class="[ container ]">
+      {{ $currentPage := . }}
+      {{ partial "navbar.html" (dict "context" . "currentPage" $currentPage) }}
+      <main class="[ main ][ full-width content-grid {{ if $.Store.Get "hasPadding" }}layout--padding{{end}} layout--spacing {{ if eq .Page.Kind "404" }}error{{ end }} ]" id="main">
+        {{- block "main" . -}}{{- end -}}
+        <!-- Call to Action -->
+        <section class="[ cta ]">
+          <div class="[ content-grid text--center py--5 ]">
+            <h2>Ready to protect your home or business?</h2>
+            <p>Get a free, no‑obligation quote today.</p>
+            <a href="/contact" class="btn btn-primary">Request a Quote</a>
+          </div>
+        </section>
+      </main>
+      {{- partial "footer.html" (dict "context" . "currentPage" $currentPage) -}}
+    </div>
+    <div id="cookie-banner" class="[ cookie--banner ][ gap--2 p--1 ]">
+      <div class="[ flex gap--1 ]">
+        {{ readFile "static/icons/cookie.svg" | safeHTML }}
+        <p class="[ font--500 pb--0 ]">This site uses cookies to improve performance and your experience. By using our website, you agree to our <a href="/privacy-policy/" data-prefetch>Privacy Policy</a>.</p>
+      </div>
+      <div>
+        <button id="accept-cookies"class="[ btn btn--lg aac--gold ]">Okay, thanks</button>
+      </div>
+    </div>
+    {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
+    {{- if $.Store.Get "hasObscure"  -}}
+    {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}
+    {{- end -}}
+    {{- if .Store.Get "project" -}}
+    {{ partial "script.html" (dict "path" "scripts/vendor/lightgallery.js" "targetPath" "scripts/lightgallery.js") }}
+    {{end}}
+    {{ if $.Store.Get "hasObscure" }}
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer/dist/bouncer.polyfills.min.js"></script>
+    {{ partial "script.html" (dict "path" "scripts/components/validate.js" "targetPath" "scripts/validate.js") }}
+    {{ partial "script.html" (dict "path" "scripts/components/resend.js" "targetPath" "scripts/resend.js") }}
+    {{ end }}
+    {{ if $.Store.Get "hasThankYou" }}
+    {{ partial "script.html" (dict "path" "scripts/components/thank-you.js" "targetPath" "scripts/thank-you.js") }}
+    {{ end }}
+    {{ partial "script.html" (dict "path" "scripts/components/notice.js" "targetPath" "scripts/notice.js") }}
+  </body>
+{{- end -}}
+</html>

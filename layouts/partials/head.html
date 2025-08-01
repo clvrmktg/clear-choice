@@ -1,0 +1,87 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  {{- $pageTitle := "" -}}
+  {{- if .IsHome -}}
+  {{- $pageTitle = printf "%s | Concrete, Aggregate & Road Paving in The Bahamas" .Site.Title -}}
+  {{- else if and (eq .Kind "term") (eq .Section "categories") }}
+  {{- $pageTitle = printf "%s | Categories | %s" .Title .Site.Title -}}
+  {{- else if and (eq .Kind "term") (eq .Section "tags") }}
+  {{- $pageTitle = printf "%s | Tags | %s" .Title .Site.Title -}}
+  {{- else -}}
+  {{- $pageTitle = printf "%s | %s" .Title .Site.Title -}}
+  {{- end -}}
+  {{- $feature := .Params.feature -}}
+  {{- $cover := .Params.cover }}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>{{ $pageTitle }}</title>
+  {{ with .Store.Get "description" -}}
+  <meta name="description" content="{{ . }}">
+  {{- end }}
+  {{- if .Description -}}
+  <meta name="description" content="{{ .Description }}">
+  {{- end }}
+  <link rel="canonical" href="{{ .Permalink  }}">
+  {{- if or (eq .Page.Kind "404") (eq .Page.RelPermalink "/thank-you/") -}}
+  <meta name="robots" content="noindex">
+  <meta name="googlebot" content="noindex">
+  {{- end -}}
+  <link rel="preconnect" href="https://{{- .Site.Params.twic -}}.twic.pics/?v1">
+  {{- with resources.Get "styles/style.sass" -}}
+    {{- $opts := dict
+      "enableSourceMap" (not hugo.IsProduction)
+      "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+      "targetPath" "styles/style.css"
+      "transpiler" "dartsass"
+    -}}
+    {{- $hash := now | hash -}}
+    {{- with . | toCSS $opts -}}
+      {{- if hugo.IsProduction -}}
+        {{- with . | fingerprint -}}
+  <link rel="preload" href="{{ .RelPermalink }}" as="style" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{- end -}}
+      {{- else -}}
+  <link rel="preload" href="{{ .RelPermalink }}" as="style">
+  <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  <noscript>
+    <style>.script { display: none; visibility: hidden }</style>
+  </noscript>
+  {{ if .Store.Get "hasTwic" -}}
+  <script src="https://{{- .Site.Params.twic -}}.twic.pics/?v1" async defer></script>
+  {{- end }}
+  {{ if eq hugo.Environment "production" }}
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MDLDLD8L');</script>
+  <!-- End Google Tag Manager -->
+  {{ end }}
+  <link rel="icon" type="image/png" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+  <link rel="mask-icon" href="/favicon-light.svg" color="#9395A1">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0d1117">
+  {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
+  <meta property="fb:app_id" content="384650276688740">
+  <meta property="og:url" content="{{ .Permalink  }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ $pageTitle }}">
+  {{- $image := $feature.image | default .Site.Params.share -}}
+  {{- $alt := $feature.alt | default (printf "%s %s" .Site.Title "logo" ) -}}
+  <meta property="og:description" content="{{- .Description -}}">
+  <meta property="og:image" content="{{- $image | absURL -}}">
+  <meta property="og:image:alt" content="{{ $alt }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $pageTitle }}">
+  <meta name="twitter:description" content="{{- .Description -}}">
+  <meta name="twitter:image" content="{{- $image | absURL -}}">
+  <meta name="author" content="{{ .Site.Title }}">
+  <meta name="publish_date" property="og:publish_date" content="{{- .Date.Format "2006-01-02T15:04:05Z0700" -}}">
+  {{ partial "schema/site.html" . }}
+</head>

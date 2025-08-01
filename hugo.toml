@@ -1,0 +1,71 @@
+baseURL = 'https://clear-choiceglass.com/'
+canonifyURLs = true
+languageCode = 'en-us'
+title = 'Clear Choice Glass'
+# enableGitInfo = true
+
+[ params ]
+  twic = "aggregate"
+  share = "/aac-logo.jpg"
+  logo = "/aac-logo.png"
+  # Facebook App ID
+  app_id = "223848628924279"
+  error = true
+  maintenance = false
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[menu]
+  # [[menu.main]]
+  #   identifier = "home"
+  #   name = "Home"
+  #   url = "/"
+  #   weight = 1
+  #   pre = "<i class='icon-home'></i>"  # Optional icon
+  #   post = ""  # Optional
+  #   parent = ""  # For nested menus
+
+  [[menu.main]]
+    identifier = "services"
+    name = "Services"
+    url = "/services/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About Us"
+    url = "/about-us/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "gallery"
+    name = "Gallery"
+    url = "/gallery/"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact Us"
+    url = "/contact-us/"
+    weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
+
+    # Links
+    [markup.goldmark.renderHooks]
+      [markup.goldmark.renderHooks.link]
+        enableDefault = true
+
+enableGitInfo = true
+
+[sitemap]
+  filename = "sitemap"  # Remove .xml
+  changefreq = "monthly"
+  priority = 0.5

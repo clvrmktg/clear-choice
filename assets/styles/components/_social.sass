@@ -1,0 +1,17 @@
+@use 'abstracts' as *
+
+.social
+
+  &__item
+    width: 1em
+
+  &__link
+    display: block
+    fill: color('black')
+    position: relative
+    z-index: 1
+    +transition(fill)
+
+    +hover
+      > svg
+        fill: color('aac-gold')

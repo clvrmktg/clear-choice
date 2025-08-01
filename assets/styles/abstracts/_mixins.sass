@@ -1,0 +1,482 @@
+
+@use 'sass:math'
+@use 'sass:map'
+@use 'sass:meta'
+@use 'sass:color'
+@use 'variables' as *
+@use 'functions' as *
+
+// Clamp Mixin
+// Clamp Mixin
+=clamp($property, $min, $max)
+  $min-rem: math.div($min, 16)
+  $max-rem: math.div($max, 16)
+
+  $slope: slope($min-rem, $max-rem, $min-vw, $max-vw)
+  $intercept: intercept($min-rem, $slope, $min-vw)
+
+  #{$property}: clamp(#{$min-rem}rem, #{$intercept}rem + #{$slope * 100}vw, #{$max-rem}rem)
+
+
+=breakpoint($size)
+  @if $size == phone
+    @media (min-width: 640px)
+      @content
+  @else if $size == tablet
+    @media (min-width: 800px)
+      @content
+  @else if $size == desktop
+    @media (min-width: 1025px)
+      @content
+  @else if $size == xl
+    @media (min-width: 1280px)
+      @content
+
+=device($size)
+  @if $size == phone
+    @media (max-width: 799px)
+      @content
+  @else if $size == tablet
+    @media (max-width: 1024px), (max-width: 1366px) and (hover: none)
+      @content
+  @else if $size == desktop
+    @media (min-width: 1025px) and (hover: hover), (min-width: 1367px) and (hover: none)
+      @content
+  @else if $size == xl
+    @media (min-width: 1280px)
+      @content
+
+=hover
+
+  &:focus-visible
+    @content
+
+  @media (hover:hover)
+    &:hover
+      @content
+
+  &:active
+    @content
+
+  &:focus-within
+    @content
+
+=ignore
+  /* purgecss ignore */
+  @content
+  /* purgecss ignore */
+
+=padding($value, $prop: null, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+  $side: null
+
+  @if $prop == 'top'
+    $side: 't'
+  
+  @if $prop == 'right'
+    $side: 'r'
+
+  @if $prop == 'bottom'
+    $side: 'b'
+
+  @if $prop == 'left'
+    $side: 'l'
+
+  $escaped-value: split-decimal($value)
+
+  @if $side
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:p#{$side}--", "p#{$side}--")
+    
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding-#{$prop}: #{$value}em
+
+          @supports (padding: max(0px))
+            padding-#{$prop}: max(#{$value}em, env(safe-area-inset-#{$prop}))
+
+      @else
+        padding-#{$prop}: #{$value}em
+
+        @supports (padding: max(0px))
+          padding-#{$prop}: max(#{$value}em, env(safe-area-inset-#{$prop}))
+
+
+  @else if $prop == 'x'
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:px--", "px--")
+    
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding-inline: #{$value}em
+
+          @supports (padding: max(0px))
+            padding-inline: max(#{$value}em, env(safe-area-inset-left)) max(#{$value}em, env(safe-area-inset-right))
+
+      @else
+        padding-inline: #{$value}em
+
+        @supports (padding: max(0px))
+          padding-inline: max(#{$value}em, env(safe-area-inset-left)) max(#{$value}em, env(safe-area-inset-right))
+
+
+  @else if $prop == 'y'
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:py--", "py--")
+
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding-block: #{$value}em
+
+          @supports (padding: max(0px))
+            padding-block: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-bottom))
+
+      @else
+        padding-block: #{$value}em
+
+        @supports (padding: max(0px))
+          padding-block: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-bottom))
+
+
+  @else
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:p--", "p--")
+
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding: #{$value}em
+
+          @supports (padding: max(0px))
+            padding: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-right)) max(#{$value}em, env(safe-area-inset-bottom)) max(#{$value}em, env(safe-area-inset-left))
+
+      @else
+        padding: #{$value}em
+
+        @supports (padding: max(0px))
+          padding: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-right)) max(#{$value}em, env(safe-area-inset-bottom)) max(#{$value}em, env(safe-area-inset-left))
+
+=margin($value, $prop: null, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+  $side: null
+
+  @if $prop == 'top'
+    $side: 't'
+  
+  @if $prop == 'right'
+    $side: 'r'
+
+  @if $prop == 'bottom'
+    $side: 'b'
+
+  @if $prop == 'left'
+    $side: 'l'
+
+  $escaped-value: split-decimal($value)
+
+  @if $side
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:m#{$side}--", "m#{$side}--")
+    
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          margin-#{$prop}: #{$value}em
+      @else
+        margin-#{$prop}: #{$value}em
+
+  @else if $prop == 'x'
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:mx--", "mx--")
+    
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          margin-inline: #{$value}em
+      @else
+        margin-inline: #{$value}em
+
+  @else if $prop == 'y'
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:my--", "my--")
+
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          margin-block: #{$value}em
+      @else
+        margin-block: #{$value}em
+
+  @else
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:m--", "m--")
+
+    .#{$class-prefix}#{$escaped-value}
+      @if map.get($breakpoints, $breakpoint) != null
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          margin: #{$value}em
+      @else
+        margin: #{$value}em
+
+// Padding mixin with breakpoints
+=padding($value, $prop: null, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+  $side: null
+
+  @if $prop == 'top'
+    $side: 't'
+  
+  @if $prop == 'right'
+    $side: 'r'
+
+  @if $prop == 'bottom'
+    $side: 'b'
+
+  @if $prop == 'left'
+    $side: 'l'
+
+  $escaped-value: split-decimal($value)
+
+  @if $side
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:p#{$side}--", "p#{$side}--")
+    
+    // Check for breakpoint
+    @if map.get($breakpoints, $breakpoint) != null
+      .#{$class-prefix}#{$escaped-value}
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding-#{$prop}: #{$value}em
+
+          @supports (padding: max(0px))
+            padding-#{$prop}: max(#{$value}em, env(safe-area-inset-#{$prop}))
+
+    @else
+      .#{$class-prefix}#{$escaped-value}
+        padding-#{$prop}: #{$value}em
+
+        @supports (padding: max(0px))
+          padding-#{$prop}: max(#{$value}em, env(safe-area-inset-#{$prop}))
+
+
+  @else if $prop == 'x'
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:px--", "px--")
+
+    // Check for breakpoint
+    @if $breakpoint and map.get($breakpoints, $breakpoint) != null
+      .#{$class-prefix}#{$escaped-value}
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding-inline: #{$value}em
+
+          @supports (padding: max(0px))
+            padding-inline: max(#{$value}em, env(safe-area-inset-left)) max(#{$value}em, env(safe-area-inset-right))
+    
+    @else
+      .#{$class-prefix}#{$escaped-value}
+        padding-inline: #{$value}em
+
+        @supports (padding: max(0px))
+          padding-inline: max(#{$value}em, env(safe-area-inset-left)) max(#{$value}em, env(safe-area-inset-right))
+
+
+  @else if $prop == 'y'
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:py--", "py--")
+
+    // Check for breakpoint
+    @if map.get($breakpoints, $breakpoint) != null
+      .#{$class-prefix}#{$escaped-value}
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding-block: #{$value}em
+
+          @supports (padding: max(0px))
+            padding-block: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-bottom))
+
+    @else
+      .#{$class-prefix}#{$escaped-value}
+        padding-block: #{$value}em
+
+        @supports (padding: max(0px))
+          padding-block: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-bottom))
+
+
+  @else
+    $class-prefix: if($breakpoint, "#{$breakpoint}\\:p--", "p--")
+
+    // Check for breakpoint
+    @if $breakpoint and map.get($breakpoints, $breakpoint) != null
+      .#{$class-prefix}#{$escaped-value}
+        +breakpoint(map.get($breakpoints, $breakpoint))
+          padding: #{$value}em
+
+          @supports (padding: max(0px))
+            padding: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-right)) max(#{$value}em, env(safe-area-inset-bottom)) max(#{$value}em, env(safe-area-inset-left))
+
+    @else
+      .#{$class-prefix}#{$escaped-value}
+        padding: #{$value}em
+
+        @supports (padding: max(0px))
+          padding: max(#{$value}em, env(safe-area-inset-top)) max(#{$value}em, env(safe-area-inset-right)) max(#{$value}em, env(safe-area-inset-bottom)) max(#{$value}em, env(safe-area-inset-left))
+
+=block($width, $height)
+  aspect-ratio: $width/$height
+
+  picture
+    display: block
+    height: 100%
+
+    > img, > noscript > img
+      height: inherit
+      object-fit: cover
+
+  @supports not (aspect-ratio: auto)
+    padding-top: $width/$height
+    position: relative
+
+    > img, > noscript > img
+      position: absolute
+      top: 0
+      left: 0
+      
+=ratio($width, $height)
+
+  +util('ratio--#{$width}\\:#{$height}')
+    +block($width, $height)
+
+=transition($properties, $duration: null)
+  @if $duration
+    transition: #{($duration * 100)}ms
+  @else 
+    transition-duration: 300ms
+  transition-timing-function: ease-in-out
+  transition-property: $properties
+  will-change: $properties
+
+=weight($weight)
+  .font--#{$weight}
+    font-weight: $weight
+
+=col($count, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:col--#{$count}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        grid-template-columns: repeat(#{$count}, 1fr)
+
+  @else
+    .col--#{$count}
+      grid-template-columns: repeat(#{$count}, 1fr)
+
+=row($count, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:row--#{$count}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        grid-template-rows: repeat(#{$count}, 1fr)
+
+  @else
+    .row--#{$count}  // Fixed incorrect selector
+      grid-template-rows: repeat(#{$count}, 1fr)
+
+=gap($value)
+
+  $escaped-value: split-decimal($value)
+
+  .gap--#{$escaped-value}
+    gap: #{$value}em     
+
+=col-gap($value)
+
+  $escaped-value: split-decimal($value)
+
+  .col-gap--#{$escaped-value}
+    column-gap: #{$value}em
+
+=row-gap($value)
+
+  $escaped-value: split-decimal($value)
+  
+  .row-gap--#{$escaped-value}
+    row-gap: #{$value}em
+
+=order($value, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:o--#{$value}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        order: $value
+  @else
+    .o--#{$value}
+      order: $value
+
+=hsl($name, $color)
+  --#{$name}: hsl(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)})
+  --#{$name}-with-fallback: var(--#{$name}, rgb(#{color.channel($color, "red", $space: rgb)}, #{color.channel($color, "green", $space: rgb)}, #{color.channel($color, "blue", $space: rgb)}))
+
+=hsla($name, $color, $alpha)
+  --#{$name}-#{$alpha}: hsla(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)}, #{$alpha * 10%})
+  --#{$name}-#{$alpha}-with-fallback: var(--#{$name}-#{$alpha}, rgba(#{color.channel($color, "red", $space: rgb)}, #{color.channel($color, "green", $space: rgb)}, #{color.channel($color, "blue", $space: rgb)}, #{math.div($alpha, 10)}))
+
+
+=ch($value)
+  .ch--#{$value}
+    max-width: #{$value}ch
+
+=wide($value)
+  .x--#{$value}
+    max-width: rem($value)
+
+=font($value)
+  .font--#{$value}
+    font-weight: $value
+
+=ratio($width, $height, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:ratio--#{$width}\:#{$height}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+
+        aspect-ratio: #{$width} / #{$height}
+
+        picture
+          display: block
+          height: 100%
+
+          > img, > noscript > img
+            height: inherit
+            object-fit: cover
+
+        @supports not (aspect-ratio: auto)
+          padding-top: math.percentage(math.div($width, $height))
+          position: relative
+
+          > img, > noscript > img
+            position: absolute
+            top: 0
+            left: 0
+
+  @else
+    .ratio--#{$width}\:#{$height} 
+      aspect-ratio: #{$width} / #{$height}
+
+      picture
+        display: block
+        height: 100%
+
+        > img, > noscript > img
+          height: inherit
+          object-fit: cover
+
+      @supports not (aspect-ratio: auto)
+        padding-top: math.percentage(math.div($width, $height))
+        position: relative
+
+        > img, > noscript > img
+          position: absolute
+          top: 0
+          left: 0
+
+
+=svh($property, $value)
+  &
+    #{$property}: #{$value}vh
+
+  @supports (#{$property}: #{$value}svh)
+    #{$property}: #{$value}svh

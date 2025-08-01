@@ -1,0 +1,305 @@
+@use 'sass:math'
+@use '../abstracts' as *
+
+
+code
+  font-size: em(16)
+  white-space: nowrap
+  background-color: var(--color-bg-inline-code-block)
+  padding: 0.1em 0.5em
+  border-radius: 0.2em
+  margin: 0
+
+
+pre
+  display: grid
+  grid-template-columns: 1fr
+  margin-bottom: 1em
+  position: relative
+
+  code
+    display: block
+    color: var(--color-fg-default)
+    background-color: inherit
+    overflow-x: scroll
+
+  &[class*="language-"]::after
+    color: var(--color-fg-default)
+    font:
+      family: system-ui
+      size: em(14)
+      weight: 700
+    position: absolute
+    right: 1em
+    top: 1em
+    z-index: 3
+      
+
+  &.language-
+    
+    &html::after
+      content: 'HTML'
+
+    &css::after
+      content: 'CSS'
+
+    &js::after
+      content: 'JS'
+
+    &sass::after
+      content: 'SASS'
+
+    &php::after
+      content: 'PHP'
+
+    &json::after
+      content: 'JSON'
+    
+    &pug::after
+      content: 'PUG'
+
+    &md::after
+      content: 'MD'
+
+// Common styles for code blocks
+code[class*="language-"], pre[class*="language-"]
+  font:
+    size: 0.875rem
+    family: var(--monospace)
+  background-color: var(--color-bg-code-block)
+  color: var(--color-fg-default)
+  direction: ltr
+  text-align: left
+  white-space: pre
+  word-spacing: normal
+  word-break: normal
+  line-height: 1.5
+  tab-size: 2
+  hyphens: none
+
+// Specific styles for 'code' blocks
+code[class*="language-"]
+  overflow-x: scroll
+
+// Specific styles for 'pre' blocks
+pre[class*="language-"]
+  padding: 3em 1em 1em
+  margin: 0.5em 0 1em
+  overflow: auto
+  border-radius: 0.3em
+
+
+/* Code blocks
+
+/* Inline code
+
+\:not(pre) > code[class*="language-"]
+  font-size: 1rem
+  background-color: var(--color-bg-inline-code-block)
+  padding: 0.2em 0.3em
+  border-radius: 0.3em
+  white-space: normal
+
+@media (width <= 700px)
+  \:not(pre) > code[class*="language-"]
+    font-size: 0.875rem
+
+.token
+  &.comment, &.prolog, &.cdata
+    color: var(--color-gray)
+
+  &.doctype, &.punctuation, &.entity
+    color: var(--color-fg-default)
+
+  &.attr-name, &.class-name, &.boolean, &.constant, &.number, &.atrule
+    color: var(--color-blue)
+
+  &.keyword
+    color: var(--color-indigo)
+
+  &.property, &.tag, &.symbol, &.deleted, &.important
+    color: var(--color-green)
+
+  &.selector, &.string, &.char, &.builtin, &.inserted, &.regex
+    color: var(--color-blue)
+
+  &.attr-value
+    color: var(--color-blue)
+
+    > .token.punctuation
+      color: var(--color-blue)
+
+  &.variable, &.operator, &.function
+    color: var(--color-indigo)
+
+  &.url
+    color: var(--color-green)
+
+  &.attr-value > .token.punctuation.attr-equals, &.special-attr > .token.attr-value > .token.value.css
+    color: var(--color-fg-default)
+
+/* HTML overrides
+
+/* CSS overrides
+
+.language-css .token
+  &.selector
+    color: var(--color-green)
+
+  &.property
+    color: var(--color-blue)
+
+  &.important, &.atrule .token.rule
+    color: var(--color-red)
+
+/* JS overrides
+
+.language-js .token.keyword, .language-javascript .token.keyword
+  color: var(--color-red)
+
+.language-js .token
+  &.operator, &.constant, &.boolean, &.number, &.atrule
+    color: var(--color-blue)
+
+.language-javascript .token
+  &.operator, &.constant, &.boolean, &.number, &.atrule
+    color: var(--color-blue)
+
+.language-js .token.function, .language-javascript .token.function
+  color: var(--color-purple)
+
+.language-js .token
+  &.attr-name, &.class-name, &.function-variable
+    color: var(--color-brown)
+
+.language-javascript .token
+  &.attr-name, &.class-name, &.function-variable
+    color: var(--color-brown)
+
+/* JSX overrides
+
+.language-jsx .token
+  &.keyword
+    color: var(--color-red)
+
+  &.function
+    color: var(--color-purple)
+
+  &.function-variable
+    color: var(--color-brown)
+
+  &.punctuation
+    color: var(--color-blue)
+
+  &.attr-name, &.class-name
+    color: var(--color-green)
+
+  &.string
+    color: var(--color-indigo)
+
+/* JSON overrides
+
+.language-json .token
+  &.operator
+    color: var(--color-fg-default)
+
+  &.null.keyword
+    color: var(--color-blue)
+
+/* Java overrides
+
+.language-java .token
+  &.keyword
+    color: var(--color-red)
+
+  &.operator, &.constant, &.boolean, &.number, &.atrule
+    color: var(--color-blue)
+
+  &.function
+    color: var(--color-purple)
+
+  &.attr-name, &.function-variable
+    color: var(--color-green)
+
+/* Kotlin overrides
+
+.language-kotlin .token
+  &.keyword
+    color: var(--color-red)
+
+  &.operator, &.constant, &.boolean, &.number, &.atrule
+    color: var(--color-blue)
+
+  &.function
+    color: var(--color-purple)
+
+  &.attr-name, &.function-variable
+    color: var(--color-green)
+
+/* Go overrides
+
+.language-go .token
+  &.keyword
+    color: var(--color-red)
+
+  &.operator, &.constant, &.boolean, &.number, &.atrule
+    color: var(--color-blue)
+
+  &.function
+    color: var(--color-purple)
+
+  &.attr-name, &.function-variable
+    color: var(--color-green)
+
+/* YAML overrides
+
+.language-yml .token.atrule, .language-yaml .token.atrule
+  color: var(--color-green)
+
+/* Dockerfile overrides
+
+.language-dockerfile .token
+  &.keyword
+    color: var(--color-red)
+
+  &.function
+    color: var(--color-purple)
+
+  &.punctuation
+    color: var(--color-blue)
+
+  &.attr-name, &.class-name
+    color: var(--color-green)
+
+  &.string
+    color: var(--color-indigo)
+
+/* HCL overrides
+
+.language-hcl .token
+  &.keyword
+    color: var(--color-red)
+
+    &:not(:has(span))
+      color: var(--color-purple)
+
+  &.string
+    color: var(--color-indigo)
+
+  &.property, &.punctuation
+    color: var(--color-fg-default)
+
+/* General
+
+.token
+  &.bold
+    font-weight: bold
+
+  &.comment, &.italic
+    font-style: italic
+
+  &.entity
+    cursor: help
+
+  &.namespace
+    opacity: 0.8

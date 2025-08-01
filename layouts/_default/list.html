@@ -1,0 +1,10 @@
+{{- define "variables" -}}
+  {{ .Store.Set "hasPadding" true }}
+{{- end -}}
+{{ define "main" }}
+<div>
+  <h1>{{ .Title }}</h1>
+
+  {{- .Content -}}
+</div>
+{{ end }}

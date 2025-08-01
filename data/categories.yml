@@ -1,0 +1,35 @@
+road-paving:
+  title: "Road Paving"
+  slug: "road-paving"
+  description: "View road paving projects by Abaco Aggregate across Abaco and The Bahamas—featuring asphalt paving for streets, runways, and public infrastructure."
+  summary: "Abaco Aggregate provides expert road paving services in Abaco and throughout The Bahamas. From streets to runways, our asphalt paving delivers smooth, safe, and long-lasting results for government and commercial clients."
+
+infrastructure-projects:
+  title: "Infrastructure Projects"
+  slug: "infrastructure-projects"
+  description: "Explore infrastructure projects in Abaco and The Bahamas—roads, runways, and utilities built by Abaco Aggregate with durable materials and expert execution."
+  summary: "Our infrastructure work across Abaco and The Bahamas supports national development—from road systems and airports to utility upgrades—delivered with quality materials and technical excellence."
+
+government-works:
+  title: "Government Works"
+  slug: "government-works"
+  description: "Abaco Aggregate supports public works across The Bahamas—road paving, airport improvements, and disaster recovery projects for government clients."
+  summary: "As a trusted partner to government agencies in Abaco and across The Bahamas, we deliver high-quality construction services, including road paving, airport resurfacing, and debris removal."
+
+abaco-projects:
+  title: "Abaco Projects"
+  slug: "abaco-projects"
+  description: "See Abaco-based projects by Abaco Aggregate—road paving, infrastructure upgrades, and cleanup services for government and private sector clients."
+  summary: "Headquartered in Abaco, we proudly support the island’s development with road paving, infrastructure improvements, and debris management services tailored to local needs."
+
+airport-improvements:
+  title: "Airport Improvements"
+  slug: "airport-improvements"
+  description: "Runway paving and airport upgrades by Abaco Aggregate across Abaco and The Bahamas—reliable solutions for public and private airfields."
+  summary: "From resurfacing runways to paving access roads, our airport improvement projects enhance safety and efficiency at regional airports across Abaco and The Bahamas."
+
+private-sector-projects:
+  title: "Private Sector Projects"
+  slug: "private-sector-projects"
+  description: "Explore Abaco Aggregate’s private sector construction projects across Abaco and The Bahamas—including parking lots, road paving, and site development for resorts and developers."
+  summary: "We partner with private developers, resorts, and businesses across Abaco and The Bahamas to deliver reliable construction solutions—from asphalt paving to aggregate supply and site preparation."

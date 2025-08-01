@@ -1,0 +1,40 @@
+@use '../abstracts' as *
+
+.products
+  grid-template-rows: max-content 1fr max-content
+
+.product
+
+  > figure
+    grid-row: 1 / 2
+  
+  > h3
+    grid-row: 2 /3 
+
+  > p
+    grid-row: 3 / 4
+
+  @supports (grid-template-rows: subgrid)
+    grid-template-rows: subgrid
+    grid-row: span 3
+    
+.snapshot
+  color: color('white')
+  background-color: color('black')
+
+  h2
+    color: color('aac-gold')
+
+.visually-hidden 
+  position: absolute
+  clip: rect(0 0 0 0)
+  visibility: hidden
+  opacity: 0
+
+.hidden
+  width: 0.1em
+  height: 0.1em
+  clip: rect(0 0 0 0)
+  // visibility: hidden
+  overflow: hidden
+  position: absolute

@@ -1,0 +1,41 @@
+{{- if .IsHome -}}
+<header class="[ hero hero--home ][ full-width content-grid ]">
+  <h1 class="[ hidden ]">Hurricane Windows and Doors Nassau | Impact Windows and Doors Nassau</h1>
+  <div class="[ wrapper ][ breakout grid middle py--5 ]">
+    <div class="[ content-grid ]">
+      <h2 class="[ font--1 ]">Looking for new windows? <br> We can help!</h2>
+      <p class="[ ch--45 ]">Upgrade your home or business with hurricane-rated windows and doors that combine security, style, and long-lasting value — all made right here in The Bahamas.</p>
+      <div class="[ cta ][ grid gap--1 ]">
+        <a class="[ btn btn--lg cc--cta ]" href="/contact-us/" data-prefetch>Request a Quote</a>
+      </div>
+    </div>
+  </div>
+</header>
+{{- else -}}
+<header class="[ hero ][ full-width content-grid ]">
+  {{- $twic := .Site.Params.twic -}}
+  <div class="[ wrapper wrapper--subpage ][ breakout grid middle ]"{{ with .Resources.GetMatch (.Params.hero) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
+    {{ with .Resources.GetMatch (.Params.hero) }}
+    <style>.hero > .wrapper {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
+    {{ end }}
+    <div class="[ content-grid ]">
+      <div >
+        <h1>{{ .Title }}</h1>
+        <p class="subtitle">{{ .Params.subtitle }}</p>
+      </div>
+    </div>
+  </div>
+  <nav class="[ breadcrumbs ][ px--2 md:px--0 ]" aria-label="Breadcrumb">
+    <ol class="[ flex ][ col-gap--1 py--0.5 ]">
+      {{- range .Ancestors -}}
+      <li class="[ breadcrumb ]">
+        <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>{{ .LinkTitle }}</a>
+      </li>
+      {{- end -}}
+      <li class="[ breadcrumb ][ font--700 ]">
+        <a class="[ breadcrumb__link--last ]" href="{{ .RelPermalink }}" aria-current="page" data-prefetch>{{ .LinkTitle }}</a>
+      </li>
+    </ol>
+  </nav>
+</header>
+{{- end -}}

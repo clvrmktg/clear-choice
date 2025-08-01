@@ -1,0 +1,44 @@
++++
+date = '2025-03-01T19:32:51-05:00'
+draft = false
+title = 'Home'
+description = "Abaco Aggregate & Cement Ltd. is a leading supplier of concrete, cement, and construction materials in The Bahamas. Based in Abaco and trusted by public and private clients alike, we deliver expert road paving, foundation work, and infrastructure solutions—serving projects from Treasure Cay Airport to Island Luck Plaza and beyond."
+
+[why_clear_choice]
+title = "Why Clear Choice"
+subtitle = "We're The Bahamas' leading supplier of impact windows and doors, trusted by homeowners and businesses to keep you safe, secure, and comfortable."
+image = "/images/clear-choice-protection.jpg"
+
+[[why_clear_choice.items]]
+heading = "Weather Protection"
+text = "Our impact windows and doors are locally crafted, built to endure the harshest weather while meeting The Bahamas' strict building codes."
+icon = "cloud-rain-wind.svg"
+
+[[why_clear_choice.items]]
+heading = "Noise Reduction"
+text = "Our impact windows reduce outside noise, helping you enjoy peace and quiet where it matters most — inside your home."
+icon = "volume-x.svg"
+
+[[why_clear_choice.items]]
+heading = "Enhanced Security"
+text = "Designed with durable materials and reinforced construction, our windows and doors provide lasting protection and help keep intruders out."
+icon = "shield.svg"
+
+
+[snapshot]
+  image = 'bullock-harbour-road-paving-020.jpg'
+  alt = 'Abaco Aggregate workers and concrete truck on work site'
+
++++
+
+<!-- Abaco Aggregate, your premier source for high-quality construction materials and services in the Bahamas. -->
+
+<!-- From premium aggregates to top-tier cement and expert asphalt paving, we're committed to delivering excellence in every project we undertake. -->
+
+<!-- With a focus on efficiency, safety, and community development, Abaco Aggregate is your trusted partner for building a sustainable future. -->
+
+Abaco Aggregate is your trusted source for high-quality aggregates, debris management, and infrastructure services in The Bahamas.
+
+We proudly serve government agencies, private developers, and commercial contractors—delivering reliable solutions from construction-grade sand, rock, and fill to durable cement products and expert road paving using high-performance asphalt.
+
+With a commitment to safety, efficiency, and sustainable development, Abaco Aggregate helps build cleaner job sites, stronger communities, and more resilient infrastructure—one project at a time.

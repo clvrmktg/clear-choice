@@ -1,0 +1,45 @@
+@use 'sass:math'
+@use 'sass:color'
+@use '../abstracts' as *
+
+\:root
+
+  +hsl('white', #ffffff)
+  // --black: #191919
+  +hsl('black', #191919)
+  +hsla('black', #191919, 5)
+  +hsla('black', #191919, 8)
+  +hsl('text-color', #374151)
+  // +hsl('aac-gold', #ffcc01)
+  // +hsla('aac-gold', #ffcc01, 5)
+  // +hsl('cc-teal', #1f859c)
+  +hsl('cc-teal',   #166173)
+  +hsl('cc-teal-light', #8ad4d6)
+
+  +hsl('cta-orange', #ff9001)
+  +hsl('grey-light', #f2f2f2)
+  // +hsl('grey-light', #f7f7f7)
+  +hsl('grey', #8e8e8e)
+  +hsl('red', red)
+
+  +hsl('star', #fdd663)
+  --border: rgb(61 68 77)
+
+  --serif: system-serif, seri
+
+  @if sans-serif
+    --sans-serif: Inter, system-ui, sans-serif
+  // --monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace
+
+  $headings: (h1: 5, h2: 3, h3: 2, h4: 1, h5: 0, h6: -1)
+
+  @each $tag, $step in $headings
+    $min-size: type-scale($step, $min-font-size, $min-scale)
+    $max-size: type-scale($step, $max-font-size, $max-scale)
+
+    // @debug "Step: #{$step}, Min Size: #{$min-size}, Max Size: #{$max-size}"
+    +clamp('--step-#{$step}', $min-size, $max-size)
+
+  +clamp(--height, 120, 150)
+
+  // Content Colors

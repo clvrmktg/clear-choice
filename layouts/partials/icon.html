@@ -1,0 +1,6 @@
+{{ $iconPath := printf "layouts/partials/icons/%s.svg" (.Get "name") }}
+{{ with readFile $iconPath }}
+  {{ . | safeHTML }}
+{{ else }}
+  <span>Icon not found: {{ .Get "name" }}</span>
+{{ end }}

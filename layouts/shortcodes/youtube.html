@@ -1,0 +1,11 @@
+{{ $url := .Get "url" }}
+{{ $regex := `(?:youtube\.com/(?:watch\?v=|embed/|v/)|youtu\.be/)([a-zA-Z0-9_-]{11})` }}
+{{ $match := findRE $regex $url }}
+
+{{ if $match }}
+  {{ $videoID := index $match 0 | replaceRE $regex "$1" }}
+  <lite-youtube videoid="{{ $videoID }}" {{ if .Get "title" }}videotitle="{{ .Get "title" }}"{{ end }}></lite-youtube>
+{{ else }}
+  <p>Invalid YouTube URL</p>
+{{ end }}
+{{ .Page.Store.Set "hasYouTube" true }}

@@ -1,0 +1,190 @@
+@use 'sass:math'
+@use '../abstracts' as *
+  
+.navbar
+  // background-color: color('cc-teal')
+  width: 100%
+  height: var(--height)
+  position: relative
+  top: 0
+  left: 0
+  z-index: 10
+  outline: $bg
+
+  > .wrapper
+    height: inherit
+    position: relative
+    outline: $bg
+
+.backdrop
+  width: 100vw
+  height: inherit
+  // background-color: color('cc-teal')
+  position: absolute
+  top: 0
+  left: -2em
+  z-index: -1
+
+.logo
+  +clamp(width, 100, 130)
+  fill: color('cc-teal')
+
+.navigation
+
+  +device(tablet)
+    visibility: hidden
+    width: 100vw
+    height: 100svh
+    background-color: color('aac-gold')
+    padding-top: var(--height)
+    position: absolute
+    top: 0
+    z-index: -2
+    animation: roll-out 300ms forwards
+
+    @supports not (height: 100svh)
+      height: 100vh
+
+
+.menu
+
+  &--main
+    +device(desktop)
+      display: flex
+
+    +device(tablet)
+      opacity: 1
+      +transition((opacity, visibility))
+      
+  &__item
+
+    +device(tablet)
+      border-bottom: em(2) solid color('black')
+
+    &:has(.current)
+      background-color: color('black')
+
+    +hover
+      background-color: color('black')
+
+  &__link
+    color: color('black')
+    position: relative
+    +transition((color, opacity))
+    
+    +device(desktop)
+      // color: color('white')
+
+      &::before
+        content: ''
+        width: em(4)
+        height: 100%
+        background-color: color('aac-gold')
+        position: absolute
+        top: 5%
+        left: em(-15)
+        opacity: 0
+
+    &.current
+      color: color('aac-gold')
+
+      &::before
+        opacity: 1
+
+    +hover
+      color: color('aac-gold')
+
+      &::before
+        opacity: 1
+
+.link--navbar
+  
+  +device(tablet)
+    padding: 2em
+
+.navicon
+  display: flex
+  align-items: center
+  width: em(25)
+  height: em(20)
+  position: relative
+  z-index: 2
+  cursor: pointer
+
+  +device(desktop)
+    display: none
+
+.bar
+  display: block
+  width: inherit
+  height: em(2)
+  background-color: color('aac-gold')
+  border-radius: em(1)
+  position: relative
+  +transition((transform, background-color))
+
+  &::before, &::after
+    content: ''
+    width: inherit
+    height: inherit
+    background-color: inherit
+    border-radius: inherit
+    position: absolute
+    right: 0
+    z-index: 1
+  
+  $space: em(math.div(25, 2) - 3)
+
+  &::before
+    top: $space
+    +transition('top, opacity')
+
+  &::after
+    bottom: $space
+    +transition((bottom, transform)) 
+
+  
+.container:has(#click:checked)
+  overflow: hidden
+  position: fixed
+
+  .menu--main
+    opacity: 1
+    // top: 0
+  
+  .bar
+    background-color: color('aac-gold')
+    transform: rotate(225deg)
+  
+    &::before
+      top: 0
+      opacity: 0
+
+    &::after
+      bottom: 0
+      transform: rotate(-90deg)
+
+  .navigation
+    display: block
+    visibility: visible
+    animation: roll-in 300ms forwards
+
+@keyframes roll-in
+  0%
+    display: none
+    left: 200vw
+
+  100%
+    display: block
+    left: -2em
+
+@keyframes roll-out
+
+  0%
+    display: block
+    left: -2em
+
+  100%
+    display: none
+    left: 200vw
+

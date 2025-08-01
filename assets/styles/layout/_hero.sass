@@ -1,0 +1,105 @@
+@use '../abstracts' as *
+
+.hero
+  color: color('white')
+  
+  > .wrapper
+    outline: $bg
+    background-color: color('cc-teal')
+
+    &--subpage
+      +clamp(min-height, 450, 490)
+
+
+    > *
+      outline: $bg
+  //   grid-row: wrapper
+  //   z-index: 1
+
+  //   +breakpoint(tablet)
+  //     > div
+  //       grid-template-columns: max-content 1fr
+  //       align-items: center
+    
+  //   &--subpage
+  //     +device(phone)
+  //       > div
+  //         grid-column: full-width
+
+  &--home
+    height: em(730)
+  //   max-height: calc(100svh - var(--height))
+  //   background-color: color('black-5')
+  //   position: relative
+
+  //   @supports not (height: 100svh)
+  //     height: 100vh
+  //     max-height: calc(100vh - var(--height))
+
+  //   > .wrapper
+  //     height: 100%
+  //     color: color('white')
+    
+  //   h2
+  //     color: color('aac-gold')
+
+.hero--map
+  position: relative
+  overflow: hidden
+
+  .map-hero iframe
+    width: 100%
+    height: 400px
+
+    /* adjustable: 350–500px works well
+    border: 0
+    display: block
+
+  .hero__text
+    position: absolute
+    top: 1rem
+    left: 50%
+    transform: translateX(-50%)
+    text-align: center
+    background: rgba(0, 0, 0, 0.55)
+
+    /* overlay for contrast
+    padding: 1.5rem 2rem
+    border-radius: 0.75rem
+    color: #fff
+    max-width: 90%
+
+
+  // .subtitle
+  //   font-weight: 300
+
+
+
+// .title
+//   color: color('aac-gold')
+//   background-color: color('black')
+
+.cta
+  +breakpoint(tablet)
+    grid-template-columns: repeat(2, max-content) 1fr
+
+.video-bg
+  min-width: 100%
+  min-height: 100%
+  height: 100%
+  max-height: 100%
+  position: absolute
+  top: 0
+  left: 0
+  z-index: -1
+  object-fit: cover
+
+
+div[data-section]::after
+  content: attr(data-section)
+
+.bg
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  background-blend-mode: soft-light

@@ -1,0 +1,117 @@
+@use 'abstracts' as *
+  
+.footer
+  color: color('white')
+  background-color: color('black')
+  
+  a
+    color: color('white')
+
+    > svg
+      fill: color('white')
+
+    +hover
+      color: color('aac-gold')
+
++ch(35)
+
+.wrapper
+
+  &--footer
+    +device(desktop)
+      grid-template-columns: [summary-start] max-content [summary-end] 1fr [navigation-start] max-content [navigation-end]
+      grid-template-rows: [summary-start navigation-start] max-content [navigation-end summary-end]
+
+
+.logo-slogan
+
+  +device(desktop)
+    grid-area: summary
+    grid-template-columns: [logo-start] max-content [logo-end slogan-start] max-content [slogan-end]
+    grid-template-rows: [logo-start] 1fr [slogan-start] max-content [slogan-end] 1fr [logo-end]
+
+    > .logo
+      grid-area: logo
+
+.slogan
+  +device(desktop)
+    grid-area: slogan
+
+.navigation--footer
+  
+  +device(desktop)
+    grid-area: navigation
+
+.menu--footer__link
+  color: inherit
+  position: relative
+  +transition((color, opacity))
+
+  +breakpoint(tablet)
+    &::before
+      content: ''
+      width: em(4)
+      height: 100%
+      background-color: color('aac-gold')
+      position: absolute
+      top: 5%
+      left: em(-15)
+      opacity: 0
+
+    +hover
+      color: color('aac-gold')
+
+      &::before
+        opacity: 1
+
+    &.current
+      color: color('aac-gold')
+      
+      &::before
+        opacity: 1
+
+.copy
+  display: grid
+
+  > small
+    display: inherit
+
+  +breakpoint(tablet)
+    display: flex
+
+    > small
+      display: inline
+
+
+.line
+  background: color('grey')
+  height: 0.1em
+
+$min-spacing: 3 * 16
+$max-spacing: 5 * 20
+
+.cookie--banner
+  display: none
+  max-width: em(1000)
+  color: color('white')
+  background-color: color('black-8')
+  border-radius: em(5)
+  position: fixed
+  inset-block: auto 1em 
+  +clamp(inset-inline, 0, $max-spacing)
+  margin-inline: auto
+  bottom: 1em
+  z-index: 2
+
+  p > a
+    color: color('white')
+
+  svg
+    width: 6rem
+    fill: color('aac-gold')
+
+  +breakpoint(tablet)
+    grid-template-columns: 1fr max-content
+
+  // > div:last-child
+  //   outline: $bg

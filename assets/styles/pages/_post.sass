@@ -1,0 +1,133 @@
+@use 'abstracts' as *
+
+.projects
+
+  +breakpoint(tablet)
+    grid-template-columns: [section-start first-start] 1fr [ first-end section-end second-start button-start] 1fr [button-end second-end]
+    grid-template-rows: [section-start second-start] max-content [section-end first-start] 1fr [second-end button-start] max-content [button-end first-end]
+
+    > h2
+      grid-area: section
+
+    > .feature
+
+      &--1
+        grid-area: first
+
+      &--2
+        grid-area: second
+
+    > div
+      grid-area: button
+
+
+.feature
+  grid-template-columns: [image-start title-start] 1fr [title-end image-end]
+  grid-template-rows: [image-start ] 1fr [image-end title-start] max-content [title-end]
+
+  +device(desktop)
+    grid-template-columns: [image-start title-start] 1fr [title-end image-end]
+    grid-template-rows: [image-start title-start] 1fr [title-end image-end]
+
+  &__title
+    grid-area: title 
+    background-color: color('black')
+
+    +device(desktop)
+      display: grid
+      grid-template-columns: 2em [heading-start] 1fr [heading-end] 2em
+      grid-template-rows: 1fr [heading-start] max-content [heading-end] 1fr
+      z-index: 1
+      background-color: transparent
+      +transition((color, background-color, opacity))
+    
+    > h3
+      grid-area: heading
+      color: color('aac-gold')
+
+    +device(desktop)
+
+      > h3
+        color: transparent
+        text-align: center
+
+  &__img
+    grid-area: image
+
+  +hover
+
+    > .feature
+
+      &__title
+        
+        +device(desktop)
+          background-color: color('black-5')
+
+        > h3
+          color: color('aac-gold')
+
+    > .scale > picture > img
+      scale: 1.2
+
+// +device(desktop)
+//   .previews
+//     grid-template-columns: [ one-start two-start] 1fr [two-end one-end three-start four-start] 1fr [four-end three-end]
+//     grid-template-rows: [one-start three-start] 1fr [three-end four-start] 1fr [one-end two-start] 1fr [two-end four-end]
+
+//   .preview
+
+//     &--1
+//       grid-area: one
+
+//     &--2
+//       grid-area: two
+    
+//     &--3
+//       grid-area: three
+
+//     &--4
+//       grid-area: four
+
+
+.services > li
+
+  &:nth-of-type(odd)
+
+    .service
+
+      &__content
+        order: 2
+
+      &__img
+        order: 1
+
+.write-up
+  min-width: 0
+  
+  +device(desktop)
+    grid-template-columns: 1fr minmax(min-content, em(250) )
+  
+  h2
+    font-size: var(--step-2)
+
+.tag
+
+  &__link
+    color: color('black')
+    background-color: color('grey-light')
+    border-radius: em(5)
+    +transition(background-color)
+
+    &:hover
+      background-color: color('aac-gold')
+
+.scale
+  > picture 
+    overflow: hidden
+
+    > img
+      scale: 1
+      +transition(scale)
+
+      +hover
+        scale: 1.2

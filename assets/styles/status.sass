@@ -1,0 +1,46 @@
+@use 'abstracts' as *
+@use 'base'
+
+body
+  +hsl('status-background', #2a70b4)
+  color: color('white')
+  background-color: color('status-background')
+
+.content-grid
+  --padding-inline: 2em
+  --content-max-width: #{rem(1152)}
+  --breakout-max-width: #{rem(1200)}
+
+  --content-size: min(100% - ((var(--padding-inline) * 2) + env(safe-area-inset-left) + env(safe-area-inset-right)), var(--content-max-width))
+  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2)
+  
+  display: grid
+  grid-template-columns: [full-width-start] minmax(max(var(--padding-inline), env(safe-area-inset-left)), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] var((--content-size)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(max(var(--padding-inline), env(safe-area-inset-right)), 1fr)  [full-width-end]
+  // padding-inline: env(safe-area-inset-left) env(safe-area-inset-right)
+
+  > .breakout
+    grid-column: breakout
+
+  > .full-width
+    grid-column: full-width
+
+.content-grid, .full-width
+
+  > :not(.breakout, .full-width)
+    grid-column: content
+
+main
+  +svh(height, 100)
+  display: grid
+  grid-template-columns: 1fr [status-start] minmax(#{rem(280), max-content}) [status-end] 1fr
+  grid-template-rows: 1fr [status-start] minmax(#{rem(280), max-content}) [status-end] 1fr
+
+.status
+  grid-area: status
+
+.warning
+  width: 5rem
+
+  > svg
+    fill: currentcolor
+  

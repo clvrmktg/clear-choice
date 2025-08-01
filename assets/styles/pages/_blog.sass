@@ -1,0 +1,54 @@
+@use 'abstracts' as *
+
+.loop
+
+  &__link
+
+    > h3
+      color: color('aac-gold')
+      background-color: color('black')
+      +transition((color, background-color))
+      transition-duration: 1000ms
+
+      > .scale > img
+        +transition(scale)
+
+    +hover
+
+      > h3
+        color: color('black')
+        background-color: color('aac-gold')
+
+      > .scale > picture > img
+        scale: 1.2
+
+.project
+
+  &__img
+    overflow: hidden
+
+
+.scale
+
+  > picture
+    oveflow: hidden
+
+    > img
+      scale: 1
+      +transition(scale)
+
+      +hover
+        scale: 1.5
+
+// // time
+// //   font-size: 0.9em
+// .pagination
+//   display: grid
+//   grid-template-columns: [newer-start] max-content [newer-end] 1fr [older-start] max-content [older-end]
+//   column-gap: 1em
+  
+// .newer
+//   grid-area: newer
+
+// .older
+//   grid-area: older

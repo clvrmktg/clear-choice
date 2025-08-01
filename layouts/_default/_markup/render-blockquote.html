@@ -1,0 +1,17 @@
+<figure class="[ blockquote ]">
+  <div>
+    <blockquote{{ with .Attributes.cite }} cite="{{ . }}"{{ end }}>
+      {{ .Text }}
+    </blockquote>
+
+    
+    {{- if .Attributes.author -}}
+    <p class="[ citation ]">
+      {{ with .Attributes.author }}{{ . }}{{ end }}
+      {{- with .Attributes.source -}},
+      <cite>{{ . }}</cite>
+      {{- end -}}
+    </p>
+    {{- end -}}
+  </div>
+</figure>

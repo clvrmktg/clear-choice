@@ -1,0 +1,37 @@
+<head>
+  <title>Account Suspended</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="This account has been suspended. Contact your hosting provider for more information.">
+  {{- with resources.Get "styles/status.sass" -}}
+    {{- $opts := dict
+      "enableSourceMap" (not hugo.IsProduction)
+      "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+      "targetPath" "styles/status.css"
+      "transpiler" "dartsass"
+    -}}
+    {{- with . | toCSS $opts -}}
+      {{- if hugo.IsProduction -}}
+        {{- with . | fingerprint -}}
+        <link rel="preload" href="{{ .RelPermalink }}" as="style" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{- end -}}
+      {{- else -}}
+      <link rel="preload" href="{{ .RelPermalink }}" as="style">
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+</head>
+<body class="[ content-grid full-width ]">
+  <main>
+    <div class="[ status ]">
+      <div class="[ warning ]">
+        {{ readFile "static/icons/warning.svg" | safeHTML }}
+      </div>
+      <div>
+        <h1>This account has been suspended.</h1>
+        <p class="[ font--3 ]">Contact your hosting provider for more information.</p>
+      </div>
+    </div>
+  </main>
+</body>

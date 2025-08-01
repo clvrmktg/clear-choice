@@ -1,0 +1,14 @@
+@use 'sass:math'
+@use 'variables' as var
+// MinMax font-size in px
+$min-font-size-in-px: (var.$min-font-size * 1px)
+$max-font-size-in-px: (var.$max-font-size * 1px)
+
+// MinMax Viewport in px
+$min-viewport-width-in-px: (var.$min-screen-size * 1px)
+$max-viewport-width-in-px: (var.$max-screen-size * 1px)
+
+// MinMax Viewport in px
+$min-viewport-width-in-rem: (math.div(var.$min-screen-size, var.$min-font-size) * 1rem)
+$max-viewport-width-in-rem: (math.div(var.$max-screen-size, var.$max-font-size) * 1rem)
+

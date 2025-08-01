@@ -1,0 +1,85 @@
+@use '../abstracts' as *
+
+#modal
+  display: none
+  fill: color('aac-gold')
+
+.thumb
+  cursor: pointer
+  +transition(box-shadow)
+
+  +hover
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)
+
+.gallery
+  width: 100%
+  height: 100%
+  background-color: color('black')
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+
+  +svh('height', 100)
+  +svh('max-height', 100)
+  
+  > .wrapper
+    height: inherit
+    max-height: inherit
+    position: relative
+
+    > .carousel
+      height: inherit
+      max-height: inherit
+      position: inherit
+
+.carousel
+
+  > .ratio--16\:9
+    width: 100%
+
+  > .ratio--4\:5
+    height: 100%
+
+    > picture, > picture > img
+      height: inherit
+
+.close
+  position: absolute
+  top: 2em
+  right: 1em
+  z-index: 2
+
+// .icon
+//   width: 2em
+//   height: 2em
+//   fill: color('black')
+//   background-color: color('aac-gold')
+//   border: em(3) solid 
+//   border-color: color('aac-gold')
+//   border-radius: 50%
+
+//   +transition((fill, background-color))
+
+//   +hover
+//     fill: color('aac-gold')
+//     background-color: transparent
+
+//   &--close, &--arrow
+//     width: em(24)
+
+.arrow
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 1
+
+  &--right
+    right: 1em
+
+  &--left
+    left: 1em
+  
+
+
+

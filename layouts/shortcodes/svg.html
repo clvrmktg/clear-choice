@@ -1,0 +1,6 @@
+{{ $resourcePath := printf "uploads/%s.svg" (.Get "name") }}
+{{ with resources.Get $resourcePath }}
+  {{ .Content | safeHTML }}
+{{ else }}
+  <span>Icon not found: {{ .Get "name" }}</span>
+{{ end }}

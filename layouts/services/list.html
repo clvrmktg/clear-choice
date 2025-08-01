@@ -1,0 +1,63 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- end -}}
+{{- define "main" -}}
+  {{ partial "hero.html" . }}
+  <section class="intro">
+    <div class="[ content-grid ]">
+      <p>
+        At Clear Choice, we combine craftsmanship with hurricane‑rated durability
+        to provide windows, doors, glass, and enclosures that are as strong as they are stylish.
+        Whether upgrading your home, rental, or storefront, we design solutions that protect what matters most.
+      </p>
+    </div>
+  </section>
+  <section class="[ trust-banner ][ content-grid ]">
+    <div class="[ grid md:col--3 gap--2 ]">
+      <div><strong>Hurricane-Rated</strong><p>Certified impact resistance for true protection.</p></div>
+      <div><strong>Lasting Style</strong><p>Modern designs that elevate your property.</p></div>
+      <div><strong>Local Support</strong><p>Manufactured and serviced right here in The Bahamas.</p></div>
+    </div>
+  </section>
+
+  <ul class="[ services ][ grid layout--spacing layout--padding--bottom ]">
+    {{ $twic := .Site.Params.twic }}
+    {{ range $index, $page := .Pages }}
+      {{ $counter := add $index 1 }}
+      <li class="[ service ][ grid md:col--2 middle gap--2 ]">
+        <div class="[ o--2{{ if not (modBool $index 2) }} md:o--1{{ end }} ]">
+          <div>
+            <h2>{{ $page.Title }}</h2>
+            <p>{{ $page.Params.description }}</p>
+            <a href="{{ $page.RelPermalink }}" class="btn btn-link">Learn More</a>
+          </div>
+        </div>
+  
+        <figure class="[ service__img ][ ratio--1:1 o--1{{ if not (modBool $index 2) }} md:o--2{{ end }} ]">
+          {{ with $page.Resources.GetMatch $page.Params.image }}
+            <picture id="product-{{ $counter }}" class="[ bg ]">
+              <style>
+                #product-{{ $counter }} {
+                  background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');
+                }
+              </style>
+              <img data-twic-src="image:{{ .RelPermalink }}" 
+                   data-twic-focus="auto" 
+                   alt="{{ $page.Title }}" 
+                   width="{{ .Width }}" 
+                   height="{{ .Height }}" />
+              <noscript>
+                <img class="[ script ]"
+                     src="https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview" 
+                     alt="{{ $page.Title }}" 
+                     width="{{ .Width }}" 
+                     height="{{ .Height }}" />
+              </noscript>
+            </picture>
+          {{ end }}
+        </figure>
+      </li>
+    {{ end }}
+  </ul>
+  
+{{- end -}}

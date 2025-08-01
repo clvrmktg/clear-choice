@@ -1,0 +1,2 @@
+{{- $cite := .Get "cite" -}}
+<q{{- if $cite -}} cite="{{ $cite }}"{{end}}>{{- .Inner -}}</q>

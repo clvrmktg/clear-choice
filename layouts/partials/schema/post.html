@@ -1,0 +1,90 @@
+{{- $iso := "2006-01-02T15:04:05Z07:00" -}}
+{{- $feature := .Params.feature -}}
+{{- $image := $feature.image | default .Site.Params.share -}}
+{{- $alt := $feature.alt | default "Default share image of {{ .Site.Title }}'s logo" -}}
+{{- $tag := .Params.tags | default (slice) -}} 
+{{- $category := .Params.categories | default (slice) -}} 
+{{- $hasTags := gt (len $tag) 0 -}}            
+{{- $hasCategories := gt (len $category) 0 -}}
+
+
+{{- if .Params.post -}}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ .Title }}",
+    "description": {{ .Description }},
+    "publisher": {
+      "@type": "Person",
+      "name": {{ .Site.Title }}
+    },
+    "license": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": {{ .Permalink }},
+    "mainEntityOfPage": {{ .Permalink }},
+    "headline": {{ .Title }},
+    "name": {{ .Title }},
+    "description": {{ .Description }},
+    "datePublished": "{{ .Date.Format $iso }}",
+    "dateModified": {{ (.Lastmod | default .Date) | time.Format $iso }},
+    "author": {
+      "@type": "Person",
+      "name": {{ .Site.Title }}
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": {{ $image | absURL }},
+      "width": 1200,
+      "height": 1200
+    },
+    "url": {{ .Permalink }},
+    "isPartOf": {
+      "@type": "Blog",
+      {{ with .Parent }}
+      "@id": {{ .RelPermalink }},
+      "name": {{ .Title }},
+      {{ end }}
+      "publisher": {
+        "@type": "Person",
+        "@id": {{ .Site.BaseURL }},
+        "name": {{ .Site.Title }},
+        {{- with .Site.Params.social -}}
+        "sameAs": [
+          {{- with .facebook }}"https://www.facebook.com/{{ . }}",{{ end }}
+          {{- with .instagram }}"https://www.instagram.com/{{ . }}",{{ end }}
+          {{- with .linkedin }}"https://www.linkedin.com/in/{{ . }}",{{ end }}
+          {{- with .github }}"https://github.com/{{ . }}",{{ end }}
+          {{- with .x }}"https://x.com/{{ . }}"{{ end }}
+        ]
+        {{- end -}}
+      }
+      
+    },
+    "wordCount": "{{ .WordCount }}"
+    {{- if or $hasTags $hasCategories }},{{ end }}  
+    {{- if $hasTags }}
+    "keywords": [
+      {{- range $index, $tag -}}
+        {{- if $index }}, {{ end }}"{{ . }}"
+      {{- end }}
+    ]
+    {{- if $hasCategories }},{{ end }}  
+    {{- end }}
+
+    {{- if $hasCategories }}
+    "articleSection": [
+      {{- range $index, $category -}}
+        {{- if $index }}, {{ end }}"{{ . }}"
+      {{- end }}
+    ]
+    {{- end }}
+
+  }
+]
+</script>
+{{- end -}}

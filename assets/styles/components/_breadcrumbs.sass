@@ -1,0 +1,29 @@
+@use '../abstracts' as *
+
+.breadcrumbs
+  min-width: 0
+
+.breadcrumb
+  user-select: none
+  position: relative
+
+  &::after
+    content: '/'
+    position: absolute
+    right: -0.75em
+    top: 0  
+
+  &:last-of-type
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+    &::after
+      content: none
+    
+  &__link
+    +unstyled-link
+
+    &--last
+      color: color('black')
+      pointer-events: none
