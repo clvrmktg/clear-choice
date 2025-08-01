@@ -4,6 +4,8 @@ draft = false
 title = 'Home'
 description = "Abaco Aggregate & Cement Ltd. is a leading supplier of concrete, cement, and construction materials in The Bahamas. Based in Abaco and trusted by public and private clients alike, we deliver expert road paving, foundation work, and infrastructure solutions—serving projects from Treasure Cay Airport to Island Luck Plaza and beyond."
 
+hero = "impact-windows-beach-terrace-view.jpg"
+
 [why_clear_choice]
 title = "Why Clear Choice"
 subtitle = "We're The Bahamas' leading supplier of impact windows and doors, trusted by homeowners and businesses to keep you safe, secure, and comfortable."

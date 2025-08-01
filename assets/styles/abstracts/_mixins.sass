@@ -480,3 +480,16 @@
 
   @supports (#{$property}: #{$value}svh)
     #{$property}: #{$value}svh
+
+
+=radius($value, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
+
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:radius--#{$value}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        border-radius: em($value)
+
+  @else
+    .radius--#{$value}  // Fixed incorrect selector
+      border-radius: em($value)
