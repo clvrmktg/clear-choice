@@ -1,4 +1,4 @@
-<figure class="{{ .class | default "" }}{{with .Title}}[ pb--1 ]{{end}}</figure>}}">
+<figure class="[ {{ .class | default "" }} ]{{with .Title}}[ pb--1 ]{{end}}">
   {{/* Generate unique ID for background styling */}}
   {{ $uniqueID := (now.UnixNano | string | md5) }}
 
