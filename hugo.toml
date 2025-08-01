@@ -6,7 +6,7 @@ title = 'Clear Choice Glass'
 # enableGitInfo = true
 
 [ params ]
-  twic = "aggregate"
+  twic = "clearchoice"
   share = "/aac-logo.jpg"
   logo = "/aac-logo.png"
   # Facebook App ID

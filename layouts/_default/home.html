@@ -14,7 +14,7 @@
       <h3 class="[ font--4 font--400 text--center ch--45 ]">{{ .Params.why_clear_choice.subtitle }}</h3>  
     </div>
 
-    <div class="[ grid md:col--2 gap--2 ]">
+    <div class="[ grid middle md:col--2 gap--2 ]">
       <ul>
         {{ range .Params.why_clear_choice.items }}
           <li class="[ flex col-gap--1 ]">
@@ -32,7 +32,12 @@
       </ul>
   
       {{ with .Params.why_clear_choice.image }}
-        <img src="{{ . }}" alt="Why Choose Us">
+      {{ partial "image.html" (dict 
+        "Destination" .
+        "PlainText" "Storefront" 
+        "class" "hero-image lg:rounded-xl"
+        "Page" $
+      ) }}
       {{ end }}
     </div>
   </section>

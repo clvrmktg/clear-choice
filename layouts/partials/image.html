@@ -1,0 +1,48 @@
+<figure class="{{ .class | default "" }}{{with .Title}}[ pb--1 ]{{end}}</figure>}}">
+  {{/* Generate unique ID for background styling */}}
+  {{ $uniqueID := (now.UnixNano | string | md5) }}
+
+  {{/* Try to get the image from the page bundle */}}
+  {{ $image := .Page.Resources.GetMatch .Destination }}
+
+  {{/* Default dimensions */}}
+  {{ $width := 0 }}
+  {{ $height := 0 }}
+
+  {{ if $image }}
+    {{ $width = $image.Width }}
+    {{ $height = $image.Height }}
+  {{ end }}
+
+  <picture id="picture-{{$uniqueID}}" class="[ bg ]">
+    {{ if $image }}
+      <style>
+        #picture-{{$uniqueID}} {
+          background-image: url('https://{{ .Page.Site.Params.twic }}.twic.pics{{ $image.RelPermalink }}?twic=v1/output=preview');
+        }
+      </style>
+      <img
+        width="{{ $width }}"
+        height="{{ $height }}"
+        data-twic-src="image:{{ $image.RelPermalink }}"
+        data-twic-focus="auto"
+        alt="{{ .PlainText | default "Image" }}" />
+      <noscript>
+        <img class="[ script ]"
+             src="https://{{ .Page.Site.Params.twic }}.twic.pics{{ $image.RelPermalink }}?twic=v1/output=preview"
+             width="{{ $width }}"
+             height="{{ $height }}"
+             alt="{{ .PlainText | default "Image" }}" />
+      </noscript>
+    {{ else }}
+      <!-- Fallback for missing images -->
+      <img
+        src="https://{{ .Page.Site.Params.twic }}.twic.pics/{{ .Destination | safeURL }}?twic=v1/focus=auto/"
+        alt="{{ .PlainText | default "Image" }}" />
+    {{ end }}
+  </picture>
+
+  {{- with .Title }}
+    <figcaption class="[ pt--0.5 ]">{{ . }}</figcaption>
+  {{ end -}}
+</figure>

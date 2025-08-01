@@ -7,7 +7,7 @@ description = "Abaco Aggregate & Cement Ltd. is a leading supplier of concrete, 
 [why_clear_choice]
 title = "Why Clear Choice"
 subtitle = "We're The Bahamas' leading supplier of impact windows and doors, trusted by homeowners and businesses to keep you safe, secure, and comfortable."
-image = "/images/clear-choice-protection.jpg"
+image = "hurricane-impact-windows-doors.jpg"
 
 [[why_clear_choice.items]]
 heading = "Weather Protection"
