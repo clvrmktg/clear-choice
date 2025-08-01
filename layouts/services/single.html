@@ -15,13 +15,33 @@
   <section class="[ content-grid ]">
     <ul class="[ features ][ grid layout--spacing ]">
       {{ range $index, $feature := . }}
-      <li class="[ feature ][ grid md:col--2 col-gap--4 row-gap--2 ]{{ if modBool $index 2 }}alt{{ end }}">
-        {{ partial "image.html" (dict 
-          "Destination" $feature.image
-          "PlainText" $feature.title
-          "class" "ratio--1:1 radius--5"
-          "Page" .
-        ) }}
+      {{ $counter := add $index 1 }}
+      <li class="[ feature ][ grid middle md:col--2 col-gap--4 row-gap--2 ]{{ if modBool $index 2 }}alt{{ end }}">
+        <figure class="[ service__img ][ ratio--1:1 o--1{{ if not (modBool $index 2) }} md:o--2{{ end }} ]">
+          {{ with $.Resources.GetMatch $feature.image }}
+          <picture id="product-{{ $index }}" class="[ bg ]">
+            <style>
+              #product-{{ $index }} {
+                background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');
+              }
+            </style>
+            <img data-twic-src="image:{{ .RelPermalink }}" 
+                 data-twic-focus="auto" 
+                 alt="{{ $feature.title }}" 
+                 width="{{ .Width }}" 
+                 height="{{ .Height }}" />
+            <noscript>
+              <img class="[ script ]"
+                   src="https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview" 
+                   alt="{{ $feature.title }}" 
+                   width="{{ .Width }}" 
+                   height="{{ .Height }}" />
+            </noscript>
+          </picture>
+        {{ else }}
+          <p class="debug">Image not found: {{ $feature.image }}</p>
+        {{ end }}
+        </figure>
         <div class="feature-text">
           <h3>{{ $feature.title }}</h3>
           <p>{{ $feature.description }}</p>

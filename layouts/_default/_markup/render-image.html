@@ -2,7 +2,7 @@
   {{ $uniqueID := (now.UnixNano | string | md5) }}
 
   <!-- Try to get the image from /assets/uploads/ -->
-  {{ $image := resources.Get (printf "uploads/%s" .Destination | safeURL) }}
+  {{ $image := resources.Get .Destination }}
 
   <!-- Set default width & height to prevent errors -->
   {{ $width := 0 }}

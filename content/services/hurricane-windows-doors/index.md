@@ -3,7 +3,7 @@ date = '2025-07-30T21:42:52-04:00'
 draft = false
 title = "Hurricane Windows & Doors"
 subtitle = "Strong, stylish, and built to withstand The Bahamas’ toughest storms."
-image = "/images/services/hurricane-windows.jpg"
+image = "hurricane-windows.jpg"
 
 intro = """Our hurricane-rated windows and doors combine style with unmatched protection.
 Designed for homes, rentals, and commercial spaces, they stand up to the toughest storms 
@@ -17,12 +17,12 @@ image = "hurricane-impact-window-second-floor.jpg"
 [[features]]
 title = "Energy Efficiency"
 description = "Advanced insulation helps keep your energy bills low year-round."
-image = "/images/features/efficiency.jpg"
+image = "efficiency.jpg"
 
 [[features]]
 title = "Custom Fit & Style"
 description = "Choose from a range of designs and finishes to match your space."
-image = "/images/features/custom.jpg"
+image = "custom.jpg"
 
 
 +++

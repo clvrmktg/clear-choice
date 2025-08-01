@@ -3,7 +3,7 @@
   {{ $uniqueID := (now.UnixNano | string | md5) }}
 
   {{/* Try to get the image from the page bundle */}}
-  {{ $image := .Page.Resources.GetMatch .Destination }}
+  {{ $image := $.Page.Resources.GetMatch .Destination }}
 
   {{/* Default dimensions */}}
   {{ $width := 0 }}
