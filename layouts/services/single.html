@@ -2,54 +2,85 @@
   <!-- Hero Section -->
   {{ partial "hero.html" . }}
   <!-- Intro Text Block -->
-  {{ with .Params.intro }}
-  <section class="intro">
-    <div class="[ content-grid ]">
-      <p>{{ . }}</p>
-    </div>
-  </section>
-  {{ end }}
-
-  <!-- Features Section -->
-  {{ with .Params.features }}
-  <section class="[ content-grid ]">
-    <ul class="[ features ][ grid layout--spacing ]">
+  
+  <section>
+    <!-- Features Section -->
+    {{ with .Params.features }}
+    <ul class="[ features ][ grid center md:col--3 gap--2 ]">
       {{ range $index, $feature := . }}
-      {{ $counter := add $index 1 }}
-      <li class="[ feature ][ grid middle md:col--2 col-gap--4 row-gap--2 ]{{ if modBool $index 2 }}alt{{ end }}">
-        <figure class="[ service__img ][ ratio--1:1 o--1{{ if not (modBool $index 2) }} md:o--2{{ end }} ]">
-          {{ with $.Resources.GetMatch $feature.image }}
-          <picture id="product-{{ $index }}" class="[ bg ]">
-            <style>
-              #product-{{ $index }} {
-                background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');
-              }
-            </style>
-            <img data-twic-src="image:{{ .RelPermalink }}" 
-                 data-twic-focus="auto" 
-                 alt="{{ $feature.title }}" 
-                 width="{{ .Width }}" 
-                 height="{{ .Height }}" />
-            <noscript>
-              <img class="[ script ]"
-                   src="https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview" 
-                   alt="{{ $feature.title }}" 
-                   width="{{ .Width }}" 
-                   height="{{ .Height }}" />
-            </noscript>
-          </picture>
-        {{ else }}
-          <p class="debug">Image not found: {{ $feature.image }}</p>
-        {{ end }}
-        </figure>
-        <div class="feature-text">
+        <div class="[ text--center ]">
           <h3>{{ $feature.title }}</h3>
           <p>{{ $feature.description }}</p>
         </div>
       </li>
       {{ end }}
     </ul>
+    {{ end }}
+    
+  </section>
+
+  {{ with .Params.comfort_section }}
+  <section class="[ full-width content-grid bg--grey layout--padding ]">
+    <div class="[ grid md:col--2 gap--3 middle ]">
+      <div>
+        <h2>{{ .title }}</h2>
+        <p>{{ .text }}</p>
+  
+        <ul class="benefit-list">
+          {{ range .benefits }}
+          <li>
+            <span class="material-icons">{{ .icon }}</span>
+            <strong>{{ .title }}</strong>
+            <p>{{ .description }}</p>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <figure class="[ ratio--1:1 ]">
+        {{ with .image }}
+        {{ partial "image.html" (dict 
+          "Destination" .
+          "PlainText" "Storefront" 
+          "class" "ratio--1:1 radius--5"
+          "Page" $
+        ) }}
+        {{ end }}
+      </figure>
+
+    </div>
   </section>
   {{ end }}
+  
 
+  <section class="[ grid layout--spacing ]">
+    <div>
+      <h2>Windows</h2>
+      <p class="[ font--4 ch--45 ]">Our hurricane‑rated windows combine strength and style, offering designs that maximize safety, airflow, and natural light while standing up to The Bahamas’ toughest storms.</p>
+    </div>
+    <ul class="[ grid md:col--4 gap--3 ]">
+  
+      {{ range .Params.window_styles }}
+      <li class="[ card ][ grid center gap--1 py--2 px--1 text--center ]">
+        <div class="icon">
+          {{ with $.Resources.GetMatch .svg }}
+            {{ .Content | safeHTML }}
+          {{ end }}
+        </div>
+        <div>
+          <h3>{{ .name }}</h3>
+          <p>{{ .description }}</p>
+        </div>
+      </li>
+    {{ end }}
+    </ul>
+  </section>
+
+  <section>
+    <div>
+      <h2>Doors</h2>
+
+    </div>
+  </section>
+
+  {{ partial "cta.html" . }}
 {{ end }}

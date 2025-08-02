@@ -10,6 +10,9 @@ $max-spacing: 5 * 20
   +clamp(padding-top, $min-spacing, $max-spacing)
   +clamp(padding-bottom, $min-spacing, $max-spacing)
 
+.layout--padding--top
+  +clamp(padding-top, $min-spacing, $max-spacing)
+
 .layout--padding--bottom
   +clamp(padding-bottom, $min-spacing, $max-spacing)
  
@@ -20,6 +23,7 @@ $max-spacing: 5 * 20
 +padding(0.25,'x')
 +padding(0.5)
 +padding(0.5,'x')
++padding(1,'x')
 +padding(0.5,'y')
 +padding(0.75,'y')
 +padding(1, 'y')
@@ -44,6 +48,7 @@ $max-spacing: 5 * 20
 +gap(0.5)
 +gap(1)
 +gap(2)
++gap(3)
 +gap(4)
 
 +col-gap(0.5)

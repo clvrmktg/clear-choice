@@ -12,7 +12,7 @@
   &--home
     height: em(730)
 
-  h2
+  h1, h2
     color: color('white')
 
 .hero--map
@@ -42,24 +42,9 @@
     max-width: 90%
 
 
-// .blur-block
-//   position: relative
-//   z-index: 2
-
-//   &::after
-//     content: ''
-//     width: 120%
-//     height: 140%
-//     background-color: color('white')
-//     opacity: 0.7
-//     border-radius: em(5)
-//     position: absolute
-//     top: -20%
-//     left: -10%
-//     z-index: -1
-    // backdrop-filter: blur(16px)
-    // mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%)
-
+.card
+  border: em(2) solid color('cc-teal')
+  border-radius: em(12)
 
 .cta
   +breakpoint(tablet)

@@ -22,13 +22,12 @@
   
   <ul class="[ grid md:col--3 gap--2 ]">
     {{ range $limited }}
-      <li class="[ bg--grey p--1 radius--5 ]">
-        <strong>{{ .author_name }}</strong>
+      <li class="[ bg--grey grid row-gap--0.5 py--2 px--1 radius--5 ]">
         <div class="stars">
-          {{ $fullStars := int .rating }}
-          {{ $emptyStars := sub 5 $fullStars }}
-          {{ range seq $fullStars }}★{{ end }}
-          {{ range seq $emptyStars }}☆{{ end }}
+          {{- $fullStars := int .rating -}}
+          {{- $emptyStars := sub 5 $fullStars -}}
+          {{- range seq $fullStars -}}★{{- end -}}
+          {{- range seq $emptyStars -}}☆{{- end -}}
         </div>
 
         {{ if gt (len .text) 150 }}
@@ -41,13 +40,11 @@
             {{ $clean = $clip }}
           {{ end }}
           {{ $clean = replaceRE "[.!?]+$" "" $clean }}
-          <p>{{ $clean }}&hellip;</p>
-          <a href="https://search.google.com/local/reviews?placeid=ChIJz918MgR9L4kREk7gmQCDuoA" target="_blank">
-            Read full review
-          </a>
+          <p>{{ $clean }} [...]</p>
         {{ else }}
           <p>{{ .text }}</p>
         {{ end }}
+        <strong>- {{ .author_name }}</strong>
       </li>
     {{ end }}
   </ul>

@@ -17,11 +17,11 @@
 </header>
 {{- else -}}
 <div class="[ full-width ]">
-  <header class="[ hero ][ full-width content-grid ]">
-    <div class="[ wrapper wrapper--subpage ][ grid middle ]"{{ with .Resources.GetMatch (.Params.hero) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
-      {{ with .Resources.GetMatch (.Params.hero) }}
-      <style>.hero > .wrapper {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
-      {{ end }}
+  <header class="[ hero ][ full-width content-grid bg ]"{{ with .Resources.GetMatch (.Params.hero) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
+    {{ with .Resources.GetMatch (.Params.hero) }}
+    <style>.hero {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
+    {{ end }}
+    <div class="[ wrapper wrapper--subpage ][ grid middle ]">
       <div>
         <div >
           <h1>{{ .Title }}</h1>
