@@ -5,13 +5,13 @@
 
 {{ $all := slice }}
 {{ range $json.result.reviews }}
-  {{ if and (ge .rating 1) (ne .text "") }}
+  {{ if and (ge .rating 4) (ne .text "") }}
     {{ $all = $all | append . }}
   {{ end }}
 {{ end }}
 
 {{ if gt (len $all) 0 }}
-<section class="[ grid layout--spacing ]">
+<section class="[{{ if .IsHome }} full-width content-grid bg--grey py--5 {{else}} grid {{end}}layout--spacing ]">
   <div class="[ grid center ]">
     <h2>What Our Customers Say</h2>
     <p class="[ intro ]">From Nassau to the Family Islands, customers trust Clear Choice for secure, stylish glass solutions. Don't just take our word for it — hear directly from the people we've helped protect their homes and businesses.</p>
@@ -50,3 +50,9 @@
   </ul>
 </section>
 {{ end }}
+
+{{/* 
+  <div>
+    {{ $json.result.reviews | jsonify (dict "indent" "  ") }}
+  </div>
+*/}}

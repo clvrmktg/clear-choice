@@ -12,26 +12,22 @@ while enhancing your property's curb appeal."""
 
 [comfort_section]
 title = "Built for Strength. Designed for Comfort."
-text = """Clear Choice hurricane‑rated windows and doors deliver the perfect balance of style, 
-security, and performance. Built for The Bahamas, our impact‑resistant designs protect 
-against severe storms, reduce outside noise, and improve energy efficiency — all while 
-enhancing your home’s beauty and value. From modern rentals to busy storefronts, we 
-provide solutions that keep you safe and comfortable year‑round."""
+text = """Clear Choice hurricane‑rated windows and doors offer the perfect balance of style, security, and performance. Built for The Bahamas, our impact‑resistant designs withstand severe storms, reduce noise, and improve energy efficiency — all while enhancing your property’s beauty and value."""
 
 image = "hurricane-impact-window-second-floor.jpg"
 
 [[comfort_section.benefits]]
-icon = "shield"
+icon = "verified.svg"
 title = "Storm-Tested Performance"
 description = "Independently certified to withstand hurricane‑force winds and flying debris."
 
 [[comfort_section.benefits]]
-icon = "light_mode"
+icon = "light_mode.svg"
 title = "Bright, Natural Light"
 description = "Engineered glass lets in sunshine while filtering harmful UV rays."
 
 [[comfort_section.benefits]]
-icon = "construction"
+icon = "construction.svg"
 title = "Expert Local Installation"
 description = "Professionally installed and serviced right here in The Bahamas."
 

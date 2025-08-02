@@ -1,15 +1,28 @@
-{{- $page := .page -}}
-{{- $ancestors := .ancestors -}}
-
-<nav class="[ breadcrumbs ]" aria-label="Breadcrumb">
+<nav class="[ breadcrumbs ][ content-grid py--1 md:px--0 ]" aria-label="Breadcrumb">
   <ol class="[ flex ][ col-gap--1 py--0.5 ]">
-    {{- range $ancestors -}}
-      <li class="[ breadcrumb ]">
-        <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>{{ .LinkTitle }}</a>
-      </li>
+
+    {{/* Home icon link */}}
+    <li class="[ breadcrumb ]">
+      <a class="[ breadcrumb__link ]" href="/" aria-label="Home" data-prefetch>
+        <span class="[ icon ][ flex middle ]">
+          {{ readFile "static/icons/home.svg" | safeHTML }}
+        </span>
+      </a>
+    </li>
+
+    {{- range .Ancestors.Reverse -}}
+    {{- if not .IsHome -}}
+    <li class="[ breadcrumb ]">
+      <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>
+        {{ .LinkTitle }}
+      </a>
+    </li>
     {{- end -}}
+  {{- end -}}
     <li class="[ breadcrumb ][ font--700 ]">
-      <a class="[ breadcrumb__link--last ]" href="{{ $page.RelPermalink }}" aria-current="page" data-prefetch>{{ $page.LinkTitle }}</a>
+      <a class="[ breadcrumb__link--last ]" href="{{ .RelPermalink }}" aria-current="page" data-prefetch>
+        {{ .LinkTitle }}
+      </a>
     </li>
   </ol>
 </nav>

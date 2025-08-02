@@ -5,26 +5,16 @@
 {{- end -}}
 {{- define "main" -}}
 <!-- Hero with Map -->
-<section class="hero hero--map [ pt--5 ]">
-  <div class="[ content-grid text--center ]">
-    <h1>{{ .Title }}</h1>
-    <p class="[ subtitle ][ font--4 ]">{{ .Params.subtitle }}</p>
-  </div>
-{{/* 
-  {{ with .Params.map_iframe }}
-  <div class="map-hero">
-    <iframe src="{{ . }}" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-  {{ end }}
-  */}}
-</section>
+{{ partial "hero.html" . }}
 
 <!-- Intro -->
-<section class="intro">
-  <div class="content-grid">
-    <p>{{ .Params.intro }}</p>
-  </div>
-</section>
+{{/* 
+  <section class="intro">
+    <div class="content-grid">
+      <p>{{ .Params.intro }}</p>
+    </div>
+  </section>
+   */}}
 <div class="[ layout--sidebar--right ][ grid gap--2 layout--padding--bottom ]">
   <div>
     <p>{{- .Content -}}</p>
@@ -55,16 +45,16 @@
   </div>
   <aside class="[ sidebar ]">
     <address class="[ pb--2 ]">
-      <span>Abaco Aggregate &amp; Cement Ltd.</span>
+      <span>Clear Choice</span>
       <br>
-      <span>Airport Road</span>
+      <span>Shirley Street</span>
       <br>
-      <span>Marsh Harbour, AB</span>
+      <span>Nassau, <abbr title="New Providence" aria-label="New Providence">NP</abbr></span>
       <br>
       <span>Bahamas</span>
     </address>
     <div class="[ grid row-gap--0.5 ]">
-      <template obscure="obscure" data-p1="info" data-p2="abacoaggregate.net">
+      <template obscure="obscure" data-p1="info" data-p2="clear-choiceglass.com">
         <span><a href="+mailto:%1%@2%">%1@%2</a></span>
       </template>
       <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="813" data-p4="7981">

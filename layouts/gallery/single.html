@@ -4,96 +4,10 @@
 {{- end -}}
 {{- define "main" -}}
 <header class="[ hero ][ full-width content-grid ]">
-  {{- $twic := .Site.Params.twic -}}
-  {{ with .Resources.GetMatch (.Params.hero.image) }}
-  <div class="[ hero__background ][ full-width bg ]" data-twic-background="url(image:{{ .RelPermalink }})">
-    <style>.hero__background {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
-  </div>
-  {{ end }}
-  <div class="[ wrapper wrapper--subpage ][ full-width content-grid ]">
-    <div class="[ grid col-gap--1 ]">
-      <div class="[ title ][ p--2 ]">
-        <div class="[ font--1 font--700 ]" data-section="Projects"></div>
-      </div>
-      <nav class="[ breadcrumbs ][ px--2 md:px--0 ]" aria-label="Breadcrumb">
-        <ol class="[ flex ][ col-gap--1 py--0.5 ]">
-          {{- range .Ancestors.Reverse -}}
-          <li class="[ breadcrumb ]">
-            <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>{{ .LinkTitle }}</a>
-          </li>
-          {{- end -}}
-          <li class="[ breadcrumb ][ font--700 ]" aria-current="page">
-            <a class="[ breadcrumb__link--last ]" href="{{ .RelPermalink }}" data-prefetch>{{ .LinkTitle }}</a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-  </div>
+  <h1>{{ .Title }}</h1>
+  {{ partial "breadcrumbs.html" . }}
+  <p>kjlkjdlkjfal</p>
 </header>
-<article class="[ post ][ grid ]">
-  <div class="[ write-up ][ grid col-gap--2 pb--2 ]">
-    <div class="[ x--750 grid gap--1 ]">
-      <div>
-        <h1 class="[ font--2 ]">{{ .Title }}</h1>
-        {{ .Content }}
-      </div>
-      <div class="[ grid md:col--2 col-gap--2 ]">
-        <div> 
-          <h3 class="[ font--5 ]">Client </h3>
-          <p>{{ .Params.client.name }}</p>
-        </div>
-        <div> 
-          <h3 class="[ font--5 ]">Location </h3>
-          <p>{{ .Params.client.location }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="[ x--750 ]">
-      <div class="[ grid gap--2 ]">
-        <div>
-          <h3 class="[ font--5 ]">Project Scope</h3>
-          <ul class="[ tasks ]">
-            {{ range sort .Params.categories }}
-            <li><a href="{{ "/categories/" | relURL }}{{ . | urlize }}/" data-prefetch>{{ . | title }}</a></li>
-            {{ end }}
-          </ul>
-        </div>
-        {{ with .Params.tags }}
-        <div class="[ grid gap--0.5 ]">
-          <h3 class="[ font--5 ]">Tags</h3>
-          <ul class="[ tags ][ flex--wrap gap--0.5 ]">
-            {{ range . }}
-              <li class="[ tag__item ]">
-                <a class="[ tag__link ][ font--500 px--0.5 py--0.25 ]" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-              </li>
-            {{ end }}
-          </ul>
-        </div>
-        {{ end }}
-        <div class="[ grid row-gap--0.5 ]">
-          <h3 class="[ font--5 ]">Share this page:</h3>
-          <ul class="[ social ][ flex col-gap--1 ]">
-            <li class="[ social__item ]">
-              <a class="[ social__link ]" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | safeURL }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
-                {{- readFile "static/icons/facebook.svg" | safeHTML }}
-              </a>
-            </li>
-            <li class="[ social__item ]">
-              <a class="[ social__link ]" href="https://x.com/intent/tweet?text={{ .Title | htmlEscape }}&url={{ .Permalink | safeURL }}" target="_blank" rel="noopener" aria-label="Share on X (formerly Twitter)">
-                {{- readFile "static/icons/twitter.svg" | safeHTML }}
-              </a>
-            </li>
-            <li class="[ social__item ]">
-              <a class="[ social__link ]" href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | safeURL }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
-                {{- readFile "static/icons/linkedin.svg" | safeHTML }}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <b class="[ line ]"></b>
-</article>
+
 {{ partial "gallery.html" . }}
 {{- end -}}

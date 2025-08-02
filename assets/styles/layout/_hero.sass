@@ -1,46 +1,36 @@
 @use '../abstracts' as *
 
 .hero
-  color: color('white')
+  // color: color('white')
   background-color: color('black-5')
-  +clamp(min-height, 450, 490)
+  +clamp(min-height, 450, 550)
 
-  // > .wrapper
+  > .wrapper
+    min-height: inherit
+    height: inherit
 
   //   &--subpage
 
   &--home
-    height: em(730)
+    min-height: rem(500)
+    height: calc( 90svh - var(--height))
 
-  h1, h2
-    color: color('white')
+  &__content
+    // background-color: color('white')
+    position: relative
+    z-index: 2
 
-.hero--map
-  position: relative
-  overflow: hidden
-
-  .map-hero iframe
-    width: 100%
-    height: 400px
-
-    /* adjustable: 350–500px works well
-    border: 0
-    display: block
-
-  .hero__text
-    position: absolute
-    top: 1rem
-    left: 50%
-    transform: translateX(-50%)
-    text-align: center
-    background: rgba(0, 0, 0, 0.55)
-
-    /* overlay for contrast
-    padding: 1.5rem 2rem
-    border-radius: 0.75rem
-    color: #fff
-    max-width: 90%
-
+    &::after
+      content: ''
+      width: 200vw
+      height: calc(100% + 10em)
+      background-color: color('white')
+      opacity: 0.8
+      border-radius: em(5)
+      position: absolute
+      top: -5em
+      right: -5em
+      z-index: -1
 
 .card
   border: em(2) solid color('cc-teal')
@@ -70,4 +60,5 @@ div[data-section]::after
   background-position: center
   background-size: cover
   background-blend-mode: soft-light
-  background-attachment: fixed
+
+  // background-attachment: fixed

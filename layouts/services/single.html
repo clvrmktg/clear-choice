@@ -1,3 +1,6 @@
+{{- define "variables" -}}
+{{ .Store.Set "hasTwic" true }}
+{{- end -}}
 {{ define "main" }}
   <!-- Hero Section -->
   {{ partial "hero.html" . }}
@@ -21,17 +24,25 @@
 
   {{ with .Params.comfort_section }}
   <section class="[ full-width content-grid bg--grey layout--padding ]">
-    <div class="[ grid md:col--2 gap--3 middle ]">
+    <div class="[ grid middle md:col--2 gap--3 ]">
       <div>
         <h2>{{ .title }}</h2>
         <p>{{ .text }}</p>
   
-        <ul class="benefit-list">
+        <ul class="[ benefits ][ grid gap--1 ]">
           {{ range .benefits }}
-          <li>
-            <span class="material-icons">{{ .icon }}</span>
-            <strong>{{ .title }}</strong>
-            <p>{{ .description }}</p>
+          <li class="[ benefit ][ grid col-gap--0.5 ]">
+            {{ with $.Resources.GetMatch .icon }}
+              <span class="[ icon ]">
+                {{ .Content | safeHTML }}
+              </span>
+            {{ else }}
+              <span class="[ icon ]">⚠️ Missing Icon</span>
+            {{ end }}
+            <div>
+              <strong>{{ .title }}</strong>
+              <p class="[ pb--0 ]">{{ .description }}</p>
+            </div>
           </li>
           {{ end }}
         </ul>

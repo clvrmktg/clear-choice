@@ -37,26 +37,27 @@
 
   <section class="[ full-width content-grid bg--grey layout--spacing layout--padding ]">
 
-    <div class="[ grid middle md:col--2 gap--2 ]">
+    <div class="[ grid middle md:col--2 gap--3 ]">
       <div>
         <h2 class="[ font--500 ]">{{ .Params.why_clear_choice.title }}</h2>
         <p>{{ .Params.why_clear_choice.subtitle }}</p>  
-    
-        <ul class="[ grid gap--1 ]">
-          {{ range .Params.why_clear_choice.items }}
-            <li class="[ flex col-gap--1 ]">
-              <!-- fill #374151 -->
-              <div class="icon">
-                {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
-              </div>
-              <!-- #374151 -->
-              <div>
-                <strong>{{ .heading }}</strong>
-                <p class="[ pb--0 ]">{{ .text }}</p>
-              </div>
-            </li>
-          {{ end }}
-        </ul>
+        <div>
+          <ul class="[ benefits ][ grid gap--1 ]">
+            {{ range .Params.why_clear_choice.items }}
+              <li class="[ benefit ][ grid col-gap--0.5 ]">
+                <!-- fill #374151 -->
+                <span class="icon">
+                  {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
+                </span>
+                <!-- #374151 -->
+                <div>
+                  <strong>{{ .heading }}</strong>
+                  <p class="[ pb--0 ]">{{ .text }}</p>
+                </div>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
       </div>
   
       {{ with .Params.why_clear_choice.image }}
@@ -70,91 +71,63 @@
     </div>
   </section>
   
+  <section class="[ local-advantage ][ grid gap--2 layout--spacing ]">
+
+    <div class="[ grid gap--1 ]">
+      <div>
+        <h2>{{ .Params.local_advantage.title }}</h2>
+        <h3 class="[ font--5 ]">{{ .Params.local_advantage.subtitle }}</h3>
+      </div>
+      <p class="[ ch--45 ]">{{ .Params.local_advantage.text }}</p>
+    </div>
   
+      {{ range .Params.local_advantage.columns }}
+      {{ $col := . }}
+      <div class="[ column ][ grid gap--1 ]">
+        <h4>{{ $col.heading }}</h4>
+        <ul class="[ advantages ]">
+          {{ range $col.items }}
+          <li class="[ advantage ][ grid middle col-gap--0.5 ]">
+            <span class="icon">
+              {{ readFile (printf "static/icons/%s" $col.icon) | safeHTML }}
+            </span>
+            {{ . }}
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+  </section>
+  
+  
+  
+  {{ partial "reviews.html" . }}
+  
+
   <section class="[ grid layout--spacing ]">
     <div>
-      <h2>Local Manufacturing Advantage</h2>
-      <h3>Made in The Bahamas, Made for The Bahamas</h3>
-      <p>
-        Our PVC frames are crafted right here in The Bahamas, designed to handle our climate 
-        and meet national building codes. Local manufacturing means you get faster service, 
-        reliable repairs, and products built for island life.
+      <h2>Photo Gallery</h2>
+      <p class="[ ch--45 ]">
+        Explore our recent installations across The Bahamas — from hurricane-rated windows and doors 
+        to custom shower enclosures and storefronts. See the difference Clear Choice craftsmanship makes.
       </p>
     </div>
   
-    <div class="[ grid md:col--2 gap--2 ]">
-      <div>
-        <h4>Clear Choice (Local)</h4>
-        <ul>
-          <li>Meets Bahamian building codes</li>
-          <li>Faster service and repairs</li>
-          <li>Custom fit for local homes and businesses</li>
-          <li>Competitive, reliable pricing</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Imported Alternatives</h4>
-        <ul>
-          <li>Higher costs due to shipping</li>
-          <li>Delays in parts and servicing</li>
-          <li>Not always built for our climate</li>
-          <li>Limited local support</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  
-  <section class="[ grid layout--spacing ]">
-    <div class="[ grid center text--center ]">
-
-      <h2>Clients trust us.</h2>
-      <h3 class="[ font--2 ]">Hear from people like you.</h3>
-    
-    </div>
-
-    <ul class="[ testimonials ][ grid md:col--3 gap--2 ]">
-      <li class="[ testimonial ][ px--1 py--2 ]">
-        <div class="stars">★★★★★</div>
-        <p>"Clear Choice installed our impact windows quickly and professionally. I feel much safer now."</p>
-        <strong>- Maria P.</strong>
-      </li>
-      <li class="[ testimonial ][ px--1 py--2 ]">
-        <div class="stars">★★★★☆</div>
-        <p>"Great service and good value. The only delay was waiting on a custom size, but it was worth it."</p>
-        <strong>- J. Smith</strong>
-      </li>
-      <li class="[ testimonial ][ px--1 py--2 ]">
-        <div class="stars">★★★★★</div>
-        <p>"Excellent quality and attention to detail. I recommend them to all my friends and family."</p>
-        <strong>- A. Johnson</strong>
-      </li>
-    </ul>
-  </section>
-  
-
-  <section>
-    <h2>Photo Gallery</h2>
-    <p>
-      Explore our recent installations across The Bahamas — from hurricane-rated windows and doors 
-      to custom shower enclosures and storefronts. See the difference Clear Choice craftsmanship makes.
-    </p>
-  
     <div class="[ grid md:col--3 gap--2 ]">
       <a href="/gallery/homes" class="gallery-card">
-        <img src="/images/gallery/homes-thumb.jpg" alt="Home Installations">
+        <img class="[ ratio--1:1 ]" src="/images/gallery/homes-thumb.jpg" alt="Home Installations">
         <h3>Homes</h3>
       </a>
       <a href="/gallery/storefronts" class="gallery-card">
-        <img src="/images/gallery/storefronts-thumb.jpg" alt="Storefront Installations">
+        <img class="[ ratio--1:1 ]" src="/images/gallery/storefronts-thumb.jpg" alt="Storefront Installations">
         <h3>Storefronts</h3>
       </a>
       <a href="/gallery/showers" class="gallery-card">
-        <img src="/images/gallery/showers-thumb.jpg" alt="Shower Enclosures">
+        <img class="[ ratio--1:1 ]" src="/images/gallery/showers-thumb.jpg" alt="Shower Enclosures">
         <h3>Showers</h3>
       </a>
     </div>
-  
-    <a href="/gallery" class="btn">View Full Gallery</a>
+
   </section>
   
 

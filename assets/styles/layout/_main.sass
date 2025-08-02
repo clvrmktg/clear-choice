@@ -32,8 +32,22 @@
 
 +radius(5)
 
+.local-advantage
+  +breakpoint(tablet)
+    grid-template-columns: 2fr 1.2fr 1.2fr
+    align-items: start
+
+    // > * > *
+  //   outline: $bg
+
+  > div:first-child
+    max-width: 32ch
+
+.benefit, .advantage
+  grid-template-columns: 2em 1fr
+
 .icon
-  width: 4.5em
+  width: 2em
 
   > svg
     width: 100%

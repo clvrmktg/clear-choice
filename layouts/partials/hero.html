@@ -5,8 +5,8 @@
   <style>.hero {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
   {{ end }}
   <h1 class="[ hidden ]">Hurricane Windows and Doors Nassau | Impact Windows and Doors Nassau</h1>
-  <div class="[ wrapper ][ grid middle py--5 ]">
-    <div class="[ blur-block ]">
+  <div class="[ wrapper ][ flex middle py--5 ]">
+    <div class="[ hero__content ]">
       <h2 class="[ font--1 ]">Looking for new windows? <br> We can help!</h2>
       <p class="[ ch--45 ]">Upgrade your home or business with hurricane-rated windows and doors that combine security, style, and long-lasting value — all made right here in The Bahamas.</p>
       <div class="[ cta ][ grid gap--1 ]">
@@ -21,8 +21,8 @@
     {{ with .Resources.GetMatch (.Params.hero) }}
     <style>.hero {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
     {{ end }}
-    <div class="[ wrapper wrapper--subpage ][ grid middle ]">
-      <div>
+    <div class="[ wrapper wrapper--subpage ][ flex middle ]">
+      <div class="[ hero__content ]">
         <div >
           <h1>{{ .Title }}</h1>
           <p class="subtitle">{{ .Params.subtitle }}</p>
@@ -30,34 +30,7 @@
       </div>
     </div>
   </header>
-  <nav class="[ breadcrumbs ][ content-grid py--1 md:px--0 ]" aria-label="Breadcrumb">
-    <ol class="[ flex ][ col-gap--1 py--0.5 ]">
-  
-      {{/* Home icon link */}}
-      <li class="[ breadcrumb ]">
-        <a class="[ breadcrumb__link ]" href="/" aria-label="Home" data-prefetch>
-          <span class="icon">
-            {{ readFile "static/icons/home.svg" | safeHTML }}
-          </span>
-        </a>
-      </li>
-  
-      {{- range .Ancestors.Reverse -}}
-      {{- if not .IsHome -}}
-      <li class="[ breadcrumb ]">
-        <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>
-          {{ .LinkTitle }}
-        </a>
-      </li>
-      {{- end -}}
-    {{- end -}}
-      <li class="[ breadcrumb ][ font--700 ]">
-        <a class="[ breadcrumb__link--last ]" href="{{ .RelPermalink }}" aria-current="page" data-prefetch>
-          {{ .LinkTitle }}
-        </a>
-      </li>
-    </ol>
-  </nav>
+  {{ partial "breadcrumbs.html" . }}
   
 </div>
 {{- end -}}

@@ -8,9 +8,9 @@
   position: relative
 
   &::after
-    content: '/'
+    content: '|'
     position: absolute
-    right: -0.75em
+    right: -0.65em
     top: 0  
 
   &:last-of-type
@@ -22,7 +22,18 @@
       content: none
     
   &__link
-    +unstyled-link
+    // +unstyled-link
+    font-weight: 500
+    color: color('black')
+
+    +hover
+      color: color('cc-teal')
+
+    > .icon
+      width: 1.5em
+
+      > svg
+        fill: currentcolor
 
     &--last
       color: color('black')

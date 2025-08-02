@@ -27,9 +27,35 @@ text = "Designed with durable materials and reinforced construction, our windows
 icon = "shield.svg"
 
 
-[snapshot]
-  image = 'bullock-harbour-road-paving-020.jpg'
-  alt = 'Abaco Aggregate workers and concrete truck on work site'
+[local_advantage]
+title = "Local Manufacturing Advantage"
+subtitle = "Made in The Bahamas, Made for The Bahamas"
+text = "Local manufacturing means you get faster service, reliable repairs, and products built for island life."
+
+[[local_advantage.columns]]
+heading = "Clear Choice (Local)"
+icon = "check_circle.svg"
+items = [
+  "Meets Bahamian building codes",
+  "Faster service and repairs",
+  "Custom fit for local homes and businesses",
+  "Competitive, reliable pricing"
+]
+
+[[local_advantage.columns]]
+heading = "Imported Alternatives"
+icon = "cancel.svg"
+items = [
+  "Higher costs due to shipping",
+  "Delays in parts and servicing",
+  "Not always built for our climate",
+  "Limited local support"
+]
+
+
+# [snapshot]
+#   image = 'bullock-harbour-road-paving-020.jpg'
+#   alt = 'Abaco Aggregate workers and concrete truck on work site'
 
 +++
 
