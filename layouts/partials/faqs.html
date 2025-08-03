@@ -1,0 +1,12 @@
+<section class="faq">
+    
+  <h2>Frequently Asked Questions</h2>
+    {{ range .Params.faqs }}
+    <details class="[ faq ]">
+      <summary class="[ question ]">{{ .question }}</summary>
+      <div class="[ answer ]">
+        <p>{{ .answer }}</p>
+      </div>
+    </details>
+    {{ end }}
+</section>

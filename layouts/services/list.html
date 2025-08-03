@@ -3,31 +3,57 @@
 {{- end -}}
 {{- define "main" -}}
   {{ partial "hero.html" . }}
-  <section class="intro">
-    <div>
-      <p>
-        At Clear Choice, we combine craftsmanship with hurricane‑rated durability
-        to provide windows, doors, glass, and enclosures that are as strong as they are stylish.
-        Whether upgrading your home, rental, or storefront, we design solutions that protect what matters most.
-      </p>
+  <section class="[ grid layout--spacing ]">
+    {{ with .Params.comfort_section }}
+    <div class="[ grid middle md:col--2 gap--3 ]">
+      <div class="[ o--2 ]">
+        <h2>{{ .title }}</h2>
+        <p>{{ .text }}</p>
+  
+        <ul class="[ benefits ][ grid gap--1 ]">
+          {{ range .benefits }}
+          <li class="[ benefit ][ grid col-gap--0.5 ]">
+            {{ with $.Resources.GetMatch .icon }}
+              <span class="[ icon ]">
+                {{ .Content | safeHTML }}
+              </span>
+            {{ else }}
+              <span class="[ icon ]">⚠️ Missing Icon</span>
+            {{ end }}
+            <div>
+              <strong>{{ .title }}</strong>
+              <p class="[ pb--0 ]">{{ .description }}</p>
+            </div>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <figure class="[ ratio--1:1 o--1 ]">
+        {{ with .image }}
+        {{ partial "image.html" (dict 
+          "Destination" .
+          "PlainText" "Storefront" 
+          "class" "ratio--1:1 radius--5"
+          "Page" $
+        ) }}
+        {{ end }}
+      </figure>
+
     </div>
+    {{ end }}
+
+    {{ with .Params.highlights }}
+      <ul class="[ grid md:col--3 gap--3 ]">
+        {{ range . }}
+        <li class="[ text--center ]">
+          <h3>{{ .heading }}</h3>
+          <p> {{ .text }}</p>
+        </li>
+        {{ end }}
+      </ul>
+    {{end}}
   </section>
-  <section class="[ trust-banner ]">
-    <div class="[ grid md:col--3 gap--2 ]">
-      <div>
-        <strong>Hurricane-Rated</strong>
-        <p>Certified impact resistance for true protection.</p>
-      </div>
-      <div>
-        <strong>Lasting Style</strong>
-        <p>Modern designs that elevate your property.</p>
-      </div>
-      <div>
-        <strong>Local Support</strong>
-        <p>Manufactured and serviced right here in The Bahamas.</p>
-      </div>
-    </div>
-  </section>
+
 
   <ul class="[ services ][ grid layout--spacing layout--padding--bottom ]">
     {{ $twic := .Site.Params.twic }}
@@ -106,5 +132,7 @@
   {{ end }}
   
   </ul>
+
+  {{ partial "faqs.html" . }}
   
 {{- end -}}

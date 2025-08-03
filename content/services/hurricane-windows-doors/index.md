@@ -26,26 +26,7 @@ description = "Choose from a range of designs and finishes to match your space."
 icon = "window-closed.svg"
 
 
-[comfort_section]
-title = "Built for Strength. Designed for Comfort."
-text = """Clear Choice hurricane‑rated windows and doors offer the perfect balance of style, security, and performance. Built for The Bahamas, our impact‑resistant designs withstand severe storms, reduce noise, and improve energy efficiency — all while enhancing your property’s beauty and value."""
-
-image = "single-hung-hurricane-windows-bahamas.jpg"
-
-[[comfort_section.benefits]]
-icon = "verified.svg"
-title = "Storm-Tested Performance"
-description = "Independently certified to withstand hurricane‑force winds and flying debris."
-
-[[comfort_section.benefits]]
-icon = "light_mode.svg"
-title = "Bright, Natural Light"
-description = "Engineered glass lets in sunshine while filtering harmful UV rays."
-
-[[comfort_section.benefits]]
-icon = "construction.svg"
-title = "Expert Local Installation"
-description = "Professionally installed and serviced right here in The Bahamas."
+ 
 
 
 [[window_styles]]
