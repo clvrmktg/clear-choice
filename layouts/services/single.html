@@ -10,10 +10,20 @@
     <!-- Features Section -->
     {{ with .Params.features }}
     <ul class="[ features ][ grid center md:col--3 gap--2 ]">
-      {{ range $index, $feature := . }}
+      {{ range . }}
+      <li>
+        {{ with $.Resources.GetMatch .icon }}
+        <div class="[ flex center ]">
+          <span class="[ icon icon--4 ]">
+            {{ .Content | safeHTML }}
+          </span>
+        </div>
+        {{ else }}
+          <span class="[ icon ]">⚠️ Missing Icon</span>
+        {{ end }}
         <div class="[ text--center ]">
-          <h3>{{ $feature.title }}</h3>
-          <p>{{ $feature.description }}</p>
+          <h3>{{ .title }}</h3>
+          <p>{{ .description }}</p>
         </div>
       </li>
       {{ end }}
@@ -66,7 +76,7 @@
   <section class="[ grid layout--spacing ]">
     <div>
       <h2>Windows</h2>
-      <p class="[ font--4 ch--45 ]">Our hurricane‑rated windows combine strength and style, offering designs that maximize safety, airflow, and natural light while standing up to The Bahamas’ toughest storms.</p>
+      <p class="[ ch--45 ]">Our hurricane‑rated windows combine strength and style, offering designs that maximize safety, airflow, and natural light while standing up to The Bahamas’ toughest storms.</p>
     </div>
     <ul class="[ grid md:col--4 gap--3 ]">
       {{ range .Params.window_styles }}
@@ -90,7 +100,7 @@
     {{ with .Params.doors_section }}
     <div>
       <h2>Doors</h2>
-      <p class="[ font--4 ch--45 ]">{{ .summary }}</p>
+      <p class="[ ch--45 ]">{{ .summary }}</p>
     </div>
     <ul class="[ grid md:col--4 gap--3 ]">
       {{ range .items }}

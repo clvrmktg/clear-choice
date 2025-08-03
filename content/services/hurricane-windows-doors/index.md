@@ -3,7 +3,7 @@ date = '2025-07-30T21:42:52-04:00'
 draft = false
 title = "Hurricane Windows & Doors"
 subtitle = "Strong, stylish, and built to withstand The Bahamas’ toughest storms."
-hero = "hurricane-impact-sliding-doors-ocean-view.jpg"
+hero = "hurricane-impact-sliding-doors-ocean-view-bahamas.jpg"
 
 intro = """Our hurricane-rated windows and doors combine style with unmatched protection.
 Designed for homes, rentals, and commercial spaces, they stand up to the toughest storms 
@@ -12,24 +12,24 @@ while enhancing your property's curb appeal."""
 [[features]]
 title = "Hurricane-Rated Protection"
 description = "Certified impact resistance ensures your home is safe in any storm."
-image = "hurricane-impact-window-second-floor.jpg"
+icon = "storm.svg"
 
 [[features]]
 title = "Energy Efficiency"
 description = "Advanced insulation helps keep your energy bills low year-round."
-image = "efficiency.jpg"
+icon = "eco.svg"
 
 [[features]]
 title = "Custom Fit & Style"
 description = "Choose from a range of designs and finishes to match your space."
-image = "custom.jpg"
+icon = "window-closed.svg"
 
 
 [comfort_section]
 title = "Built for Strength. Designed for Comfort."
 text = """Clear Choice hurricane‑rated windows and doors offer the perfect balance of style, security, and performance. Built for The Bahamas, our impact‑resistant designs withstand severe storms, reduce noise, and improve energy efficiency — all while enhancing your property’s beauty and value."""
 
-image = "hurricane-impact-window-second-floor.jpg"
+image = "single-hung-hurricane-windows.jpg"
 
 [[comfort_section.benefits]]
 icon = "verified.svg"
@@ -88,7 +88,7 @@ svg = "storefront.svg"
 description = "Durable, stylish glass systems for businesses and shops."
 
 [doors_section]
-summary = "Our hurricane‑rated doors combine strength and style in two popular designs. Choose durable swinging doors for timeless entryways or sleek sliding glass doors that maximize light and views — both built to withstand The Bahamas’ toughest storms."
+summary = "Our hurricane‑rated doors combine lasting protection with modern design, offering secure entryways and space‑saving sliding glass options built for The Bahamas’ toughest storms."
 
 [[doors_section.items]]
 name = "Swinging Doors"
