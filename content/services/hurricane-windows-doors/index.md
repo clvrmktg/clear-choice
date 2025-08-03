@@ -29,7 +29,7 @@ icon = "window-closed.svg"
 title = "Built for Strength. Designed for Comfort."
 text = """Clear Choice hurricane‑rated windows and doors offer the perfect balance of style, security, and performance. Built for The Bahamas, our impact‑resistant designs withstand severe storms, reduce noise, and improve energy efficiency — all while enhancing your property’s beauty and value."""
 
-image = "single-hung-hurricane-windows.jpg"
+image = "single-hung-hurricane-windows-bahamas.jpg"
 
 [[comfort_section.benefits]]
 icon = "verified.svg"
@@ -100,6 +100,29 @@ name = "Sliding Glass Doors"
 description = "Smooth‑gliding panels that provide expansive views and easy access while resisting high winds."
 svg = "sliding-glass-doors.svg"
 
+[[faqs]]
+question = "Are Clear Choice hurricane windows and doors certified for The Bahamas?"
+answer = "Yes. All our products meet Bahamian building codes and are tested to withstand hurricane‑force winds and flying debris."
+
+[[faqs]]
+question = "Can hurricane windows and doors withstand Category 5 hurricanes?"
+answer = "They are engineered and tested to endure extreme conditions, including Category 5 storms, providing maximum protection for your property."
+
+[[faqs]]
+question = "Do hurricane windows also help reduce energy costs?"
+answer = "Absolutely. The insulated glass and tight seals help keep your home cooler in summer and reduce energy bills year‑round."
+
+[[faqs]]
+question = "Will impact windows and doors make my home quieter?"
+answer = "Yes. The laminated glass helps reduce outside noise, creating a more peaceful and comfortable living space."
+
+[[faqs]]
+question = "How long does installation usually take?"
+answer = "Most installations are completed within a few days, depending on the size of the project. All work is handled by our trained local team."
+
+[[faqs]]
+question = "Will hurricane-rated windows and doors increase my property value or lower insurance costs?"
+answer = "Yes. They add long‑term value to your home or business and may qualify you for reduced insurance premiums."
 
 
 +++

@@ -5,6 +5,7 @@ title = 'Our Services'
 subtitle = 'Protection. Style. Peace of Mind.'
 description = "Discover Abaco Aggregate & Cement Ltd.’s construction solutions in The Bahamas, including premium sand, rock, fill, concrete-ready cement, expert road paving, and debris management—engineered for durability and performance."
 
+hero = "hurricane-impact-windows-doors-installation-bahamas.jpg"
 
 [services]
 

@@ -1,0 +1,28 @@
+@use '../abstracts' as *
+
+details
+  cursor: pointer
+  +transition(color)
+
+  summary
+    cursor: pointer
+  
+  &::details-content
+    display: block
+    block-size: 0
+    overflow: hidden
+    +transition('block-size, content-visibility')
+    transition-behavior: allow-discrete
+
+details[open]
+  
+  summary
+
+    color: var(--blue--800)
+
+  &::details-content
+    block-size: auto
+    block-size: calc-size(auto)
+
+    
+  
