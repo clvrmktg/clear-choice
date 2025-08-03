@@ -3,11 +3,12 @@ date = '2025-07-30T21:42:52-04:00'
 draft = false
 title = "Hurricane Windows & Doors"
 subtitle = "Strong, stylish, and built to withstand The Bahamas’ toughest storms."
+description = "Protect your home or business with Clear Choice hurricane‑rated windows and doors. Built for The Bahamas, our impact‑resistant designs withstand severe storms while enhancing style, comfort, and energy efficiency."
 hero = "hurricane-impact-sliding-doors-ocean-view-bahamas.jpg"
 
-intro = """Our hurricane-rated windows and doors combine style with unmatched protection.
-Designed for homes, rentals, and commercial spaces, they stand up to the toughest storms 
-while enhancing your property's curb appeal."""
+summary = """Our hurricane-rated windows and doors combine style with unmatched protection. Designed for homes, rentals, and commercial spaces, they stand up to the toughest storms while enhancing your property's curb appeal."""
+
+cover = "single-hung-hurricane-windows-bahamas.jpg"
 
 [[features]]
 title = "Hurricane-Rated Protection"
