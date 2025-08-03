@@ -69,7 +69,6 @@
       <p class="[ font--4 ch--45 ]">Our hurricane‑rated windows combine strength and style, offering designs that maximize safety, airflow, and natural light while standing up to The Bahamas’ toughest storms.</p>
     </div>
     <ul class="[ grid md:col--4 gap--3 ]">
-  
       {{ range .Params.window_styles }}
       <li class="[ card ][ grid center gap--1 py--2 px--1 text--center ]">
         <div class="icon">
@@ -86,11 +85,30 @@
     </ul>
   </section>
 
-  <section>
+  <section class="[ grid layout--spacing ]">
+
+    {{ with .Params.doors_section }}
     <div>
       <h2>Doors</h2>
-
+      <p class="[ font--4 ch--45 ]">{{ .summary }}</p>
     </div>
+    <ul class="[ grid md:col--4 gap--3 ]">
+      {{ range .items }}
+      <li class="[ card ][ grid center gap--1 py--2 px--1 text--center ]">
+        <div class="icon">
+          {{ with $.Resources.GetMatch .svg }}
+            {{ .Content | safeHTML }}
+          {{ end }}
+        </div>
+        <div>
+          <h3>{{ .name }}</h3>
+          <p>{{ .description }}</p>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+
   </section>
 
   {{ partial "cta.html" . }}

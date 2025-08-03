@@ -3,11 +3,26 @@ date = '2025-07-30T21:42:52-04:00'
 draft = false
 title = "Hurricane Windows & Doors"
 subtitle = "Strong, stylish, and built to withstand The Bahamas’ toughest storms."
-image = "hurricane-windows.jpg"
+hero = "hurricane-impact-sliding-doors-ocean-view.jpg"
 
 intro = """Our hurricane-rated windows and doors combine style with unmatched protection.
 Designed for homes, rentals, and commercial spaces, they stand up to the toughest storms 
 while enhancing your property's curb appeal."""
+
+[[features]]
+title = "Hurricane-Rated Protection"
+description = "Certified impact resistance ensures your home is safe in any storm."
+image = "hurricane-impact-window-second-floor.jpg"
+
+[[features]]
+title = "Energy Efficiency"
+description = "Advanced insulation helps keep your energy bills low year-round."
+image = "efficiency.jpg"
+
+[[features]]
+title = "Custom Fit & Style"
+description = "Choose from a range of designs and finishes to match your space."
+image = "custom.jpg"
 
 
 [comfort_section]
@@ -72,21 +87,19 @@ name = "Storefront"
 svg = "storefront.svg"
 description = "Durable, stylish glass systems for businesses and shops."
 
+[doors_section]
+summary = "Our hurricane‑rated doors combine strength and style in two popular designs. Choose durable swinging doors for timeless entryways or sleek sliding glass doors that maximize light and views — both built to withstand The Bahamas’ toughest storms."
 
-[[features]]
-title = "Hurricane-Rated Protection"
-description = "Certified impact resistance ensures your home is safe in any storm."
-image = "hurricane-impact-window-second-floor.jpg"
+[[doors_section.items]]
+name = "Swinging Doors"
+description = "Classic hinged designs for secure, elegant entryways that stand up to severe weather."
+svg = "swinging-doors.svg"
 
-[[features]]
-title = "Energy Efficiency"
-description = "Advanced insulation helps keep your energy bills low year-round."
-image = "efficiency.jpg"
+[[doors_section.items]]
+name = "Sliding Glass Doors"
+description = "Smooth‑gliding panels that provide expansive views and easy access while resisting high winds."
+svg = "sliding-glass-doors.svg"
 
-[[features]]
-title = "Custom Fit & Style"
-description = "Choose from a range of designs and finishes to match your space."
-image = "custom.jpg"
 
 
 +++
