@@ -1,12 +1,32 @@
-<section class="faq">
+<section class="[ full-width content-grid bg--grey layout--spacing py--5 ]">
+  <div class="[ grid center text--center ]">
+    <h2 class="[ font--1 ]">Frequently Asked Questions</h2>
+    <p class="[ font--4 font--500 ]">Answers to some of our common customer questions.</p>
+  </div>
+  
+  
+  <div class="[ grid md:col--2 col-gap--2 row-gap--2 ]">
     
-  <h2>Frequently Asked Questions</h2>
-    {{ range .Params.faqs }}
-    <details class="[ faq ]">
-      <summary class="[ question ]">{{ .question }}</summary>
-      <div class="[ answer ]">
-        <p>{{ .answer }}</p>
+    <div class="[ accordion ][ md:o--2 ]">
+      {{ range .Params.faqs }}
+      <details class="[ faq ]" name="faq">
+        <summary class="[ question ][ flex middle font--500 p--1 ]">{{ .question }}</summary>
+        <div class="[ answer ][ p--1 ]">
+          <p>{{ .answer }}</p>
+        </div>
+      </details>
+      {{ end }}
+    </div>
+
+    <div class="[ md:o--1 ]">
+      {{/* <hr> */}}
+      <h2>Ready to protect your home or business?</h2>
+      <p>Get a free, no‑obligation quote today.</p>
+      <div>
+        <a href="/contact-us" class="[ btn btn--lg cc--cta ]" data-prefetch>Request a Quote</a>
       </div>
-    </details>
-    {{ end }}
+    </div>
+
+
+  </div>
 </section>

@@ -3,7 +3,7 @@
 {{- end -}}
 {{- define "main" -}}
   {{- partial "partials/hero.html" . -}}
-
+  {{- $twic := .Site.Params.twic -}}
   <section class="[ grid layout--spacing ]">
 
     <div>
@@ -15,7 +15,7 @@
       {{ range $services.Pages }}
         <li class="[ service ][ ratio--1:1 radius--5 ]">
           <a class="[ p--1 ]"  href="{{ .RelPermalink }}" data-prefetch>
-            {{ with .Params.image }}
+            {{ with .Params.cover }}
               <img src="{{ . }}" alt="{{ $.Title }}">
             {{ end }}
 
@@ -113,20 +113,27 @@
       </p>
     </div>
   
-    <div class="[ grid md:col--3 gap--2 ]">
-      <a href="/gallery/homes" class="gallery-card">
-        <img class="[ ratio--1:1 ]" src="/images/gallery/homes-thumb.jpg" alt="Home Installations">
-        <h3>Homes</h3>
-      </a>
-      <a href="/gallery/storefronts" class="gallery-card">
-        <img class="[ ratio--1:1 ]" src="/images/gallery/storefronts-thumb.jpg" alt="Storefront Installations">
-        <h3>Storefronts</h3>
-      </a>
-      <a href="/gallery/showers" class="gallery-card">
-        <img class="[ ratio--1:1 ]" src="/images/gallery/showers-thumb.jpg" alt="Shower Enclosures">
-        <h3>Showers</h3>
-      </a>
-    </div>
+    <ul class="[ grid md:col--3 gap--2 ]">
+      {{ $counter := 0 }}
+      {{ $galleries :=  where .Site.RegularPages "Section" "gallery" }}
+      {{ range $galleries }}
+      {{ $counter = add $counter 1 }}
+        <li>
+          <a href="{{ .RelPermalink }}" class="gallery-card" data-prefetch>
+            {{ with .Resources.GetMatch .Params.feature.image }}
+            <figure class="[ feature__img ][ ratio--1:1 scale radius--5 o--1 ]">
+              <picture id="gallery-{{ $counter }}" class="[ bg ]">
+                <style>#gallery-{{ $counter | safeCSS  }} {background-image: url('https://{{ $twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
+                <img data-twic-src="image:{{ .RelPermalink }}" data-twic-focus="auto" alt="{{ .Params.alt }}" width="{{ .Width }}" height="{{ .Height }}"/>
+                <noscript><img class="[ script ]" src="https://{{ $twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview" alt="{{ .Params.alt }}" width="{{ .Width }}" height="{{ .Height }}"/></noscript>
+              </picture>
+            </figure>
+            {{ end }}
+            <h3>{{ .Title }}</h3>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
 
   </section>
   

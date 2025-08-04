@@ -1,11 +1,30 @@
 @use '../abstracts' as *
 
 details
-  cursor: pointer
+  list-style: none
   +transition(color)
 
   summary
+    --bs-accordion-btn-icon-width: 1.25rem
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var%28--bs-body-color%29'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23166173'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    --bs-accordion-btn-icon-transform: rotate(-180deg)
     cursor: pointer
+
+    &::marker
+      content: ''
+
+    &::after
+      content: ''
+      display: block
+      flex-shrink: 0
+      width: 1.25rem
+      height: 1.25rem
+      margin-left: auto
+      background-image: var(--bs-accordion-btn-icon)
+      background-repeat: no-repeat
+      background-size: var(--bs-accordion-btn-icon-width)
+      +transition(transform)
   
   &::details-content
     display: block
@@ -14,11 +33,52 @@ details
     +transition('block-size, content-visibility')
     transition-behavior: allow-discrete
 
+.accordion
+  border-radius: em(5)
+
+// .faq
+//   &:first-of-type
+    
+//     .question
+//       border-top-left-radius: em(5)
+//       border-top-right-radius: em(5)
+
+//   &:last-of-type
+//     .question, .answer
+//       border-bottom-left-radius: em(5)
+//       border-bottom-right-radius: em(5)
+
+.question
+  background-color: #f1f9fb // subtle light aqua tint (ties into brand blue)
+  border: em(1) solid #d1e6ea // soft teal-gray border
+
+.answer
+  background-color: #ffffff // keep answers crisp white
+  border: em(1) solid #d1e6ea
+
+.question, .answer 
+  background-color: #fff
+  border: 1px solid #d1e6ea
+  border-radius: 6px
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05)
+  margin-bottom: 0.75rem
+
+
+
 details[open]
+
+  // &:last-of-type
+
+  //   .question
+  //     border-bottom-left-radius: em(0)
+  //     border-bottom-right-radius: em(0)
   
   summary
+    color: color('cc-teal')
 
-    color: var(--blue--800)
+    &::after
+      background-image: var(--bs-accordion-btn-active-icon)
+      transform: var(--bs-accordion-btn-icon-transform)
 
   &::details-content
     block-size: auto

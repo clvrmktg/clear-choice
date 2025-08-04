@@ -4,7 +4,7 @@
           {{ range $index, $image := .Resources.ByType "image" }}
           {{ $counter := add $index 1 }}
           <li class="[ thumb thumb--{{ $counter }} ]" thumbnail>
-            <figure class="[ thumbnail ][ ratio--1:1 scale ]">
+            <figure class="[ thumbnail ][ ratio--1:1 radius--5 scale ]">
               <picture id="thumbnail-{{ $counter }}" class="[ bg ]">
                 <style>#thumbnail-{{ $counter | safeCSS }} {background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
                 <img data-twic-src="image:{{ .RelPermalink }}" data-twic-focus="auto" width="720" height="720" alt=""/></picture>

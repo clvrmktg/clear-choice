@@ -6,7 +6,7 @@
   <section class="[ grid layout--spacing ]">
     {{ with .Params.comfort_section }}
     <div class="[ grid middle md:col--2 gap--3 ]">
-      <div class="[ o--2 ]">
+      <div class="[ md:o--2 ]">
         <h2>{{ .title }}</h2>
         <p>{{ .text }}</p>
   
@@ -28,7 +28,7 @@
           {{ end }}
         </ul>
       </div>
-      <figure class="[ ratio--1:1 o--1 ]">
+      <figure class="[ ratio--1:1 md:o--1 ]">
         {{ with .image }}
         {{ partial "image.html" (dict 
           "Destination" .
@@ -46,55 +46,93 @@
       <ul class="[ grid md:col--3 gap--3 ]">
         {{ range . }}
         <li class="[ text--center ]">
-          <h3>{{ .heading }}</h3>
-          <p> {{ .text }}</p>
+          {{ with $.Resources.GetMatch .icon }}
+          <div class="[ flex center ]">
+            <span class="[ icon icon--4 ]">
+              {{ .Content | safeHTML }}
+            </span>
+          </div>
+          {{ else }}
+            <span class="[ icon ]">⚠️ Missing Icon</span>
+          {{ end }}
+          <div>
+            <h3>{{ .heading }}</h3>
+            <p> {{ .text }}</p>
+          </div>
         </li>
         {{ end }}
       </ul>
     {{end}}
   </section>
 
+  {{ $twic := .Site.Params.twic }}
+  {{ range $index, $page := .Pages }}
+    {{ $counter := add $index 1 }}
 
-  <ul class="[ services ][ grid layout--spacing layout--padding--bottom ]">
-    {{ $twic := .Site.Params.twic }}
-    {{ range $index, $page := .Pages }}
-      {{ $counter := add $index 1 }}
-      <li class="[  ][ grid md:col--2 middle gap--2 ]">
-        <div class="[ o--2{{ if not (modBool $index 2) }} md:o--1{{ end }} ]">
-          <div>
-            <h2>{{ $page.Title }}</h2>
-            <p>{{ $page.Params.description }}</p>
-            <a href="{{ $page.RelPermalink }}" class="[ btn btn--lg ]">Learn More</a>
-          </div>
+    <section class="[ full-width content-grid row-gap--2 ]">
+      <div id="breakoutFeature" class="[ feature-breakout ][ breakout middle center bg radius--5 py--5 ]"{{ with .Resources.GetMatch (.Params.hero) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
+        <style>
+          #breakoutFeature {
+            background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');
+          }
+        </style>
+        
+      </div>
+      <div class="[ feature-header ][ grid col-gap--2 ]">
+        <h2>{{ $page.Title }}</h2>
+        <p>{{ $page.Params.description }}</p>
+        <div>
+          <a href="{{ $page.RelPermalink }}" class="[ btn btn--lg ]">Learn More</a>
         </div>
-        <figure class="[ service__img ][ ratio--1:1 radius--5 o--1{{ if not (modBool $index 2) }} md:o--2{{ end }} ]">
-          {{ with $page.Resources.GetMatch $page.Params.cover }}
-            <picture id="product-{{ $counter }}" class="[ bg ]">
-              <style>
-                #product-{{ $counter }} {
-                  background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');
-                }
-              </style>
-              <img data-twic-src="image:{{ .RelPermalink }}" 
-                   data-twic-focus="auto" 
-                   alt="{{ $page.Title }}" 
-                   width="{{ .Width }}" 
-                   height="{{ .Height }}" />
-              <noscript>
-                <img class="[ script ]"
-                     src="https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview" 
+      </div>
+
+    </section>
+  {{ end }}     
+
+  <ul class="[ services ][ grid layout--spacing ]">
+    {{/* 
+      
+      {{ $twic := .Site.Params.twic }}
+      {{ range $index, $page := .Pages }}
+        {{ $counter := add $index 1 }}
+        <li class="[  ][ grid md:col--2 middle gap--2 ]">
+          <div class="[ o--2{{ if not (modBool $index 2) }} md:o--1{{ end }} ]">
+            <div>
+              <h2>{{ $page.Title }}</h2>
+              <p>{{ $page.Params.description }}</p>
+              <a href="{{ $page.RelPermalink }}" class="[ btn btn--lg ]">Learn More</a>
+            </div>
+          </div>
+          <figure class="[ service__img ][ ratio--1:1 radius--5 o--1{{ if not (modBool $index 2) }} md:o--2{{ end }} ]">
+            {{ with $page.Resources.GetMatch $page.Params.cover }}
+              <picture id="product-{{ $counter }}" class="[ bg ]">
+                <style>
+                  #product-{{ $counter }} {
+                    background-image: url('https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');
+                  }
+                </style>
+                <img data-twic-src="image:{{ .RelPermalink }}" 
+                     data-twic-focus="auto" 
                      alt="{{ $page.Title }}" 
                      width="{{ .Width }}" 
                      height="{{ .Height }}" />
-              </noscript>
-            </picture>
-          {{ end }}
-        </figure>
-      </li>
-    {{ end }}
+                <noscript>
+                  <img class="[ script ]"
+                       src="https://{{ $twic }}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview" 
+                       alt="{{ $page.Title }}" 
+                       width="{{ .Width }}" 
+                       height="{{ .Height }}" />
+                </noscript>
+              </picture>
+            {{ end }}
+          </figure>
+        </li>
+      {{ end }}     
+      
+    */}}
     {{ range $index, $service := .Params.services }}
     {{ $counter := add $index 1 }}
-    <li class="[  ][ grid md:col--2 middle gap--2 {{ if modBool $index 2 }}alt{{ end }} ]">
+    <li class="[  ][ grid md:col--2 middle col-gap--3 row-gap--2 {{ if modBool $index 2 }}alt{{ end }} ]">
       <div class="[ o--2{{ if not (modBool $index 2) }} md:o--1{{ end }} ]">
         <div>
           <h2>{{ $service.name }}</h2>

@@ -25,25 +25,25 @@ title = "Designed for Island Living"
 description = "Custom glass products that bring light, beauty, and comfort into every space."
 
 [[comfort_section.benefits]]
-icon = "home_repair_service.svg"
-title = "Trusted Local Service"
-description = "Manufactured, installed, and maintained right here in The Bahamas."
+icon = "lightbulb.svg"
+title = "Energy Efficiency"
+description = "Advanced insulation that keeps your space cooler and reduces energy costs year‑round."
 
 [[highlights]]
   heading = 'Custom Orders'
-  text = "Order hurricane‑rated windows, doors, and custom glass products made to your exact specifications. Built locally, ready for pick‑up or delivery."
-  icon = "shield.svg"
+  text = "Made‑to‑order hurricane‑rated windows, doors, and glass products built locally for your home or business."
+  icon = "orders.svg"
 
 [[highlights]]
   heading = 'Expert Installation'
-  text = "Our trained Bahamian installers ensure every window, door, and enclosure is fitted with precision for lasting safety, comfort, and style."
-  icon = "window.svg"
+  text = "Professionally installed by our trained Bahamian team for lasting performance and style."
+  icon = "engineering.svg"
 
 [[highlights]]
   heading = 'Local Service'
-  text = "We provide reliable service, repairs, and preventative care — keeping your windows, doors, and glass systems performing year‑round."
+  text = "Reliable maintenance and support so your investment continues protecting what matters most."
   # text = "Reliable support and maintenance from a Bahamian team dedicated to protecting and servicing what we build."
-  icon = "handshake.svg"
+  icon = "home_repair_service.svg"
 
 [[services]]
 name = "Glass & Mirror"

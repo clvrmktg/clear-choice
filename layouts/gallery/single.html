@@ -3,10 +3,12 @@
 {{- .Store.Set "project" true -}}
 {{- end -}}
 {{- define "main" -}}
-<header>
-  <h1>{{ .Title }}</h1>
+<header class="[ full-width layout--padding--top ]">
+  <div class="[ content-grid ]">
+    <h1>{{ .Title }}</h1>
+    <p class="[ ch--45 pb--0 ]">{{ .Params.subtitle }}</p>
+  </div>
   {{ partial "breadcrumbs.html" . }}
-  <p>kjlkjdlkjfal</p>
 </header>
 
 {{ partial "gallery.html" . }}

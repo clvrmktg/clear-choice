@@ -57,7 +57,18 @@
 
   &--4
     width: 4em
-    
+
+.feature
+  
+  &-breakout
+    +clamp(min-height, 450, 500)
+
+  &-header
+    +breakpoint(desktop)
+      grid-template-columns: minmax(25%, 25ch) minmax(30%, 1fr)  max-content
+
+
+
 .service
   color: color('white')
   background-color: color('cc-teal')
