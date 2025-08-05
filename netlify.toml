@@ -38,13 +38,8 @@
   force = true
 
 [[redirects]]
-  from = "/projects/winding-bay/"
-  to = "/projects/winding-bay-parking-lot/"
+  from = "/thank-you/"
+  to = "/thank-you/"
   status = 301
   force = true
 
-[[redirects]]
-  from = "/projects/pelican-shores"
-  to = "/projects/pelican-shores-road-improvement"
-  status = 301
-  force = true

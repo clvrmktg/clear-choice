@@ -84,7 +84,7 @@ export const handler = async (event) => {
     // --- Admin Email ---
     const adminTemplate = adminEmailTemplate({ siteName, name, email, message });
     await resend.emails.send({
-      from: `${siteName} Contact <${siteEmail}>`,
+      from: `${siteName} <${siteEmail}>`,
       to: adminEmail,
       cc: ccEmails.length ? ccEmails : undefined,
       replyTo: email,
