@@ -19,9 +19,9 @@
   <div>
     <p>{{- .Content -}}</p>
 
-    <form id="contact-form" class="[ grid gap--1 ]" name="contact" action="/thank-you/" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" data-validate>
+    <form id="contact" class="[ grid gap--1 ]" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" data-validate>
       <input type="hidden" name="form-name" value="contact" />
-
+      <input type="hidden" name="redirect" value="/thank-you/" />
       <div class="hidden">
         <label>
           Don't fill this out if you're human: <input name="bot-field" />
