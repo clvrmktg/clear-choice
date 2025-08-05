@@ -106,7 +106,14 @@ export const handler = async (event) => {
       });
     }
 
-    return { statusCode: 200, body: JSON.stringify({ success: true }) };
+    // return { statusCode: 200, body: JSON.stringify({ success: true }) };
+    // --- Redirect after success ---
+    return {
+      statusCode: 302,
+      headers: {
+        Location: "/thank-you/"
+      }
+    };
   } catch (err) {
     console.error("Email failed:", err);
     return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
