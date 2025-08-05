@@ -40,7 +40,6 @@
     {{ if $.Store.Get "hasObscure" }}
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer/dist/bouncer.polyfills.min.js"></script>
     {{ partial "script.html" (dict "path" "scripts/components/validate.js" "targetPath" "scripts/validate.js") }}
-    {{ partial "script.html" (dict "path" "scripts/components/resend.js" "targetPath" "scripts/resend.js") }}
     {{ end }}
     {{ if $.Store.Get "hasThankYou" }}
     {{ partial "script.html" (dict "path" "scripts/components/thank-you.js" "targetPath" "scripts/thank-you.js") }}
