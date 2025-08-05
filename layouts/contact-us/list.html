@@ -20,11 +20,14 @@
     <p>{{- .Content -}}</p>
 
     <form id="contact-form" class="[ grid gap--1 ]" name="contact" action="/thank-you" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" data-validate>
+      <input type="hidden" name="form-name" value="contact" />
+
       <div class="hidden">
         <label>
-          Don’t fill this out if you’re human: <input name="bot-field" />
+          Don't fill this out if you're human: <input name="bot-field" />
         </label>
       </div>
+      
       <div class="[ form__field ][ grid row-gap--0.5 ]">
         <label class="[ form__label ][ font--500 font--600 ]" for="name">Name <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr></label>
         <input class="[ form__input ][ p--0.5 ]" name="name" id="name" type="text" placeholder="Your Name" required minlength="2" maxlength="50"/>
