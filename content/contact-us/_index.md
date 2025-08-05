@@ -2,12 +2,13 @@
 date = '2025-03-01T19:32:41-05:00'
 draft = false
 title = 'Contact Us'
+subtitle = "Let’s Get Started with Your Free Quote"
 
 description = "Contact Abaco Aggregate & Cement Ltd. for expert support with aggregate supply, cement products, road paving, or debris management projects across The Bahamas. We’re here to help."
 
+hero = "clear-choice-installer-hurricane-windows-bahamas.jpg"
 contact = true
 
-subtitle = "Let’s Get Started with Your Free Quote"
 
 intro = """We’re here to answer your questions and help you choose the best solution for 
 your home or business. Reach out today and one of our team members will be in touch 

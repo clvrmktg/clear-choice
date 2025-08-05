@@ -2,7 +2,7 @@
 date = '2025-07-30T21:42:52-04:00'
 draft = false
 title = "Hurricane Windows & Doors"
-subtitle = "Strong, stylish, and built to withstand The Bahamas’ toughest storms."
+subtitle = "Impact‑resistant hurricane windows and doors — strong, stylish, and engineered to withstand The Bahamas’ toughest storms."
 description = "Protect your home or business with Clear Choice hurricane‑rated windows and doors. Built for The Bahamas, our impact‑resistant designs withstand severe storms while enhancing style, comfort, and energy efficiency."
 hero = "hurricane-impact-sliding-doors-ocean-view-bahamas.jpg"
 

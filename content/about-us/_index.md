@@ -6,7 +6,7 @@ description = 'Get to know Abaco Aggregate & Cement Ltd.—your trusted partner 
 
 
 
-subtitle = "Your Clear Choice for Protection and Style in The Bahamas"
+subtitle = "Providing hurricane-rated windows, impact doors, and custom glass solutions — built for The Bahamas, trusted by homeowners and businesses alike."
 hero = 'tan-home-white-impact-windows.jpg'
 
 mission = """"""

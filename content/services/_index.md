@@ -2,7 +2,7 @@
 date = '2025-03-01T19:31:17-05:00'
 draft = false
 title = 'Our Services'
-subtitle = 'Protection. Style. Peace of Mind.'
+subtitle = 'Hurricane-rated windows, impact doors, and custom glasswork — delivering protection, style, and peace of mind to Bahamian homes and businesses.'
 description = "Discover Abaco Aggregate & Cement Ltd.’s construction solutions in The Bahamas, including premium sand, rock, fill, concrete-ready cement, expert road paving, and debris management—engineered for durability and performance."
 
 hero = "hurricane-impact-windows-doors-installation-bahamas.jpg"
