@@ -132,7 +132,7 @@
     */}}
     {{ range $index, $service := .Params.services }}
     {{ $counter := add $index 1 }}
-    <li class="[  ][ grid md:col--2 middle col-gap--3 row-gap--2 {{ if modBool $index 2 }}alt{{ end }} ]">
+    <li id="{{ urlize .name }}" class="[  ][ grid md:col--2 middle col-gap--3 row-gap--2 {{ if modBool $index 2 }}alt{{ end }} ]">
       <div class="[ o--2{{ if not (modBool $index 2) }} md:o--1{{ end }} ]">
         <div>
           <h2>{{ $service.name }}</h2>
