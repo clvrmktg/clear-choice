@@ -3,7 +3,7 @@ baseURL = 'https://clear-choiceglass.com/'
 canonifyURLs = true
 languageCode = 'en-us'
 title = 'Clear Choice Glass'
-# enableGitInfo = true
+enableGitInfo = true
 
 [ params ]
   twic = "clearchoice"
@@ -64,7 +64,9 @@ title = 'Clear Choice Glass'
       [markup.goldmark.renderHooks.link]
         enableDefault = true
 
-enableGitInfo = true
+[minify]
+  [minify.tdewolff.html]
+    keepQuotes = true
 
 [sitemap]
   filename = "sitemap"  # Remove .xml
