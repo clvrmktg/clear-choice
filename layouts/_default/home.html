@@ -135,18 +135,26 @@
   </section>
   
 
-  <section class="[ grid md:col--2 gap--2 ]">
+  <section class="[ snapshot ][ full-width content-grid middle bg layout--padding ]"
+  {{ with site.GetPage "about-us" }}
+    {{ with .Resources.GetMatch .Params.hero }}
+      data-twic-background="url(image:{{ .RelPermalink }})"
+    {{ end }}
+  {{ end }}>
 
-      <!-- image goes here -->
-      <div>
+
+    <div class="[ wrapper ][ grid ]">
+      <div class="[ snapshot__text ][ p--5 ]">
         <h2>About Clear Choice</h2>
-        <p>
+        <p class="[ ch--45 ]">
           Clear Choice Glass is a Bahamian-owned manufacturer and installer of premium hurricane-rated windows, doors, and custom glass solutions. With over 50 years of combined experience, our Nassau-based team delivers reliable, high-quality installations and local servicing you can trust. We take pride in providing lasting protection, modern style, and dedicated support for both residential and commercial clients.
         </p>
         <a href="/about-us" class="[ btn btn--lg ]" data-prefetch>Learn More
           <span class="[ hidden ]"> About Us</span>
         </a>
       </div>
+
+    </div>
   </section>
 
   {{ partial "cta.html" . }}

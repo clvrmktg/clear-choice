@@ -1,29 +1,36 @@
 @use '../abstracts' as *
 
-.products
-  grid-template-rows: max-content 1fr max-content
+// .products
+//   grid-template-rows: max-content 1fr max-content
 
-.product
+// .product
 
-  > figure
-    grid-row: 1 / 2
+//   > figure
+//     grid-row: 1 / 2
   
-  > h3
-    grid-row: 2 /3 
+//   > h3
+//     grid-row: 2 /3 
 
-  > p
-    grid-row: 3 / 4
+//   > p
+//     grid-row: 3 / 4
 
-  @supports (grid-template-rows: subgrid)
-    grid-template-rows: subgrid
-    grid-row: span 3
+//   @supports (grid-template-rows: subgrid)
+//     grid-template-rows: subgrid
+//     grid-row: span 3
     
 .snapshot
-  color: color('white')
-  background-color: color('black')
+  background-color: color('cc-teal')
 
-  h2
-    color: color('aac-gold')
+  &__text
+    grid-area: snapshot
+    background-color: color('white')
+    
+.snapshot > .wrapper
+    +clamp(min-height, 500, 600)
+    grid-template-columns: 1fr [snapshot-start] max-content [snapshot-end]
+    grid-template-rows: 1fr [snapshot-start] max-content [snapshot-end] 1fr
+
+
 
 .visually-hidden 
   position: absolute
