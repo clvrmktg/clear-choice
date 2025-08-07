@@ -2,7 +2,7 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   {{- $pageTitle := "" -}}
   {{- if .IsHome -}}
-  {{- $pageTitle = printf "%s | Concrete, Aggregate & Road Paving in The Bahamas" .Site.Title -}}
+  {{- $pageTitle = printf "%s | %s" .Site.Params.tagline .Site.Title -}}
   {{- else if and (eq .Kind "term") (eq .Section "categories") }}
   {{- $pageTitle = printf "%s | Categories | %s" .Title .Site.Title -}}
   {{- else if and (eq .Kind "term") (eq .Section "tags") }}

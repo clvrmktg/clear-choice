@@ -4,7 +4,7 @@ draft = false
 title = 'Contact Us'
 subtitle = "Let’s Get Started with Your Free Quote"
 
-description = "Contact Abaco Aggregate & Cement Ltd. for expert support with aggregate supply, cement products, road paving, or debris management projects across The Bahamas. We’re here to help."
+description = "Get in touch with Clear Choice Glass — your trusted source in The Bahamas for hurricane windows, impact doors, shower enclosures, and custom glass solutions."
 
 hero = "clear-choice-installer-hurricane-windows-bahamas.jpg"
 contact = true

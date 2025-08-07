@@ -6,6 +6,7 @@ title = 'Clear Choice Glass'
 enableGitInfo = true
 
 [ params ]
+  tagline = 'Hurricane Impact Windows & Doors | Bahamas'
   twic = "clearchoice"
   share = "/aac-logo.jpg"
   logo = "/aac-logo.png"

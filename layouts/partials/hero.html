@@ -4,7 +4,7 @@
   {{ with .Resources.GetMatch (.Params.hero) }}
   <style>.hero {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
   {{ end }}
-  <h1 class="[ hidden ]">Hurricane Windows and Doors Nassau | Impact Windows and Doors Nassau</h1>
+  <h1 class="[ hidden ]">{{- .Site.Params.tagline -}}</h1>
   <div class="[ wrapper ][ flex middle py--5 ]">
     <div class="[ hero__content ]">
       <h2 class="[ font--1 ]">Looking for new windows? <br> We can help!</h2>

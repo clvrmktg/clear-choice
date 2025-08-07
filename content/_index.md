@@ -2,7 +2,7 @@
 date = '2025-03-01T19:32:51-05:00'
 draft = false
 title = 'Home'
-description = "Abaco Aggregate & Cement Ltd. is a leading supplier of concrete, cement, and construction materials in The Bahamas. Based in Abaco and trusted by public and private clients alike, we deliver expert road paving, foundation work, and infrastructure solutions—serving projects from Treasure Cay Airport to Island Luck Plaza and beyond."
+description = "Clear Choice Glass installs hurricane windows, hurricane doors, shower enclosures, and custom glasswork — all made for the Bahamian climate and built to last."
 
 hero = "impact-windows-beach-terrace-view.jpg"
 
