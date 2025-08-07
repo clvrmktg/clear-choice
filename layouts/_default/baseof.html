@@ -16,6 +16,7 @@
       <main class="[ main ][ full-width content-grid {{ if $.Store.Get "hasPadding" }}layout--padding{{end}} layout--spacing {{ if eq .Page.Kind "404" }}error{{ end }} ]" id="main">
         {{- block "main" . -}}{{- end -}}
       </main>
+      {{ partial "cta.html" . }}
       {{- partial "footer.html" (dict "context" . "currentPage" $currentPage) -}}
     </div>
     <div id="cookie-banner" class="[ cookie--banner ][ gap--2 p--1 ]">

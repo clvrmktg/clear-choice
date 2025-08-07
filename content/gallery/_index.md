@@ -7,6 +7,8 @@ description = "Explore Abaco Aggregate's construction and infrastructure project
 
 hero = "clear-choice-hurricane-window-installation-bahamas.jpg"
 
+cta = true
+
 # [ hero ]
 #  image = 'foundation-work.jpg'
 #  alt = ''

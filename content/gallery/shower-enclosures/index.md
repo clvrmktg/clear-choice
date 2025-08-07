@@ -6,6 +6,8 @@ subtitle = "Explore Clear Choice’s custom shower glass enclosures, crafted in 
 
 description = "Explore Clear Choice’s custom shower glass enclosures, crafted in The Bahamas for lasting beauty and durability. See photos of our recent installations designed to bring spa-like luxury and easy maintenance to your home."
 
+cta = true
+
 [feature]
   image = "shower-enclosure.jpg"
   alt = "New bathroom shower enclosure installation"

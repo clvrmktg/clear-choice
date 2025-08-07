@@ -5,7 +5,7 @@
 
 {{ $all := slice }}
 {{ range $json.result.reviews }}
-  {{ if and (ge .rating 4) (ne .text "") }}
+  {{ if and (ge .rating 1) (ne .text "") }}
     {{ $all = $all | append . }}
   {{ end }}
 {{ end }}

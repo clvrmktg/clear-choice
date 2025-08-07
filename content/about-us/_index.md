@@ -2,16 +2,14 @@
 date = '2025-03-01T19:31:52-05:00'
 draft = false
 title = 'About Clear Choice'
+subtitle = "Providing hurricane-rated windows, impact doors, and custom glass solutions — built for The Bahamas, trusted by homeowners and businesses alike."
 description = 'Get to know Abaco Aggregate & Cement Ltd.—your trusted partner for high-quality aggregate, concrete-ready cement, road paving, and debris management in The Bahamas. Built for tough terrains, committed to resilient infrastructure.'
 
 
-
-subtitle = "Providing hurricane-rated windows, impact doors, and custom glass solutions — built for The Bahamas, trusted by homeowners and businesses alike."
 hero = 'tan-home-white-impact-windows.jpg'
 
-mission = """"""
+cta = true
 
-story = """"""
 
 # [ hero ]
 #  image = 'tan-home-white-impact-windows.jpg'
