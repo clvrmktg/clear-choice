@@ -9,8 +9,8 @@ enableGitInfo = true
   tagline = 'Hurricane Impact Windows & Doors | Bahamas'
   font = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
   twic = "clearchoice"
-  share = "/aac-logo.jpg"
-  logo = "/aac-logo.png"
+  share = "/logo.jpg"
+  logo = "/logo.png"
   # Facebook App ID
   app_id = "223848628924279"
   error = true
