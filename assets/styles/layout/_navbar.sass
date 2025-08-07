@@ -19,7 +19,7 @@
 .backdrop
   width: 100vw
   height: inherit
-  // background-color: color('cc-teal')
+  background-color: color('white')
   position: absolute
   top: 0
   left: -2em
@@ -35,7 +35,7 @@
     visibility: hidden
     width: 100vw
     height: 100svh
-    background-color: color('aac-gold')
+    background-color: color('white')
     padding-top: var(--height)
     position: absolute
     top: 0
@@ -59,43 +59,57 @@
   &__item
 
     +device(tablet)
-      border-bottom: em(2) solid color('black')
+      border-bottom: em(2) solid color('cc-teal')
 
-    &:has(.current)
-      background-color: color('black')
+      &:has(.current)
+        background-color: color('cc-teal')
 
-    +hover
-      background-color: color('black')
+      +hover
+        background-color: color('cc-teal')
 
   &__link
-    color: color('black')
+    color: color('cc-teal')
     position: relative
-    +transition((color, opacity))
-    
+    +transition(color)
+
+    &.current
+      color: color('white')
+
+      &::before
+        opacity: 1
+
+    +hover
+      color: color('white')
+
+      &::before
+        opacity: 1
+
     +device(desktop)
-      // color: color('white')
+      color: color('text-grey')
 
       &::before
         content: ''
-        width: em(4)
+        width: em(8)
         height: 100%
-        background-color: color('aac-gold')
+        background-color: color('cc-teal')
         position: absolute
         top: 5%
         left: em(-15)
         opacity: 0
 
-    &.current
-      color: color('aac-gold')
+      &.current
+        color: color('cc-teal')
+        +transition(opacity)
 
-      &::before
-        opacity: 1
+        &::before
+          opacity: 1
 
-    +hover
-      color: color('aac-gold')
+      +hover
+        color: color('cc-teal')
+        +transition(opacity)
 
-      &::before
-        opacity: 1
+        &::before
+          opacity: 1
 
 .link--navbar
   
@@ -118,7 +132,7 @@
   display: block
   width: inherit
   height: em(2)
-  background-color: color('aac-gold')
+  background-color: color('cc-teal')
   border-radius: em(1)
   position: relative
   +transition((transform, background-color))
@@ -153,7 +167,7 @@
     // top: 0
   
   .bar
-    background-color: color('aac-gold')
+    background-color: color('cc-teal')
     transform: rotate(225deg)
   
     &::before

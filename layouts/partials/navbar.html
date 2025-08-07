@@ -14,8 +14,8 @@
         {{- $currentPage := .currentPage -}}
         {{with $context}}
           {{ range .Site.Menus.main }}
-          <li class="[ menu__item ][ grid font--500 ]">
-            <a class="[ menu__link link--navbar ]{{ if eq $.currentPage.RelPermalink .URL }}[ current {{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
+          <li class="[ menu__item ][ grid font--600 ]">
+            <a class="[ menu__link link--navbar ]{{ if eq $.currentPage.RelPermalink .URL }}[ current ]{{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
           </li>
           {{ end }}
         {{end}}
