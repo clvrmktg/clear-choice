@@ -1,0 +1,48 @@
+{{- $font := .Site.Params.font -}}
+{{- /* 1. Preconnect */ -}}
+{{- if .Params.hasTwic }}
+  <link rel="preconnect" href="https://{{ .Site.Params.twic }}.twic.pics/?v1">
+{{- end }}
+{{with $font }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{end}}
+{{- /* 2. Preload styles first */ -}}
+{{- $style := resources.Get "styles/style.sass" }}
+{{- $opts := dict
+  "enableSourceMap" (not hugo.IsProduction)
+  "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+  "targetPath" "styles/style.css"
+  "transpiler" "dartsass"
+}}
+{{- $compiled := $style | toCSS $opts }}
+{{- $fingerprinted := cond hugo.IsProduction ($compiled | fingerprint "sha256") $compiled }}
+
+<link rel="preload" href="{{ $fingerprinted.RelPermalink }}" as="style"
+  {{- if hugo.IsProduction }} integrity="{{ $fingerprinted.Data.Integrity }}" crossorigin="anonymous"{{- end }}>
+
+{{- /* 5. Preload Twic script AFTER styles (low priority) */ -}}
+{{- if .Params.hasTwic }}
+  <link rel="preload" href="https://{{ .Site.Params.twic }}.twic.pics/?v1" as="script">
+{{- end }}
+{{ with $font }}
+  <link href="{{ $font }}" rel="stylesheet">
+{{ end }}
+<link rel="stylesheet" href="{{ $fingerprinted.RelPermalink }}"
+  {{- if hugo.IsProduction }} integrity="{{ $fingerprinted.Data.Integrity }}" crossorigin="anonymous"{{- end }}>
+
+<noscript>
+  <style>.script { display: none; visibility: hidden }</style>
+</noscript>
+
+{{- /* 6. Actual scripts (deferred or async) */ -}}
+{{- if .Store.Get "hasTwic" }}
+  <script src="https://{{ .Site.Params.twic }}.twic.pics/?v1" async defer></script>
+{{- end }}
+{{/* 
+  {{- if .Store.Get "hasCode" -}}
+  {{ partial "script.html" (dict "path" "scripts/vendor/prism.js" "targetPath" "scripts/prism.js") }}
+  {{- end -}}  
+*/}}
+
+{{ partial "gtag.html" . }}

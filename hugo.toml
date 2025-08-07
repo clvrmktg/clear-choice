@@ -7,6 +7,7 @@ enableGitInfo = true
 
 [ params ]
   tagline = 'Hurricane Impact Windows & Doors | Bahamas'
+  font = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
   twic = "clearchoice"
   share = "/aac-logo.jpg"
   logo = "/aac-logo.png"
@@ -64,6 +65,9 @@ enableGitInfo = true
     [markup.goldmark.renderHooks]
       [markup.goldmark.renderHooks.link]
         enableDefault = true
+
+[security.funcs]
+getenv = ['^HUGO_', '^GA_TRACKING_ID$']
 
 [minify]
   [minify.tdewolff.html]
