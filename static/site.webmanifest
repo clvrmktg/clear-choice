@@ -1,11 +1,16 @@
 {
-  "name": "Abaco Aggregate & Cement, Ltd.",
-  "short_name": "AAC",
-  "icons": [{
+  "name": "Clear Choice Glass",
+  "short_name": "Clear Choice",
+  "icons": [
+    {
       "src": "/google-touch-icon.png",
-      "sizes": "512x512"
-  }],
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
   "background_color": "#ffffff",
-  "theme_color": "#191919",
-  "display": "fullscreen"
+  "theme_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
 }

@@ -57,12 +57,18 @@
   {{- end }}
   {{ if eq hugo.Environment "production" }}
   {{ end }}
-  <link rel="icon" type="image/png" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-  <link rel="mask-icon" href="/favicon-light.svg" color="#9395A1">
+  {{/* 
+    <link rel="icon" type="image/png" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+    
+  */}}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="mask-icon" href="/favicon.svg" color="#1f859c">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0d1117">
+
+  <meta name="theme-color" content="#ffffff">
   {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
   <meta property="fb:app_id" content="384650276688740">
   <meta property="og:url" content="{{ .Permalink  }}">
