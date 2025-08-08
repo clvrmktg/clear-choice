@@ -11,8 +11,6 @@
     min-height: inherit
     height: inherit
 
-  //   &--subpage
-
   &--home
     min-height: rem(500)
     height: calc( 100vh - var(--height))
@@ -36,6 +34,18 @@
       top: -5em
       right: -5em
       z-index: -1
+
+
+  &--map
+    +clamp(min-height, 450, 550)
+    position: relative
+    z-index: 1
+
+#map
+  width: 100%
+  min-height: inherit
+  position: absolute
+  z-index: -1
 
 .card
   border: em(2) solid color('cc-teal')

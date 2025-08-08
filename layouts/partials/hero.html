@@ -15,6 +15,23 @@
     </div>
   </div>
 </header>
+{{- else if .Params.contact -}}
+  <!-- Map as hero -->
+  <div class="[ hero--map ][ full-width ]">
+    {{ partial "google-map.html" . }}
+    <header class="[ hero ][ full-width content-grid bg  ]">
+      <div class="[ wrapper wrapper--subpage ][ flex middle ]">
+        <div class="[ hero__content ]">
+          <div >
+            <h1>{{ .Title }}</h1>
+            <p class="[ subtitle ][ ch--45 ]">{{ .Params.subtitle }}</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    {{ partial "breadcrumbs.html" . }}
+  </div>
+
 {{- else -}}
 <div class="[ full-width ]">
   <header class="[ hero ][ full-width content-grid bg ]"{{ with .Resources.GetMatch (.Params.hero) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
@@ -31,6 +48,5 @@
     </div>
   </header>
   {{ partial "breadcrumbs.html" . }}
-  
 </div>
 {{- end -}}

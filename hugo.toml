@@ -10,15 +10,22 @@ enableGitInfo = true
   font = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
   twic = "clearchoice"
   share = "/logo.jpg"
-  logo = "/logo.png"
+  logo = "/logo.jpg"
   # Facebook App ID
   app_id = "223848628924279"
   error = true
   maintenance = false
+  # Google Maps
+
+[params.map]
+  api = "AIzaSyC9yuwztGur68BRIz3L23XDkeIenjUFVoU"
+  lat  = 25.0725332
+  lng  = -77.3272505
+  zoom = 15
 
 [taxonomies]
-  category = "categories"
-  tag = "tags"
+  # category = "categories"
+  # tag = "tags"
 
 [menu]
   # [[menu.main]]
