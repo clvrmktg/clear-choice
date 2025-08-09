@@ -10,11 +10,11 @@
       <h2>Explore Windows &amp; Doors</h2>
       <p class="[ font--4 ch--45 ]">Clear Choice offers a full range of impact windows, doors, and custom glass solutions —  designed to protect, enhance, and add lasting value to your home or business.</p>
     </div>
-    <ul class="[ services ][ grid md:col--3 gap--2 ]">
+    <ul class="[ cards ][ grid md:col--3 gap--2 ]">
 
       {{ with site.GetPage "services/hurricane-windows-doors" }}
       {{ $servicePage := . }}
-      <li class="[ service ][ radius--5 ]">
+      <li class="[ card ][ radius--5 ]">
         <a class="[ radius--5 ]" href="{{ $servicePage.RelPermalink }}" data-prefetch>
           {{ with $servicePage.Params.hero }}
             {{ partial "image.html" (dict 
@@ -38,8 +38,8 @@
       {{ $servicesPage := . }}
       {{ $first := index .Params.services 0 }}
       {{ with $first }}
-        <li class="[ service ][ radius--5 ]">
-          <a href="{{ $servicesPage.RelPermalink }}#{{ urlize .name }}" class="[ radius--5 ]">
+        <li class="[ card ][ radius--5 ]">
+          <a href="{{ $servicesPage.RelPermalink }}#{{ urlize .name }}" class="[ radius--5 ]" data-prefetch>
             {{ with $servicesPage.Resources.GetMatch .image }}
             {{ partial "image.html" (dict 
               "Destination" .Name 
@@ -58,13 +58,24 @@
         </li>
       {{ end }}
     {{ end }}
-
-      <li class="[ service ][ radius--5 ]">
-        <a class="[ p--1 ]" href="/services" data-prefetch>
+    {{ with site.GetPage "services" }}
+      {{ $servicesPage := . }}
+      <li class="[ card ][ radius--5 ]">
+        <a class="[ p--1 ]" href="{{ $servicesPage.RelPermalink }}" data-prefetch>
+          {{ with $servicesPage.Resources.GetMatch $servicesPage.Params.hero }}
+            {{ partial "image.html" (dict 
+              "Destination" .Name 
+              "PlainText" $servicesPage.Title
+              "class" "ratio--1:1 scale radius--5"
+              "Page" $servicesPage
+            ) }}
+          {{ end }}
           <span class="[ font--4 font--500 ]">View All Services</span>
           {{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}
         </a>
       </li>
+    {{ end }}
+  
     </ul>
   </section>
 

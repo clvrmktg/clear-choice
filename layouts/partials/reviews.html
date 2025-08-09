@@ -11,10 +11,10 @@
 {{ end }}
 
 {{ if gt (len $all) 0 }}
-<section class="[{{ if .IsHome }} full-width content-grid bg--grey py--5 {{else}} grid {{end}}layout--spacing ]">
+<section class="[{{ if .IsHome }} full-width content-grid bg--grey py--5 {{else}} grid {{end}}layout--spacing {{if not .IsHome}}layout--padding--bottom {{end}}]">
   <div class="[ grid center ]">
     <h2>What Our Customers Say</h2>
-    <p class="[ intro ]">From Nassau to the Family Islands, customers trust Clear Choice for secure, stylish glass solutions. Don't just take our word for it — hear directly from the people we've helped protect their homes and businesses.</p>
+    <p class="[ intro ][ ch--60 font--4 text--center pb--0 ]">From Nassau to the Family Islands, customers trust Clear Choice for secure, stylish glass solutions. Don't just take our word for it — hear directly from the people we've helped protect their homes and businesses.</p>
   </div>
 
   {{ $shuffled := shuffle $all }}
@@ -22,7 +22,7 @@
   
   <ul class="[ grid md:col--3 gap--2 ]">
     {{ range $limited }}
-      <li class="[ bg--grey grid row-gap--0.5 py--2 px--1 radius--5 ]">
+      <li class="[{{ if $.IsHome }} bg--white{{ else }} bg--grey{{ end }} grid row-gap--0.5 py--2 px--1 radius--5 ]">
         <div class="stars">
           {{- $fullStars := int .rating -}}
           {{- $emptyStars := sub 5 $fullStars -}}
