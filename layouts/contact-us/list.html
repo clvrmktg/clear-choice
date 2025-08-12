@@ -18,7 +18,7 @@
 <div class="[ layout--sidebar--right ][ grid gap--2 layout--padding--bottom ]">
 
   <div>
-    <p>{{- .Content -}}</p>
+    {{- .Content -}}
 
     <form id="contact" class="[ grid gap--1 ]" name="contact" action="/thank-you" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" data-validate>
       <input type="hidden" name="form-name" value="contact" />
@@ -38,16 +38,17 @@
       </div>
       <div class="[ form__field ][ grid row-gap--0.5 ]">
         <label class="[ form__label ][ font--500 font--600 ]" for="inquiry">What can we help you with?</label>
-        <select class="[ form__input ][ p--0.5 ]" id="inquiry" name="inquiry">
-          <option value="">Please select...</option>
-          <option value="general-inquiry">General Inquiry</option>
-          <option value="quote-hurricane-windows">Hurricane Windows</option>
-          <option value="quote-impact-doors">Impact Doors</option>
-          <option value="quote-custom-glass-mirrors">Custom Glass &amp; Mirrors</option>
-          <option value="quote-shower-enclosures">Shower Enclosures</option>
-          <option value="quote-storefronts">Storefronts</option>
-        </select>
-
+        <div class="[ select-wrapper ]">
+          <select class="[ form__input ][ p--0.5 ]" id="inquiry" name="inquiry">
+            <option value="">Please select...</option>
+            <option value="general-inquiry">General Inquiry</option>
+            <option value="quote-hurricane-windows">Hurricane Windows</option>
+            <option value="quote-impact-doors">Impact Doors</option>
+            <option value="quote-custom-glass-mirrors">Custom Glass &amp; Mirrors</option>
+            <option value="quote-shower-enclosures">Shower Enclosures</option>
+            <option value="quote-storefronts">Storefronts</option>
+          </select>
+        </div>
       </div>
       <div class="[ form__field ][ grid row-gap--0.5 ]">
         <label class="[ form__label ][ font--500 font--600 ]" for="message">Message <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr></label>
@@ -60,22 +61,36 @@
     </form>
   </div>
   <aside class="[ sidebar ]">
-    <address class="[ pb--2 ]">
-      <span>Clear Choice</span>
-      <br>
-      <span>Shirley Street</span>
-      <br>
-      <span>Nassau, <abbr title="New Providence" aria-label="New Providence">NP</abbr></span>
-      <br>
-      <span>Bahamas</span>
-    </address>
-    <div class="[ grid row-gap--0.5 ]">
-      <template obscure="obscure" data-p1="info" data-p2="clear-choiceglass.com">
-        <span><a href="+mailto:%1%@2%">%1@%2</a></span>
-      </template>
-      <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="813" data-p4="7981">
-        <span><a href="tel:%1%2%3%4">(%2) %3-%4</a></span>
-      </template>
+    <div class="[ grid gap--2 ]">
+      <address>
+        <span>Clear Choice</span>
+        <br>
+        <span>Shirley Street</span>
+        <br>
+        <span>Nassau, <abbr title="New Providence" aria-label="New Providence">NP</abbr></span>
+        <br>
+        <span>Bahamas</span>
+      </address>
+      <div class="[ grid row-gap--1 ]">
+        {{/*  <template obscure="obscure" data-p1="info" data-p2="clear-choiceglass.com">
+          <span><a href="+mailto:%1%@2%">%1@%2</a></span>
+        </template>  */}}
+        <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="322" data-p4="6724">
+          <span><a href="tel:%1%2%3%4">(%2) %3-%4</a></span>
+        </template>
+      </div>
+      <ul class="[ social ][ flex middle gap--1 ]">
+        <li class="[ social__item ]">
+          <a class="[ social__link ]" href="https://www.facebook.com/profile.php?id=61575457025109" target="_blank" rel="noopener" data-prefetch>
+            {{- readFile "static/icons/facebook.svg" | safeHTML }}
+          </a>
+        </li>
+        <li class="[ social__item ]">
+          <a class="[ social__link ]" href="https://www.bahamaslocal.com/listing_email/22727/Clear_Choice_Glass.html" target="_blank" rel="noopener" data-prefetch>
+            {{- readFile "static/icons/bahamas-local.svg" | safeHTML }}
+          </a>
+        </li>
+      </ul>
     </div>
   </aside>
 </div>

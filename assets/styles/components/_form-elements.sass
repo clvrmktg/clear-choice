@@ -4,6 +4,29 @@ input, textarea, select
   border: em(2) solid color('black')
   border-radius: 0
 
+select
+  appearance: none
+  display: block
+  width: 100%
+
+.select-wrapper
+  position: relative
+
+  &::after
+    content: ''
+    display: block
+    width: 1em
+    height: 1em
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var%28--bs-body-color%29'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    position: absolute
+    inset-block: 0
+    margin:
+      top: auto
+      bottom: auto
+    right: 1em
+    z-index: 1
+    // outline: $bg
+
 textarea
   min-height: 10rem
 
