@@ -8,6 +8,14 @@ hero = "impact-windows-beach-terrace-view.jpg"
 
 cta = true
 
+snapshot = """
+Clear Choice Glass is a Bahamian-owned manufacturer and installer of hurricane windows and doors, including hurricane impact windows, and custom glasswork in Nassau, Bahamas.
+
+With over 50 years of combined experience, our team delivers high-quality installations, reliable local servicing, and products built for the Bahamian climate. 
+
+We provide lasting protection, modern style, and dedicated support for residential, commercial, and rental properties.
+"""
+
 [why_clear_choice]
 title = "Why Clear Choice"
 subtitle = "We're The Bahamas' leading supplier of impact windows and doors, trusted by homeowners and businesses to keep you safe, secure, and comfortable."
@@ -55,20 +63,4 @@ items = [
 ]
 
 
-# [snapshot]
-#   image = 'bullock-harbour-road-paving-020.jpg'
-#   alt = 'Abaco Aggregate workers and concrete truck on work site'
-
 +++
-
-<!-- Abaco Aggregate, your premier source for high-quality construction materials and services in the Bahamas. -->
-
-<!-- From premium aggregates to top-tier cement and expert asphalt paving, we're committed to delivering excellence in every project we undertake. -->
-
-<!-- With a focus on efficiency, safety, and community development, Abaco Aggregate is your trusted partner for building a sustainable future. -->
-
-Abaco Aggregate is your trusted source for high-quality aggregates, debris management, and infrastructure services in The Bahamas.
-
-We proudly serve government agencies, private developers, and commercial contractors—delivering reliable solutions from construction-grade sand, rock, and fill to durable cement products and expert road paving using high-performance asphalt.
-
-With a commitment to safety, efficiency, and sustainable development, Abaco Aggregate helps build cleaner job sites, stronger communities, and more resilient infrastructure—one project at a time.

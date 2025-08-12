@@ -4,11 +4,13 @@
   {{ with .Resources.GetMatch (.Params.hero) }}
   <style>.hero {background-image: url('https://{{- $twic -}}.twic.pics/{{ .RelPermalink }}?twic=v1/output=preview');}</style>
   {{ end }}
-  <h1 class="[ hidden ]">{{- .Site.Params.tagline -}}</h1>
+  {{/* 
+    <h1 class="[ hidden ]">{{- .Site.Params.tagline -}}</h1>
+  */}}
   <div class="[ wrapper ][ flex middle py--5 ]">
     <div class="[ hero__content ]">
-      <h2 class="[ font--1 ]">Looking for new windows? <br> We can help!</h2>
-      <p class="[ ch--45 ]">Upgrade your home or business with hurricane-rated windows and doors that combine security, style, and long-lasting value — all made right here in The Bahamas.</p>
+      <h1 class="[ font--1 ]">Looking for new windows<br>and doors?</h1>
+      <p class="[ ch--45 ]">Upgrade your home or business with hurricane windows and doors, including hurricane impact windows, that combine security, style, and lasting value — all locally crafted in The Bahamas.</p>
       <div class="[ cta ][ grid gap--1 ]">
         <a class="[ btn btn--lg cc--cta ]" href="/contact-us/" data-prefetch>Request a Quote</a>
       </div>

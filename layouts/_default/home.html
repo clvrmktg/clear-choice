@@ -8,7 +8,7 @@
 
     <div>
       <h2>Explore Windows &amp; Doors</h2>
-      <p class="[ font--4 ch--45 ]">Clear Choice offers a full range of impact windows, doors, and custom glass solutions —  designed to protect, enhance, and add lasting value to your home or business.</p>
+      <p class="[ font--4 ch--45 ]">Clear Choice offers a full range of hurricane-rated windows and doors, and custom glasswork — locally crafted in The Bahamas to protect, enhance, and add lasting value to your home or business.</p>
     </div>
     <ul class="[ cards ][ grid md:col--3 gap--2 ]">
       {{ with site.GetPage "services/hurricane-windows-doors" }}
@@ -138,19 +138,18 @@
   
 
   <section class="[ snapshot ][ full-width content-grid middle bg layout--padding ]"
-  {{ with site.GetPage "about-us" }}
-    {{ with .Resources.GetMatch .Params.hero }}
-      data-twic-background="url(image:{{ .RelPermalink }})"
-    {{ end }}
-  {{ end }}>
-
+    {{ with site.GetPage "about-us" }}
+      {{- with .Resources.GetMatch .Params.hero -}}
+        data-twic-background="url(image:{{ .RelPermalink }})"
+      {{- end -}}
+    {{- end -}}>
 
     <div class="[ wrapper ][ grid ]">
       <div class="[ snapshot__text ][ radius--5 px--2 py--5 ]">
         <h2>About Clear Choice</h2>
-        <p class="[ ch--45 ]">
-          Clear Choice Glass is a Bahamian-owned manufacturer and installer of premium hurricane-rated windows, doors, and custom glass solutions. With over 50 years of combined experience, our Nassau-based team delivers reliable, high-quality installations and local servicing you can trust. We take pride in providing lasting protection, modern style, and dedicated support for both residential and commercial clients.
-        </p>
+        <div class="[ ch--45 ]">
+          {{ .Params.snapshot | markdownify }}
+        </div>
         <a href="/about-us" class="[ btn btn--lg cc--primary ]" data-prefetch>Learn More
           <span class="[ hidden ]"> About Us</span>
         </a>
