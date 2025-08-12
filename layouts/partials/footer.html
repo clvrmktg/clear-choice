@@ -1,22 +1,43 @@
-<footer class="[ footer ][ full-width content-grid py--5 ]">
+<footer class="[ footer ][ full-width content-grid pt--5 pb--2 ]">
   <div class="[ wrapper wrapper--footer ][ grid gap--4 pb--2 ]">
 
-    <div>
-      <p class="[ ch--35 ]">
-        <small>Clear Choice Glass is your trusted partner for hurricane-rated windows, doors, and custom glass solutions across The Bahamas. With locally manufactured PVC frames and expert service, we provide secure, stylish, and lasting protection for homes, rentals, and businesses.</small>
-      </p>
-      <div class="[ logo-slogan ][ grid col-gap--2 row-gap--1 ]">
+    {{/* What unique class name here? */}}
+    <div class="[ imprimatur ][ grid gap--2 ]">
+      <div class="[ brand ][ grid gap--1 ]">
         <a class="[ logo ][ flex middle mb--1 ]" href="/" aria-label="Homepage">
           {{- readFile "static/icons/logo.svg" | safeHTML }}
         </a>
-        <div class="[ slogan ]">
-          <p class="[ pb--0 ]">Lasting Protection. <br>Lasting style.</p>
-        </div>
+
+        <ul class="[ social ][ flex center middle gap--1 ]">
+          <li class="[ social__item ]">
+            <a class="[ social__link ]" href="https://www.facebook.com/profile.php?id=61575457025109" target="_blank" rel="noopener" data-prefetch>
+              {{- readFile "static/icons/facebook.svg" | safeHTML }}
+            </a>
+          </li>
+          <li class="[ social__item ]">
+            <a class="[ social__link ]" href="https://www.bahamaslocal.com/listing_email/22727/Clear_Choice_Glass.html" target="_blank" rel="noopener" data-prefetch>
+              {{- readFile "static/icons/bahamas-local.svg" | safeHTML }}
+            </a>
+          </li>
+        </ul>
       </div>
 
+      <div class="[ summary ][ ch--35 ]">
+        <p class="[ tagline ][ font--700 pb--0 ]">Lasting Protection. Lasting style.</p>
+        <p>
+          <small>Clear Choice Glass is your trusted partner for hurricane-rated windows, doors, and custom glass solutions across The Bahamas. With locally manufactured PVC frames and expert service, we provide secure, stylish, and lasting protection for homes, rentals, and businesses.</small>
+        </p>
+      </div>
     </div>
-    <nav class="[ navigation--footer ][ flex middle ]">
-      <ul class="[ menu--footer ][ grid md:col--2 col-gap--4 row-gap--1 ]">
+
+    <address class="[ address ][ flex col-gap--0.25 ]">
+      <span>Clear Choice Glass</span>
+      <span>Shirley Street</span>
+      <span>Bahamas</span>
+    </address>
+    
+    <nav class="[ navigation--footer ]">
+      <ul class="[ menu--footer ][ grid lg:col--2 col-gap--4 row-gap--1 ]">
         {{- $context := .context -}}
         {{- $currentPage := .currentPage -}}
         {{with $context}}
@@ -29,16 +50,19 @@
       </ul>
     </nav>
   </div>
-  <div class="[ copy ][ between middle gap--2 ]">
-    <nav class="[ md:o--2 ]">
+  <div class="[ copy ][ gap--2 ]">
+    <nav class="[ lg:o--2 ]">
       <ul>
         <li>
-          <small><a class="[ policy ]" href="/privacy-policy">Privacy Policy</a></small>
+          <small><a class="[ policy ]" href="/privacy-policy" data-prefetch="">Privacy Policy</a></small>
         </li>
       </ul>
     </nav>
-    <small class="[ md:o--1 ]">
-      <span>© 2024 {{ $.Site.Title }}</span> <span>All rights reserved.</span>
-    </small>
+    <div class="[ lg:o--1 ]">
+      <div>
+        <small>© {{ now.Year }} {{ .context.Site.Title }}.</small> <small>All rights reserved.</small>
+      </div>
+      <small>Website by <a class="[ agency ]" href="https://getclever.marketing" target="_blank" rel="noopener" data-prefetch>Clever Marketing, Ltd.</a></small>
+    </div>
   </div>
 </footer>

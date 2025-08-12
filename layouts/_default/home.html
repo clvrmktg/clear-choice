@@ -11,70 +11,36 @@
       <p class="[ font--4 ch--45 ]">Clear Choice offers a full range of impact windows, doors, and custom glass solutions —  designed to protect, enhance, and add lasting value to your home or business.</p>
     </div>
     <ul class="[ cards ][ grid md:col--3 gap--2 ]">
-
       {{ with site.GetPage "services/hurricane-windows-doors" }}
-      {{ $servicePage := . }}
-      <li class="[ card ][ radius--5 ]">
-        <a class="[ radius--5 ]" href="{{ $servicePage.RelPermalink }}" data-prefetch>
-          {{ with $servicePage.Params.hero }}
-            {{ partial "image.html" (dict 
-                "Destination" .
-                "PlainText" "Storefront"
-                "class" "ratio--1:1 scale radius--5"
-                "Page" $servicePage
-            ) }}
-          {{ end }}
-          {{/* 
-            <h3 class="[ font--4 font--500 ]">
-              <span>{{ $servicePage.Title }}</span>
-            </h3>
-            {{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}
-          */}}
-        </a>
-      </li>
+      {{ partial "card.html" (dict
+        "page"  .
+        "image" .Params.hero
+        "alt"   "Storefront"
+      ) }}
     {{ end }}
     
     {{ with site.GetPage "section" "services" }}
       {{ $servicesPage := . }}
       {{ $first := index .Params.services 0 }}
       {{ with $first }}
-        <li class="[ card ][ radius--5 ]">
-          <a href="{{ $servicesPage.RelPermalink }}#{{ urlize .name }}" class="[ radius--5 ]" data-prefetch>
-            {{ with $servicesPage.Resources.GetMatch .image }}
-            {{ partial "image.html" (dict 
-              "Destination" .Name 
-              "PlainText" $first.name
-              "class" "ratio--1:1 scale radius--5"
-              "Page" $servicesPage
-            ) }}
-            {{ end }}
-            {{/* 
-              <h3 class="[ font--4 font--500 ]">
-                <span>{{ .name }}</span>
-              </h3>
-              {{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}
-            */}}
-          </a>
-        </li>
+        {{ partial "card.html" (dict
+          "page"  $servicesPage
+          "title" .name
+          "href"  (printf "%s#%s" $servicesPage.RelPermalink (urlize .name))
+          "image" .image
+          "alt"   .name
+        ) }}
       {{ end }}
     {{ end }}
+  
     {{ with site.GetPage "services" }}
-      {{ $servicesPage := . }}
-      <li class="[ card ][ radius--5 ]">
-        <a class="[ p--1 ]" href="{{ $servicesPage.RelPermalink }}" data-prefetch>
-          {{ with $servicesPage.Resources.GetMatch $servicesPage.Params.hero }}
-            {{ partial "image.html" (dict 
-              "Destination" .Name 
-              "PlainText" $servicesPage.Title
-              "class" "ratio--1:1 scale radius--5"
-              "Page" $servicesPage
-            ) }}
-          {{ end }}
-          <span class="[ font--4 font--500 ]">View All Services</span>
-          {{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}
-        </a>
-      </li>
-    {{ end }}
+    {{ partial "card.html" (dict
+      "page"  .
+      "title" "View All Services"
+      "image" .Params.hero
+    ) }}
+  {{ end }}
+  
   
     </ul>
   </section>
@@ -154,26 +120,18 @@
       </p>
     </div>
   
-    <ul class="[ grid md:col--3 gap--2 ]">
-      {{ $counter := 0 }}
-      {{ $galleries :=  where .Site.RegularPages "Section" "gallery" }}
-      {{ range $galleries }}
-      {{ $counter = add $counter 1 }}
-        <li>
-          <a href="{{ .RelPermalink }}" class="gallery-card" data-prefetch>
-            {{ with .Resources.GetMatch .Params.feature.image }}
-            <figure class="[ feature__img ][ ratio--1:1 scale radius--5 o--1 ]">
-              <picture id="gallery-{{ $counter }}" class="[ bg ]">
-                <style>#gallery-{{ $counter | safeCSS  }} {background-image: url('https://{{ $twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
-                <img data-twic-src="image:{{ .RelPermalink }}" data-twic-focus="auto" alt="{{ .Params.alt }}" width="{{ .Width }}" height="{{ .Height }}"/>
-                <noscript><img class="[ script ]" src="https://{{ $twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview" alt="{{ .Params.alt }}" width="{{ .Width }}" height="{{ .Height }}"/></noscript>
-              </picture>
-            </figure>
-            {{ end }}
-            <h3>{{ .Title }}</h3>
-          </a>
-        </li>
+    <ul class="[ cards ][ grid md:col--3 gap--2 ]">
+      {{ $galleries := where .Site.RegularPages "Section" "gallery" }}
+      {{ range $i, $p := $galleries }}
+        {{ partial "card.html" (dict
+          "page"   $p
+          "title"  $p.Title
+          "href"   $p.RelPermalink
+          "image"  $p.Params.feature.image
+          "alt"    $p.Params.feature.alt
+        ) }}
       {{ end }}
+      
     </ul>
 
   </section>

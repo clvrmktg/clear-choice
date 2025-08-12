@@ -1,0 +1,35 @@
+{{- $page    := .page -}}
+{{- $title   := or .title (cond $page $page.Title "Untitled") -}}
+{{- $href    := or .href (cond $page $page.RelPermalink "#") -}}
+{{- $alt     := or .alt  $title -}}
+{{- $liClass := or .liClass "card radius--5" -}}
+{{- $aClass  := or .aClass "grid gap--1 radius--5" -}}
+{{- $image   := .image -}}
+{{- $dest    := "" -}}
+
+{{- if and $image $page -}}
+  {{- with $page.Resources.GetMatch $image -}}
+    {{- $dest = .Name -}}
+  {{- else -}}
+    {{- $dest = $image -}}
+  {{- end -}}
+{{- else if $image -}}
+  {{- $dest = $image -}}
+{{- end -}}
+
+<li class="[ {{ $liClass }} ]">
+  <a class="[ {{ $aClass }} ]" href="{{ $href }}" data-prefetch>
+    {{- with $dest -}}
+      {{ partial "image.html" (dict 
+        "Destination" . 
+        "PlainText"  $alt
+        "class"      "card__img ][ ratio--1:1 scale radius--5"
+        "Page"       (or $page $)
+      ) }}
+    {{- end -}}
+    <div class="[ card__overlay ]">
+      <h3 class="[ font--4 font--500 ]"><span>{{ $title }}</span></h3>
+      <span>{{ readFile "static/icons/square-arrow-out-up-right.svg" | safeHTML }}</span>
+    </div>
+  </a>
+</li>

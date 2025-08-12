@@ -1,12 +1,12 @@
 @use 'functions' as *
 @use 'mixins' as *
 
-=unstyled-link
+=unstyled-link($link-color, $hover-bg: null)
   font-weight: 500
-  color: color('cc--teal')
+  color: $link-color
   padding-bottom: em(2)
-  border-bottom: em(2) solid color('cc-teal')
+  border-bottom: em(2) solid $link-color
   +transition(background-color)
 
   +hover
-    background-color: color('aac-gold-5')
+    background-color: $hover-bg

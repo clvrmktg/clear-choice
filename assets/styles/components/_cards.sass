@@ -1,39 +1,47 @@
 @use '../abstracts' as *
 
-.service
-  // color: color('white')
-  // background-color: color('cc-teal')
+.card
+  position: relative
 
-  // > a
-  //   display: block
-  //   height: 100%
-  //   position: relative
-  //   color: color('white')
+  &__overlay
 
-  //   > h3, > span
-  //     color: currentcolor
-  //     position: absolute
-  //     bottom: 1em
-  //     left: 1em
+    > span
+      display: none
 
-  //   > h3
-  //     width: calc(100% - 2em)
-  //     overflow: hidden
-  //     // outline: $bg
+  +breakpoint(desktop)
 
-  //     > span
-  //       display: block
-  //       transform: translateY(3lh)
-  //       +transition(transform)
+    &__overlay
+      width: 100%
+      height: 100%
+      color: color('white')
+      background-color: transparent
+      padding: 1em
+      border-radius: inherit
+      position: absolute
+      z-index: 2
+      +transition(background-color)
 
-  //   > svg
-  //     position: absolute
-  //     top: 1em
-  //     right: 1em
+      > h3
+        color: inherit
+        position: absolute
+        bottom: 1em
+        left: 1em
+        transform: translateY(3lh)
+        +transition(transform)
 
-  //   +hover
+      > span
+        display: block
+        position: absolute
+        top: 1em
+        right: 1em
 
-  //     > h3
+      +hover
 
-  //       > span
-  //         transform: translateX(0)
+        background-color: color('cc-teal-8')
+
+        > h3
+          transform: translateX(0)
+
+
+
+

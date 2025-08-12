@@ -2,40 +2,72 @@
   
 .footer
   color: color('white')
-  background-color: color('black')
-  
+  background-color: color('cc-teal')
+  text-align: center
+
+  +breakpoint(desktop)
+    text-align: left
   a
     color: color('white')
 
     > svg
       fill: color('white')
 
-    +hover
-      color: color('aac-gold')
-
-+ch(35)
+    // +hover
+    //   color: color('cc-teal')
 
 .wrapper
 
   &--footer
     +device(desktop)
-      grid-template-columns: [summary-start] max-content [summary-end] 1fr [navigation-start] max-content [navigation-end]
-      grid-template-rows: [summary-start navigation-start] max-content [navigation-end summary-end]
+      grid-template-columns: [imprimatur-start address-start] max-content [imprimatur-end] 1fr [navigation-start] max-content [navigation-end address-end]
+      grid-template-rows: [imprimatur-start navigation-start] max-content [navigation-end imprimatur-end address-start] max-content [address-end]
 
 
-.logo-slogan
+.imprimatur
+  justify-content: center
+
+  .brand
+    justify-content: inherit
 
   +device(desktop)
-    grid-area: summary
-    grid-template-columns: [logo-start] max-content [logo-end slogan-start] max-content [slogan-end]
-    grid-template-rows: [logo-start] 1fr [slogan-start] max-content [slogan-end] 1fr [logo-end]
+    grid-template-columns: [logo-start] max-content [logo-end summary-start] max-content [summary-end]
 
-    > .logo
-      grid-area: logo
+    > .brand
+      grid-column: logo
 
-.slogan
+    > .summary
+      grid-column: summary
+      position: relative
+
+      &::before
+        content: ''
+        width: rem(1)
+        height: 100%
+        background-color: color('white')
+        position: absolute
+        top: 0
+        left: -1em
+        
+
+.address
+  flex-direction: column
+
   +device(desktop)
-    grid-area: slogan
+    grid-area: address
+    flex-direction: row
+
+    > span
+      display: inline-block
+
+      &::after
+        content: ','
+
+      &:last-of-type
+
+        &::after
+          content: ''
+
 
 .navigation--footer
   
@@ -47,25 +79,25 @@
   position: relative
   +transition((color, opacity))
 
-  +breakpoint(tablet)
+  +breakpoint(desktop)
     &::before
       content: ''
       width: em(4)
       height: 100%
-      background-color: color('aac-gold')
+      background-color: color('white')
       position: absolute
       top: 5%
       left: em(-15)
       opacity: 0
 
     +hover
-      color: color('aac-gold')
+      color: color('white')
 
       &::before
         opacity: 1
 
     &.current
-      color: color('aac-gold')
+      color: color('white')
       
       &::before
         opacity: 1
@@ -76,12 +108,17 @@
   > small
     display: inherit
 
-  +breakpoint(tablet)
+  +breakpoint(desktop)
     display: flex
+    justify-content: space-between
 
     > small
       display: inline
 
+.agency
+  +unstyled-link(color('white'), color('white'))
+  +hover
+    color: color('cc-teal')
 
 .line
   background: color('grey')
@@ -108,10 +145,7 @@ $max-spacing: 5 * 20
 
   svg
     width: 6rem
-    fill: color('aac-gold')
+    fill: color('cc-teal')
 
-  +breakpoint(tablet)
+  +breakpoint(desktop)
     grid-template-columns: 1fr max-content
-
-  // > div:last-child
-  //   outline: $bg
