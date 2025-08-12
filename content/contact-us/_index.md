@@ -6,10 +6,10 @@ subtitle = "Let's Get Started with Your Free Quote"
 
 description = "Get in touch with Clear Choice Glass — your trusted source in The Bahamas for hurricane windows, impact doors, shower enclosures, and custom glass solutions."
 
-hero = "clear-choice-installer-hurricane-windows-bahamas.jpg"
+# hero = "clear-choice-installer-hurricane-windows-bahamas.jpg"
 contact = true
 
-address = "Pompano Beach, Florida, and serving The Bahamas"
+address = ""
 phone = "(242) 805-8128"
 email = "info@clear-choiceglass.com"
 

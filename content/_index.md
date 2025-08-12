@@ -2,7 +2,7 @@
 date = '2025-03-01T19:32:51-05:00'
 draft = false
 title = 'Home'
-description = "Clear Choice Glass installs hurricane windows, hurricane doors, shower enclosures, and custom glasswork — all made for the Bahamian climate and built to last."
+description = "Clear Choice Glass installs hurricane windows and doors, including hurricane impact windows, in Nassau, Bahamas — built locally for our climate, combining lasting protection, style, and energy efficiency. We also install shower enclosures and custom glasswork."
 
 hero = "impact-windows-beach-terrace-view.jpg"
 

@@ -6,11 +6,11 @@ title = 'Clear Choice Glass'
 enableGitInfo = true
 
 [ params ]
-  tagline = 'Hurricane Impact Windows & Doors | Bahamas'
+  tagline = 'Hurricane Windows & Doors | Impact Windows & Doors | Glasswork | Nassau, Bahamas'
   font = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
   twic = "clearchoice"
-  share = "/logo.jpg"
-  logo = "/logo.jpg"
+  share = "/cover.jpg"
+  logo = "/cover.jpg"
   # Facebook App ID
   app_id = "223848628924279"
   error = true

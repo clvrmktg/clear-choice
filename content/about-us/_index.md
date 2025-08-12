@@ -6,7 +6,7 @@ subtitle = "Providing hurricane-rated windows, impact doors, and custom glass so
 description = "Clear Choice Glass is a trusted Bahamian manufacturer and installer of hurricane windows, impact doors, and custom glasswork — built for the Bahamas and backed by local service."
 
 
-hero = 'tan-home-white-impact-windows.jpg'
+hero = "clear-choice-installer-hurricane-windows-bahamas.jpg"
 
 cta = true
 
