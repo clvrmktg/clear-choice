@@ -88,9 +88,14 @@ export const handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: "Invalid form submission" }) };
     }
 
-    const { name, email, message, inquiry } = payload.data;
+    let { name, email, message, inquiry } = payload.data;
     if (!isValidEmail(email)) {
       return { statusCode: 400, body: JSON.stringify({ error: "Invalid email address" }) };
+    }
+
+    // Default to general-inquiry if empty
+    if (!inquiry) {
+      inquiry = "general-inquiry";
     }
 
     const inquiryLabel = inquiryMap[inquiry] || inquiry;
@@ -134,4 +139,5 @@ export const handler = async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 };
+
 
