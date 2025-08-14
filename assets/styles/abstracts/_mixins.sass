@@ -417,7 +417,8 @@
     .o--#{$value}
       order: $value
 
-=hsl($name, $color, $alpha)
+
+=hsl($name, $color, $alpha: null)
   @if $alpha
     --#{$name}-#{$alpha}: hsla(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)}, #{$alpha * 10%})
     --#{$name}-#{$alpha}-with-fallback: var(--#{$name}-#{$alpha}, rgba(#{color.channel($color, "red", $space: rgb)}, #{color.channel($color, "green", $space: rgb)}, #{color.channel($color, "blue", $space: rgb)}, #{math.div($alpha, 10)}))
