@@ -380,19 +380,31 @@
   .gap--#{$escaped-value}
     gap: #{$value}em     
 
-=col-gap($value)
-
+=col-gap($value, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
   $escaped-value: split-decimal($value)
 
-  .col-gap--#{$escaped-value}
-    column-gap: #{$value}em
+  @if $breakpoint != null and map.has-key($breakpoints, $breakpoint)
+    .#{$breakpoint}\:col-gap--#{$escaped-value}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        column-gap: #{$value}em
+  @else
+    .col-gap--#{$escaped-value}
+      column-gap: #{$value}em
 
-=row-gap($value)
 
+=row-gap($value, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
   $escaped-value: split-decimal($value)
-  
-  .row-gap--#{$escaped-value}
-    row-gap: #{$value}em
+
+  @if $breakpoint != null and map.has-key($breakpoints, $breakpoint)
+    .#{$breakpoint}\:row-gap--#{$escaped-value}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        row-gap: #{$value}em
+  @else
+    .row-gap--#{$escaped-value}
+      row-gap: #{$value}em
+
 
 =order($value, $breakpoint: null)
   $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
@@ -405,9 +417,14 @@
     .o--#{$value}
       order: $value
 
-=hsl($name, $color)
-  --#{$name}: hsl(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)})
-  --#{$name}-with-fallback: var(--#{$name}, rgb(#{color.channel($color, "red", $space: rgb)}, #{color.channel($color, "green", $space: rgb)}, #{color.channel($color, "blue", $space: rgb)}))
+=hsl($name, $color, $alpha)
+  @if $alpha
+    --#{$name}-#{$alpha}: hsla(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)}, #{$alpha * 10%})
+    --#{$name}-#{$alpha}-with-fallback: var(--#{$name}-#{$alpha}, rgba(#{color.channel($color, "red", $space: rgb)}, #{color.channel($color, "green", $space: rgb)}, #{color.channel($color, "blue", $space: rgb)}, #{math.div($alpha, 10)}))
+
+  @else
+    --#{$name}: hsl(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)})
+    --#{$name}-with-fallback: var(--#{$name}, rgb(#{color.channel($color, "red", $space: rgb)}, #{color.channel($color, "green", $space: rgb)}, #{color.channel($color, "blue", $space: rgb)}))
 
 =hsla($name, $color, $alpha)
   --#{$name}-#{$alpha}: hsla(#{color.channel($color, "hue", $space: hsl)}, #{color.channel($color, "saturation", $space: hsl)}, #{color.channel($color, "lightness", $space: hsl)}, #{$alpha * 10%})
