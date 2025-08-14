@@ -22,21 +22,34 @@ function isValidEmail(email) {
   return /\S+@\S+\.\S+/.test(email);
 }
 
+// --- Inquiry Map ---
+const inquiryMap = {
+  "": "No selection",
+  "general-inquiry": "General Inquiry",
+  "hurricane-windows": "Hurricane Windows",
+  "impact-doors": "Impact Doors",
+  "custom-glass-mirrors": "Custom Glass & Mirrors",
+  "shower-enclosures": "Shower Enclosures",
+  "storefronts": "Storefronts"
+};
+
 // --- Templates ---
-function adminEmailTemplate({ siteName, name, email, message }) {
+function adminEmailTemplate({ siteName, name, email, inquiryLabel, message }) {
   return {
     subject: `New Contact Form Submission from ${siteName}`,
-    text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+    text: `Name: ${name}\nEmail: ${email}\nInquiry Type: ${inquiryLabel}\n\nMessage:\n${message}`,
     html: `
       <div style="font-family: sans-serif; line-height: 1.5; color: #333;">
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Inquiry Type:</strong> ${inquiryLabel}</p>
         <p><strong>Message:</strong><br>${message.replace(/\n/g, "<br>")}</p>
       </div>
     `,
   };
 }
+
 
 function confirmationEmailTemplate({ siteName, name, message }) {
   return {
@@ -66,6 +79,7 @@ The ${siteName} Team`,
   };
 }
 
+
 // --- Main Handler ---
 export const handler = async (event) => {
   try {
@@ -74,15 +88,17 @@ export const handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: "Invalid form submission" }) };
     }
 
-    const { name, email, message } = payload.data;
+    const { name, email, message, inquiry } = payload.data;
     if (!isValidEmail(email)) {
       return { statusCode: 400, body: JSON.stringify({ error: "Invalid email address" }) };
     }
 
+    const inquiryLabel = inquiryMap[inquiry] || inquiry;
+
     const { siteName, siteEmail, adminEmail, ccEmails } = getSiteContext(event);
 
     // --- Admin Email ---
-    const adminTemplate = adminEmailTemplate({ siteName, name, email, message });
+    const adminTemplate = adminEmailTemplate({ siteName, name, email, inquiryLabel, message });
     await resend.emails.send({
       from: `${siteName} <${siteEmail}>`,
       to: adminEmail,
@@ -93,9 +109,14 @@ export const handler = async (event) => {
       html: adminTemplate.html,
     });
 
-    // --- Confirmation Email (Optional) ---
+    // --- Confirmation Email ---
     if (process.env.APP_SEND_CONFIRMATION !== "false") {
-      const confirmTemplate = confirmationEmailTemplate({ siteName, name, message });
+      const confirmTemplate = confirmationEmailTemplate({
+        siteName,
+        name,
+        message: `Inquiry Type: ${inquiryLabel}\n\n${message}`
+      });
+
       await resend.emails.send({
         from: `${siteName} <${siteEmail}>`,
         to: email,
@@ -113,3 +134,4 @@ export const handler = async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 };
+
