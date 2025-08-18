@@ -104,27 +104,39 @@ svg = "sliding-glass-doors.svg"
 
 [[faqs]]
 question = "Are Clear Choice hurricane windows and doors certified for The Bahamas?"
-answer = "Yes. All our products meet Bahamian building codes and are tested to withstand hurricane‑force winds and flying debris."
+answer = "Yes. All our hurricane-rated products meet Bahamian building codes and are tested to withstand hurricane-force winds and flying debris."
 
 [[faqs]]
 question = "Can hurricane windows and doors withstand Category 5 hurricanes?"
 answer = "They are engineered and tested to endure extreme conditions, including Category 5 storms, providing maximum protection for your property."
 
 [[faqs]]
+question = "How long does it take to complete an order for hurricane windows and doors?"
+answer = "Because these products are custom-built to fit your home or business, fabrication and preparation typically take 6–8 weeks. Our team will keep you updated throughout the process."
+
+[[faqs]]
+question = "What are the payment terms for hurricane windows and doors?"
+answer = "We require a 50% deposit to begin your order, 25% before installation, and the remaining 25% once installation is complete. Payments may be made by cash, check, credit card, or online bank transfer."
+
+[[faqs]]
+question = "Do you deliver to the Family Islands?"
+answer = "Yes. We regularly ship hurricane windows and doors to the Family Islands. Our team coordinates freight and handling to ensure your products arrive safely and on schedule."
+
+[[faqs]]
 question = "Do hurricane windows also help reduce energy costs?"
-answer = "Absolutely. The insulated glass and tight seals help keep your home cooler in summer and reduce energy bills year‑round."
+answer = "Absolutely. The insulated glass and tight seals help keep your home cooler in summer and reduce energy bills year-round."
 
 [[faqs]]
 question = "Will impact windows and doors make my home quieter?"
-answer = "Yes. The laminated glass helps reduce outside noise, creating a more peaceful and comfortable living space."
+answer = "Yes. The laminated glass reduces outside noise, creating a more peaceful and comfortable living space."
 
 [[faqs]]
 question = "How long does installation usually take?"
-answer = "Most installations are completed within a few days, depending on the size of the project. All work is handled by our trained local team."
+answer = "Most installations are completed within a few days, depending on the size and complexity of the project. All work is handled by our trained local team."
 
 [[faqs]]
 question = "Will hurricane-rated windows and doors increase my property value or lower insurance costs?"
-answer = "Yes. They add long‑term value to your home or business and may qualify you for reduced insurance premiums."
+answer = "Yes. They add long-term value to your home or business and may qualify you for reduced insurance premiums with many Bahamian insurers."
 
 
 +++

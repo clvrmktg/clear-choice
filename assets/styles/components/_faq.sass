@@ -36,18 +36,6 @@ details
 .accordion
   border-radius: em(5)
 
-// .faq
-//   &:first-of-type
-    
-//     .question
-//       border-top-left-radius: em(5)
-//       border-top-right-radius: em(5)
-
-//   &:last-of-type
-//     .question, .answer
-//       border-bottom-left-radius: em(5)
-//       border-bottom-right-radius: em(5)
-
 .question
   background-color: #f1f9fb // subtle light aqua tint (ties into brand blue)
   border: em(1) solid #d1e6ea // soft teal-gray border
@@ -67,12 +55,7 @@ details
 
 details[open]
 
-  // &:last-of-type
 
-  //   .question
-  //     border-bottom-left-radius: em(0)
-  //     border-bottom-right-radius: em(0)
-  
   summary
     color: color('cc-teal')
 
@@ -82,7 +65,7 @@ details[open]
 
   &::details-content
     block-size: auto
-    block-size: calc-size(auto)
+    block-size: calc-size(max-content, size)
 
     
   

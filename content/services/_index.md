@@ -7,7 +7,6 @@ description = "Explore our services — from hurricane-rated windows and impact 
 
 hero = "hurricane-impact-windows-doors-installation-bahamas.jpg"
 
-
 [comfort_section]
 title = "Bahamian Made. Island Strong."
 text = """At Clear Choice, our trained and certified Bahamian professionals deliver hurricane‑rated windows, doors, and custom glass built for island life. Crafted for strength and style, every installation is backed by local expertise — protecting what matters most."""
@@ -67,23 +66,31 @@ image = "storefront-frames.jpg"
 
 [[faqs]]
 question = "What services does Clear Choice provide?"
-answer = "We offer a full range of glass and hurricane protection services, including impact‑resistant windows and doors, custom glass and mirror fabrication, frameless shower enclosures, storefront systems, and durable window and door screens. Every product is designed and serviced right here in The Bahamas."
+answer = "We offer a full range of glass and hurricane protection solutions, including impact-resistant windows and doors, custom glass and mirror fabrication, frameless shower enclosures, storefront systems, and durable window and door screens. Every product is designed, manufactured, and serviced locally in The Bahamas."
 
 [[faqs]]
 question = "How long does it take to complete an order?"
-answer = "For in‑stock products such as standard mirrors and screens, lead times can be as short as a few days. Custom hurricane‑rated windows, doors, and heavy glass installations typically require 4–6 weeks to fabricate and prepare for installation."
+answer = "For in-stock products such as standard mirrors and screens, lead times can be as short as a few days. Custom hurricane-rated windows and doors typically require 6–8 weeks to fabricate and prepare for installation."
+
+[[faqs]]
+question = "What are your payment terms?"
+answer = "Our standard payment terms are: 50% deposit at order, 25% prior to installation, and the remaining 25% upon completion. We accept cash, check, credit card, and online bank transfer."
+
+[[faqs]]
+question = "Do you service and maintain what you install?"
+answer = "Absolutely. In addition to sales and installation, we provide reliable local service and preventative care to keep your windows, doors, and glass systems performing year-round."
+
+[[faqs]]
+question = "Do you deliver to the Family Islands?"
+answer = "Yes. We regularly ship products to the Family Islands. Our team coordinates logistics to ensure your order arrives safely and on time."
 
 [[faqs]]
 question = "Are your installers certified and experienced?"
 answer = "Yes. Our installation team is made up of trained, certified professionals with over 50 years of combined experience. You can trust us to deliver precision workmanship that meets Bahamian building code standards."
 
 [[faqs]]
-question = "Do you service and maintain what you install?"
-answer = "Absolutely. In addition to sales and installation, we provide reliable local service and preventative care to keep your windows, doors, and glass systems performing year‑round."
-
-[[faqs]]
-question = "Do hurricane‑rated windows and doors lower insurance premiums in The Bahamas?"
-answer = "Yes. Many insurers in The Bahamas offer reduced premiums for properties with certified impact‑resistant windows and doors, since they lower the risk of storm damage."
+question = "Do hurricane-rated windows and doors lower insurance premiums in The Bahamas?"
+answer = "Yes. Many insurers in The Bahamas offer reduced premiums for properties with certified impact-resistant windows and doors, since they lower the risk of storm damage."
 
 [[faqs]]
 question = "Can I customize the style and finish of my glass products?"
@@ -91,7 +98,6 @@ answer = "Of course. We offer a variety of styles, finishes, and tints for windo
 
 [[faqs]]
 question = "Do you offer free consultations or quotes?"
-answer = "Yes. We provide free, no‑obligation quotes and expert guidance to help you choose the right products for your space and budget."
-
+answer = "Yes. We provide free, no-obligation quotes and expert guidance to help you choose the right products for your space and budget."
 
 +++
