@@ -19,15 +19,7 @@
       {{ partial "cta.html" . }}
       {{- partial "footer.html" (dict "context" . "currentPage" $currentPage) -}}
     </div>
-    <div id="cookie-banner" class="[ cookie--banner ][ gap--2 p--1 ]">
-      <div class="[ flex gap--1 ]">
-        {{ readFile "static/icons/cookie.svg" | safeHTML }}
-        <p class="[ font--500 pb--0 ]">This site uses cookies to improve performance and your experience. By using our website, you agree to our <a href="/privacy-policy/" data-prefetch>Privacy Policy</a>.</p>
-      </div>
-      <div>
-        <button id="accept-cookies"class="[ btn btn--lg cc--primary ]">Okay, thanks</button>
-      </div>
-    </div>
+    {{ partial "notices/cookie-banner.html" . }}
     {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
     {{- if $.Store.Get "hasObscure"  -}}
     {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}

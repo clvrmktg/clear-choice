@@ -76,10 +76,6 @@ enableGitInfo = true
 [security.funcs]
 getenv = ['^HUGO_', '^GA_TRACKING_ID$']
 
-[minify]
-  [minify.tdewolff.html]
-    keepQuotes = true
-
 [sitemap]
   filename = "sitemap"  # Remove .xml
   changefreq = "monthly"
