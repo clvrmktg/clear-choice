@@ -26,8 +26,9 @@
         position: absolute
         bottom: 1em
         left: 1em
+        opacity: 0
         transform: translateY(3lh)
-        +transition(transform)
+        +transition((transform, opacity))
 
       > span
         display: block
@@ -40,6 +41,7 @@
         background-color: color('cc-teal-8')
 
         > h3
+          opacity: 1
           transform: translateX(0)
 
 
