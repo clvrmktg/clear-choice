@@ -121,7 +121,7 @@
     </div>
   
     <ul class="[ cards ][ grid md:col--3 gap--2 ]">
-      {{ $galleries := where .Site.RegularPages "Section" "gallery" }}
+      {{ $galleries := first 3 (where .Site.RegularPages "Section" "gallery") }}
       {{ range $i, $p := $galleries }}
         {{ partial "card.html" (dict
           "page"   $p
@@ -131,8 +131,8 @@
           "alt"    $p.Params.feature.alt
         ) }}
       {{ end }}
-      
     </ul>
+    
 
   </section>
   
